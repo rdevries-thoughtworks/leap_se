@@ -1,0 +1,113 @@
+//
+// An UL,LI menu that looks like a cutout and is positioned at the bottom
+// of the enclosing block.
+//
+// This mixin is applied to the enclosing block.
+//
+// the markup should look like this:
+//
+// enclosing-block
+//   ul#id
+//     li.tab
+//       a.tab
+//     li.tab
+//       a.tab
+//
+// the id for the ul is passed in as the first argument.
+//
+// it is difficult to create cutout tabs with a border that look good
+// in all browsers and at different client font-sizes.
+//
+// the problem is that the tab element needs to line up exactly with the
+// bottom of the enclosing block in order to make the cutout illusion work.
+// most methods of doing this create weird jitters in webkit
+// and gecko when resizing the screen or changing the font size. it does not
+// look so good to have a dark line under your tab, breaking the illusion of
+// a cutout.
+//
+// the method which makes this jitter-free is to use a height and a line-height
+// for the <a> tag instead of vertical padding. This requires that <a> is a block
+// which requires that the <li> is block & floated, instead of inline.
+//
+// This method seems to produce by far the most consistant results of letting
+// the active tab sit snugly on the bottom of the enclosing div.
+//
+// Change with caution: I spent way too much time getting this to work.
+//
+
+@mixin cutout-menu(
+  $ul-id,
+  $active-bg: white,
+  $left-indent: 10px,
+  $padding: 7px 14px,
+  $text-size: 14px,
+  $small-left-indent: 10px,
+  $small-padding: 5px 10px,
+  $small-text-size: 12px,
+  $small-screen: $small-sm-max) {
+
+  $border: false;
+
+  // allows us to put the menu at the bottom
+  position: relative;
+
+  ul##{$ul-id} {
+    margin: 0;
+    padding: 0;
+
+    // allows us to put the menu at the bottom
+    position: absolute;
+
+    // puts the menu at the bottom of the enclosing block,
+    // minus the overhand needed to cover the border:
+    // bottom: -(border_width($border));
+    bottom: -1px;
+
+    // padding-left: don't do it.
+    // ^^ In some cases, we need width of 100% to actually be the screen width,
+    // but adding padding makes 100% width be wider than the screen.
+    // So, instead, we add margin to the first and last li.
+
+    white-space: nowrap;
+
+    li.tab {
+      display: block;
+      float: left;
+      &.first {
+        margin-left: $left-indent;
+        @media (max-width: $small-screen) {
+          margin-left: $small-left-indent;
+        }
+      }
+      a.tab {
+        display: block;
+        padding: $padding;
+        @media (max-width: $small-screen) {
+          padding: $small-padding;
+        }
+
+        // line-height makes for much more consistant rendering than using vertical
+        // padding. essential to prevent tabs from looking horrible at different fonts sizes.
+        font-size: $text-size;
+        line-height: $text-size;
+        @media (max-width: $small-screen) {
+          font-size: $small-text-size;
+          line-height: $small-text-size;
+        }
+
+        // the transparent border is needed to prevent the menu from jittering
+        // when the active border is applied.
+        border: 1px solid transparent;
+        border-bottom: 0;
+
+        &.active {
+          background-color: $active-bg;
+          @if $border {
+            border: $border;
+            border-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}

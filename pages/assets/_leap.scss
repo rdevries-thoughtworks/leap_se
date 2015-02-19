@@ -1,0 +1,240 @@
+a:visited {
+  color: $link-visited-color;
+}
+
+//
+// MASTHEAD
+//
+
+#masthead {
+  width: 100%;
+  margin: 0;
+  background-color: $masthead-bg-color;
+  border-bottom: $masthead-border;
+
+  @include gradient-vertical(lighten($masthead-bg-color,8%),$masthead-bg-color);
+  box-shadow: inset 0 0 8px 1px darken($masthead-bg-color, 8%);
+  box-shadow-top: 0;
+
+  .masthead-inner {
+    height: $masthead-height;
+    @include cutout-menu(
+      $ul-id: top-menu,
+      $active-bg: $cutout-color,
+      $left-indent: $masthead-text-left-margin,
+      $small-left-indent: $masthead-small-text-left-margin,
+      $small-screen: $small-screen);
+    @media (max-width: $small-screen) {
+      height: $masthead-small-height;
+    }
+  }
+
+  .logo {
+    background: $masthead-bg;
+    @media (max-width: $small-screen) {
+      background: $masthead-small-bg;
+    }
+  }
+
+  h1 {
+    font-weight: bold;
+    white-space: nowrap;
+    margin: 0;
+    color: $masthead-color;
+
+    line-height: $masthead-height;
+    font-size: $masthead-text-size;
+    padding-left: $masthead-text-left-margin - 2px;
+    @media (max-width: $small-screen) {
+      line-height: $masthead-small-height;
+      font-size: $masthead-small-text-size;
+      padding-left: $masthead-small-text-left-margin - 2px;
+    }
+  }
+
+  #top-menu a.tab {
+    font-weight: bold;
+    color: white;
+    background: rgba(0,0,0,0.5);
+    &.active {
+      color: black;
+    }
+  }
+
+}
+
+//
+// SIDEBAR
+//
+
+#sidebar {
+  #navigation {
+    margin-top: 20px;
+  }
+}
+
+#sidebar .nav.nav-stacked {
+  li {
+    background: $side-column-bg-color;
+    margin: 0px;
+    &.active {
+      a {
+        border: 0;
+        border-right: 4px solid $side-column-active-bg-color;
+        background: $side-column-active-bg-color;
+        color: $side-column-active-color;
+        &:hover {
+          //color: $side_column_text_color;
+          background: lighten($side-column-active-bg-color, 40%);
+          border-color: lighten($side-column-active-bg-color, 20%);
+        }
+      }
+    }
+  }
+  li {
+    &.level1 a {
+      padding-left: 1*$side-column-indent;
+    }
+    &.level2 a {
+      padding-left: 2*$side-column-indent;
+    }
+    &.level3 a {
+      padding-left: 3*$side-column-indent;
+    }
+    &.level4 a {
+      padding-left: 4*$side-column-indent;
+    }
+  }
+  a {
+    cursor: pointer;
+    border-radius: 0 !important;
+    border: 0;
+    border-right: 4px solid $side-column-active-bg-color;
+    color: $side-column-text-color;
+    line-height: 1.2em;
+    &:hover {
+      background: lighten($side-column-bg-color, 10%);
+      border-color: lighten($side-column-active-bg-color, 50%);
+      text-decoration: underline;
+    }
+  }
+}
+
+#sidebar ul {
+  box-shadow: 2px 4px 4px 0px darken($background-color,40%);
+}
+
+//
+// BACKGROUND
+//
+
+#background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 400px;
+  z-index: -1;
+  @include gradient-vertical($background-color-start, $background-color);
+}
+
+//
+// TYPOGRAPHY
+//
+
+#TOC {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  ol {
+    list-style-type: none;
+    margin: 0px;
+    padding-left: 20px;
+  }
+  li ol {
+    margin-left: 0px;
+    //padding-left: 20px;
+  }
+}
+
+.p {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.ol {@extend ol}
+.li {@extend li}
+
+.h1 {@extend h1}
+.h2 {@extend h2}
+.h3 {@extend h3}
+
+.bigger {
+  font-size: 140%;
+  line-height: 140%;
+  margin: 20px 0;
+}
+
+//
+// HOME PAGE
+//
+
+.standout {
+  a {color: black;}
+  span {
+    white-space: nowrap;
+    margin: 0 15px;
+    font-size: 18px;
+    @media (max-width: $small-screen) {
+      font-size: 13px;
+    }
+  }
+  .fa {
+    vertical-align: middle;
+  }
+  line-height: 48px;
+  margin-bottom: 20px;
+}
+
+.well {
+  min-height: 20px;
+  padding: 19px;
+  margin-bottom: 11px; // same as 'p', not sure what variable this is.
+  background-color: $well-bg-color;
+  box-shadow: inset 0px 0px 5px 1px darken($well-bg-color,10%);
+  border: 1px solid lighten($well-border-color,50%);
+  border-radius: 0px;
+  .heading {
+    margin-top: -6px;
+    margin-bottom: 6px;
+    font-weight: bold;
+    font-size: 1.1em;
+  }
+}
+
+//
+// BLOGGY STUFF
+//
+
+.byline {
+  margin-bottom: 1em;
+}
+
+.page-summary {
+  @include clearfix();
+}
+
+article.page-summary {
+  h2 {
+    margin-bottom: 0px;
+  }
+  p {
+    margin: 0;
+  }
+  .byline {
+    font-weight: bold;
+    margin: 0px;
+  }
+}

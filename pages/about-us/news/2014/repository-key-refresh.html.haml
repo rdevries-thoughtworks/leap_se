@@ -1,0 +1,59 @@
+- @title = "Repository Key Refresh"
+- @author = 'Elijah'
+- @posted_at = "2014-01-14"
+- @more = true
+- @preview = "We screwed up and let our debian repository key expire. The responsible parties have been punished (no more free back rubs). You have three options to fix it..."
+
+%p We screwed up and let our debian repository key expire. The responsible parties have been punished (no more free back rubs). You have three options to fix:
+
+%h3 option 1 - blindly upgrade
+
+%p You can just ignore the warnings about the packages being unauthenticated. This will upgrade your leap-keyring package, which includes the updated key. This is potentially dangerious and should be avoided.
+
+%pre
+  apt-get update --allow-unauthenticated
+  apt-get upgrade --allow-unauthenticated
+
+%h3 option 2 - re-add key without checking fingerprint
+
+%p You can simply re-import the key to your apt keyring. This method is less dangerious, but requires you to trust the certificate authority system (which never a good idea).
+
+%pre
+  curl https://dl.bitmask.net/apt.key | apt-key add -
+
+%h3 option 3 - update the key from keyserver
+
+%p With this method, we update the key by pulling it from a keyserver and then importing to apt-key. This method is the most secure (so long as you follow all the steps and actually verify the fingerprint).
+
+%p Find the long key-id of the current LEAP archive signing key:
+
+%pre
+  apt-key adv --list-keys --keyid-format 0xLONG
+
+%p You should see this among the output:
+
+%pre
+  pub   4096R/0x1E34A1828E207901 2013-02-06 [expired: 2014-02-06]
+  uid                            LEAP archive signing key <sysdev@leap.se>
+
+%p Now, grab that specific key-id from a keyserver, and verify the fingerprint:
+
+%pre
+  gpg --recv-key 0x1E34A1828E207901
+  gpg --fingerprint 0x1E34A1828E207901
+
+%p You should see this as output:
+
+:plain
+  <pre>
+  pub   4096R/8E207901 2013-02-06 [expires: 2015-02-07]
+        Key fingerprint = 1E45 3B2C E87B EE2F 7DFE  9966 1E34 A182 8E20 7901
+  uid                  LEAP archive signing key <sysdev@leap.se>
+  </pre>
+
+%p Make sure that the fingerprint in this output matches the long key-id you listed with <code>apt-key</code>. Without this step, it would be very easy for an attacker to feed you a bogus key.
+
+%p Finally, import the key into apt-key:
+
+%pre
+  gpg --armor --export 0x1E34A1828E207901  | sudo apt-key add -

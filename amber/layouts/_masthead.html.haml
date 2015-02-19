@@ -1,0 +1,17 @@
+.masthead-inner
+  .container
+    .row
+      -# if has_navigation?
+        .col-sm-3.col-md-2
+        .col-sm-9.col-md-10
+          %h1 LEAP Encryption Access Project
+          %ul.list-unstyled#top-menu
+            - top_navigation_items(include_home:true) do |item|
+              %li{:class => [item[:class], 'tab'].join(' ')}
+                %a{:href => item[:href], :class => [item[:class], 'tab'].join(' ')}= item[:label]
+      .col-sm-12.logo
+        %h1 LEAP Encryption Access Project
+        %ul.list-unstyled#top-menu
+          - top_navigation_items(include_home:true) do |item|
+            %li{:class => [item[:class], 'tab'].join(' ')}
+              %a{:href => item[:href], :class => [item[:class], 'tab'].join(' ')}= item[:label]

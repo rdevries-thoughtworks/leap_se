@@ -1,0 +1,38 @@
+!!!
+%html{:lang => @locals[:locale].to_s}
+  %head
+    %title
+      = @page.nav_title + ' - ' + @site.title
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    %meta(charset="UTF-8")
+    %link(rel="stylesheet" href="/assets/style.css")
+    %link(rel="stylesheet" href="/assets/font-awesome/css/font-awesome.min.css")
+    = html_head_base
+  %body
+    #wrap
+      #masthead
+        = render 'layouts/masthead'
+      #main.container
+        .row
+          - if has_navigation?
+            #sidebar.col-sm-4.col-md-3
+              = render 'layouts/sidebar'
+            .col-sm-8.col-md-9
+              .title-box
+                = yield :title
+                = render 'layouts/titlebox'
+              .content-box
+                - if translation_missing?
+                  .alert.alert-info= t(:missing_translation)
+                = yield :content
+          - else
+            .col-sm-12
+              - unless @page.props.show_title === false
+                .title-box
+                  = yield :title
+              .content-box
+                = yield :content
+
+    #footer
+      = render 'layouts/footer'
+    #background

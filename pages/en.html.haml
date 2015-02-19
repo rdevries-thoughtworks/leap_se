@@ -1,0 +1,51 @@
+- @title = "Home"
+- @this.show_title = false
+- @this.toc = false
+
+%p.bigger.first
+  LEAP is a non-profit dedicated to giving all internet users access to secure communication. Our focus is on adapting encryption technology to make it easy to use and widely available. #{link 'More about LEAP »' => 'about-us'}
+
+.row.standout
+  .col-xs-4.text-right
+    %span
+      %i.fa.fa-2x.fa-twitter
+      = link('@leapcode' => 'https://twitter.com/leapcode')
+  .col-xs-4.text-center
+    %span
+      %i.fa.fa-2x.fa-envelope
+      <a href='mailto:discuss-subscribe@leap.se'>discuss@leap.se</a>
+  .col-xs-4.text-left
+    %span
+      %i.fa.fa-2x.fa-comments
+      = link('#leap' => 'http://irc.lc/freenode/leap')
+
+.row.p
+  .col-sm-4
+    .well
+      .heading
+        %i.fa.fa-user
+        For Users
+      %p We are working to create a suite of high security communication tools that are reliable and easy to use.
+      = link(:read_more => 'services', :class => 'btn btn-default btn-sm')
+  .col-sm-4
+    .well
+      .heading
+        %i.fa.fa-tasks
+        For Providers
+      %p We are working on tools to automate the deployment of a secure service provider infrastructure.
+      = link(:read_more => 'platform', :class => 'btn btn-default btn-sm')
+  .col-sm-4
+    .well
+      .heading
+        %i.fa.fa-wrench
+        For Hackers
+      %p Got skills? We need them. Fork, contribute, pentest, and patch our software. Always 100% Free/Libre.
+      = link(:read_more => 'docs', :class => 'btn btn-default btn-sm')
+
+.row
+  .col-sm-12
+    %h1.first
+      Recent News
+      =# news_feed_link
+    = recent_summaries(:limit => 10) do |page|
+      = render :partial => 'layouts/blog_summary', :locals => {:page => page}

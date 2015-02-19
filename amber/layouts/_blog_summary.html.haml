@@ -1,0 +1,16 @@
+- page = locals[:page]
+%article.page-summary
+  %h2= link(page.title => amber_path(page))
+  .byline
+    - if page.props.author
+      %span.author>= page.props.author
+    - if page.props.author && page.props.posted_at
+      \.
+    - if page.props.posted_at
+      %i
+        = time_tag(page.props.posted_at.to_date, :format => :long, :pubdate => true)
+  %div.content
+    - if page.props.preview
+      = page.props.preview
+      - if page.props.more
+        = link(I18n.t(:read_more) => amber_path(page))

@@ -1,0 +1,290 @@
+@title = 'Bonafide'
+@summary = 'Secure user registration, authentication, and provider discovery.'
+@toc = true
+
+h1. Introduction
+
+Bonafide is a protocol that allows a user agent to communicate with a service provider. It includes the following capabilities:
+
+* Discover basic information about a provider.
+* Register a new account with a provider.
+* Discover information about all the services offered by a provider.
+* Authenticate with a provider.
+* Destroy a user account.
+
+Bonafide user SRP (Secure Remote Password) for password-based authentication.
+
+h1. Configuration Files
+
+h2. JSON files
+
+h3. GET /provider.json
+
+The @provider.json@ file includes basic information about a provider. The URL for provider.json is always the same for all providers (`http://DOMAIN/provider.json`). This is the basic 'bootstrap' file that informs the user agent what URLs to use for the other actions.
+
+JSON files are always in UTF8. When loaded in the browser, they are not displayed in UTF8, so non-ascii characters look off, but the files are correct.
+
+Here is an example `provider.json` (from https://demo.bitmask.net/provider.json):
+
+bc.. {
+  "api_uri": "https://api.demo.bitmask.net:4430",
+  "api_version": "1",
+  "ca_cert_fingerprint": "SHA256: 0f17c033115f6b76ff67871872303ff65034efe7dd1b910062ca323eb4da5c7e",
+  "ca_cert_uri": "https://demo.bitmask.net/ca.crt",
+  "default_language": "en",
+  "description": {
+    "en": "A demonstration provider."
+  },
+  "domain": "demo.bitmask.net",
+  "enrollment_policy": "open",
+  "languages": [
+    "en"
+  ],
+  "name": {
+    "en": "Bitmask"
+  },
+  "services": [
+    "openvpn"
+  ]
+}
+
+p. In this document, `API_BASE` consists of `api_uri/api_version`
+TODO: define a schema for this file.
+
+h3. GET API_BASE/configs.json
+
+For each supported service code, `configs.json` lists the available configuration file (there might be more than one for a particular service if there are different formats available). The service codes are listed in "services" in `provider.json`. A provider can use whatever service codes they want, but the user agent will only respond to the ones that it understands.
+
+For example:
+
+bc.. {
+  "openvpn": {
+    "formats": ["1", "2"],
+    "1": "eip-service.json",
+    "2": "eip-service-2.json"
+  },
+  "soledad": {
+    "formats": ["1"],
+    "1": "soledad-service.json"
+  },
+  "mx": {
+    "formats": ["1"],
+    "1": "smtp-service.json"
+  }
+}
+
+h3. GET API_BASE/config/eip-service.json
+
+e.g. https://api.bitmask.net:4430/1/config/eip-service.json
+
+This file defines the "encrypted internet proxy" capabilities and gateways.
+
+h2. Keys
+
+h3. GET /ca.crt
+
+e.g. https://bitmask.net/ca.crt
+
+This is the CA certificate for the provider. It is used to validate servers when not using the web browser. In particular, for OpenVPN. The URL for this is the same for all providers. The fingerprint for this CA cert should be distributed with the client whenever possible.
+
+
+h1. REST API
+
+h2. Version
+
+The API_BASE for the webapp API is constructed from 'api_uri' and 'api_version' from provider.json.
+
+For example, given this in provider.json:
+
+<code>
+{
+  "api_uri": "https://api.bitmask.net:4430",
+  "api_version": "1",
+}
+</code>
+
+The API_BASE would be https://api.bitmask.net:4430/1
+
+The API_VERSION will increment if breaking changes to the api are made. The API might be enhanced without incrementing the version. For Version 1 this may include sending additional data in json responses.
+
+h2. Session
+
+h3. Handshake
+
+Starts authentication process (values A and B are part of the two step SRP authentication process).
+
+<table class="table table-bordered table-striped">
+<thead>
+  <tr>
+    <th colspan="2">POST API / sessions(.json)</th>
+  </tr>
+</thead>
+<tr>
+  <td>Query params:</td>
+  <td>@{"A": "12…345", "login": "swq055"}@</td>
+</tr>
+<tr>
+  <td>Response:</td>
+  <td>200 @{"B": "17…651", "salt": "A13CDE"}@</td>
+</tr>
+</table>
+
+If the query_params leave out the @A@, then no @B@ will be included and only the salt for the given login send out:
+
+<table class="table table-bordered table-striped">
+<thead>
+  <tr>
+    <th colspan="2">POST API / sessions(.json)</th>
+  </tr>
+</thead>
+<tr>
+  <td>Query params:</td>
+  <td>@{"login": "swq055"}@</td>
+</tr>
+<tr>
+  <td>Response:</td>
+  <td>200 @{"salt": "A13CDE"}@</td>
+</tr>
+</table>
+
+h3. Authenticate
+
+Finishes authentication handshake, after which the user is successfully authenticated (assuming no errors). This needs to be run after the Handshake.
+
+<table class="table table-bordered table-striped">
+<thead>
+  <tr>
+    <th colspan="2">PUT API / sessions/:login(.json)</th>
+  </tr>
+</thead>
+<tr>
+  <td>Query params:</td>
+  <td>@{"client_auth": "123…45", "A": "12…345"}@</td>
+</tr>
+<tr>
+  <td>Response:</td>
+  <td>200 @{"M2": "A123BC", "id": "234863", "token": "Aenfw893-zh"}@</td>
+</tr>
+<tr>
+  <td>Error Response:</td>
+  <td>500 @{"field":"password","error":"wrong password"}@</td>
+</tr>
+</table>
+
+Variables:
+
+* *A*: same as A param from the first Handshake request (POST).
+* *client_auth*: SRP authentication value M, calculated by client.
+* *M2*: Server response for SRP.
+* *id*: User id for updating user record
+* *token*: Unique identifier used to authenticate the user (until the session expires).
+
+h3. Token Authentication
+
+Tokens returned by the authentication request are used to authenticate further requests to the API and stored as a Hash in the couch database. Soledad directly queries the couch database to ensure the authentication of a user. It compares a hash of the token to the one stored in the database. Hashing prevents timing attacks.
+
+h3. Logout
+
+Destroy the current session and invalidate the token. Requires authentication.
+
+<table class="table table-bordered table-striped">
+<thead>
+  <tr>
+    <th colspan="2">DELETE API / logout(.json)</th>
+  </tr>
+</thead>
+<tr>
+  <td>Query params:</td>
+  <td>@{"login": "swq055"}@</td>
+</tr>
+<tr>
+  <td>Response:</td>
+  <td>204 NO CONTENT</td>
+</tr>
+</table>
+
+h2. Certificates
+
+h3. Get a VPN client certificate
+
+The client certificate will be a "free" cert unless client is authenticated.
+
+<table class="table table-bordered table-striped">
+<thead>
+  <tr>
+    <th colspan="2">POST API / cert</th>
+  </tr>
+</thead>
+<tr>
+  <td>Response:</td>
+  <td>200 @PEM ENCODED CERT@</td>
+</tr>
+</table>
+
+The response also includes the corresponding private key.
+
+h3. Get a SMTP client certificate
+
+The client certificate will include the user's email address and the fingerprint will be stored with the users identity and the date it was created. Authentication is required.
+
+<table class="table table-bordered table-striped">
+<thead>
+  <tr>
+    <th colspan="2">POST API / smtp_cert</th>
+  </tr>
+</thead>
+<tr>
+  <td>Response:</td>
+  <td>200 @PEM ENCODED CERT@</td>
+</tr>
+</table>
+
+The response also includes the corresponding private key.
+
+h2. Users
+
+h3. Signup
+
+Create a new user.
+
+<table class="table table-bordered table-striped">
+<thead>
+  <tr>
+    <th colspan="2">POST API / users(.json)</th>
+  </tr>
+</thead>
+<tr>
+  <td>Query params:</td>
+  <td>@{"user[password_salt]": "5A...21", "user[password_verifier]": "12...45", "user[login]": "that_s_me"}@</td>
+</tr>
+<tr>
+  <td>Response:</td>
+  <td>200 @{"password_salt":"5A...21","login":"that_s_me"}@</td>
+</tr>
+</table>
+
+h3. Update user record
+
+Update information about the user. Requires Authentication.
+
+<table class="table table-bordered table-striped">
+<thead>
+  <tr>
+    <th colspan="2">PUT API /users/:uid(.json)</th>
+  </tr>
+</thead>
+<tr>
+  <td>Query params:</td>
+  <td>@{"user[param1]": "value1", "user[param2]": "value2" }@</td>
+</tr>
+<tr>
+  <td>Response:</td>
+  <td>204 @NO CONTENT@</td>
+</tr>
+</table>
+
+Possible parameters to update:
+
+* @login@ (requires @password_verifier@)
+* @password_verifier@ combined with @salt@
+* @public_key@

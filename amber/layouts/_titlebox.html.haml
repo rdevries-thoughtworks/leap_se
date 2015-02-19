@@ -1,0 +1,16 @@
+- if @page.props.author || @page.props.posted_at
+  .byline
+    - if @page.props.author
+      %span.author>= I18n.t('posted_by') + ' ' + @page.props.author
+    - if @page.props.author && @page.props.posted_at
+      \.
+    - if @page.props.posted_at
+      %i
+        = time_tag(@page.props.posted_at.to_date, :format => :long, :pubdatwe => true)
+
+- if @page.props.summary
+  .summary
+    = @page.props.summary
+-# elsif page.props.preview
+  .summary
+    = @page.props.preview

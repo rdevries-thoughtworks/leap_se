@@ -1,0 +1,30 @@
+@title = "Let's play security bingo! (Updated)"
+@author = "Elijah"
+@posted_at = "2012-08-28"
+@more = true
+@preview = "To be honest, this is might be the least satisfying game of bingo ever&mdash;but let's play anyway. The rules are simple: make a grid cross referencing OS platform and communication toolset. In each cell, put the name of an open source software package with reasonable security properties. If this exercise doesn't make you break down in tears, then you have won."
+
+To be honest, this is might be the least satisfying game of bingo ever--but let's play anyway. The rules are simple: make a grid cross referencing OS platform and communication toolset. In each cell, put the name of an open source software package with reasonable security properties. If this exercise doesn't make you break down in tears, then you have won.
+
+The rules probably need some adjustment if this game is to catch on.
+
+Here is my attempt at playing:
+
+<%= render :partial => 'table' %>
+
+Looking at this table, it is immediately obvious that there are a lot of empty cells. Unfortunately, most of the cells that are filled in contain software that is unfriendly or even sadistic toward the user. Trying to use many of these tools can feel like developing a BDSM relationship with your computer, and you are not the top.
+
+What is missing might be more revealing than what is listed. These toolsets are entirely absent from my 'security bingo' game card:
+
+* *Social Networking:* When I excluded software that I think is unfeasible (SecureShare) or has no security (Diaspora, etc), then you end up with zero projects.
+* *Document Collaboration:* I have high hopes for an encrypted etherpad, but so far no one has started work on it.
+* *Photos/Vidoes & Galleries:* Nothing I have heard of.
+* *Events & Scheduling:* Nothing I have heard of.
+* *Tasks & Planning:* Nothing I have heard of.
+
+I also excluded a few obvious categories:
+
+* *Firewall:* Reasonable firewall support is now built into most operating systems.
+* *Anti-virus:* Viruses are still mostly a problem on Windows. Other platforms have just gotten lucky so far.
+
+If you have suggestions for how I can fill in my game card, please write elijah@leap.se.

@@ -1,0 +1,18 @@
+- @title = "Poodle hot-fix"
+- @author = "Micah"
+- @posted_at = "2014-10-15"
+- @more = true
+- @preview = capture_haml do
+  As you may have heard, there is a new dog in town, and it is a Poodle. Poodle (Padding Oracle On Downgraded Legacy Encryption) is the name for a severe flaw in the SSLv3 protocol, which can be exploited to force connections to reveal plain-text. The Poodle announcement brought with it the death of the SSLv3 protocol, and none too soon.
+
+%p As you may have heard, there is a new dog in town, and it is a Poodle. Poodle (Padding Oracle On Downgraded Legacy Encryption) is the name for a severe flaw in the SSLv3 protocol, which can be exploited to force connections to reveal plain-text. The Poodle announcement brought with it the death of the SSLv3 protocol, and none too soon.
+
+%p In order to respond to this issue, we've made an important security fix release for the Platform. This release simply disables the SSLv3 protocol (as well as deactivates the weak RC4 cipher).
+
+%p To apply this update, simply update the Leap Platform master branch (or checkout the signed 0.5.5 tag), and deploy to the webapp node.
+
+%ul
+  %li
+    %a(href="https://leap.se/git/leap_platform.git") Leap Platform git repository
+  %li
+    %a(href="https://leap.se/git/leap_platform.git/tag/3c7f2f98cdaabb00e13325476197fbbc74dff597") The signed 0.5.5 tag

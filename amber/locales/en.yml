@@ -1,0 +1,39 @@
+
+en:
+  read_more: "Read more »"
+  posted_by: "Posted by"
+
+  infosec:
+    leap: LEAP
+    silo: Silo
+    federation: Federated
+    peer_to_peer: Peer to Peer
+    cleartext: Cleartext
+    encrypted: Encrypted
+    silo_example: Facebook, Twitter
+    fed_example: Email, Jabber
+    ssilo_example: Skype, Cryptocat-1
+    sfed_example: OpenPGP, OTR
+    p2p_example: GNUNet, Freenet
+    control: Control
+    compatibility: Compatibility
+    usability: Usability
+    anonymity: Anonymity
+    unmappability: Unmappability
+    authenticity: Authenticity
+    availability: Availability
+    confidentiality: Confidentiality
+    integrity: Integrity
+    message_security: Message Security
+    identity_security: Identity Security
+    user_freedom: User Freedom
+    none: None
+    high: High
+    low: Low
+    medium: Medium
+    higher: Higher
+    better: High
+    worse: Low
+    lower: Lower
+    for_example: For Example
+    spacer: ""

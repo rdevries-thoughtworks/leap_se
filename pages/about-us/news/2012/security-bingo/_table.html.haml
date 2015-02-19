@@ -1,0 +1,163 @@
+%style
+  :sass
+    table.table
+      border: 1px solid #ccc
+      td
+        background: white
+        width: 12.5%
+        font-size: 0.9em
+        border-right: 1px solid #ccc
+      td.section
+        border-right: 0
+
+%table.table
+  %tr
+    %th
+    %th
+    %th Windows
+    %th Mac
+    %th Linux
+    %th iOS
+    %th Android
+    %th Web
+  %tbody
+    %tr
+      %td.section{:rowspan => 3} Messages
+      %td Short Message
+      %td{:colspan => 3} #{link 'Pidgin' => 'http://pidgin.im'}, #{link 'Gajim' => 'http://gajim.org'}, #{link 'OTR' => 'http://www.cypherpunks.ca/otr/'}
+      %td #{link 'ChatSecure' => 'https://chatsecure.org/'}
+      %td #{link 'Gibberbot' => 'https://guardianproject.info/apps/gibber/'}, #{link 'Beem' => 'http://beem-project.com'}, #{link 'TextSecure' => 'https://github.com/WhisperSystems/TextSecure'}
+      %td #{link 'Cryptocat' => 'https://crypto.cat'}
+    %tr
+      %td Long Message
+      %td #{link 'Enigmail' => 'http://enigmail.mozdev.org/'}, #{link 'Gpg4win' => 'http://www.gpg4win.org/about.html'}
+      %td #{link 'Enigmail' => 'http://enigmail.mozdev.org/'}, #{link 'GPGMail' => 'https://www.gpgtools.org/gpgmail/index.html'}
+      %td #{link 'Enigmail' => 'http://enigmail.mozdev.org/'}
+      %td
+      %td #{link 'AGP' => 'http://www.thialfihar.org/projects/apg/'}
+      %td
+  %tbody
+    %tr
+      %td.section{:rowspan => 5} Files
+      %td Storage
+      %td #{link 'DiskCryptor' => 'http://diskcryptor.net'}
+      %td
+      %td #{link 'EncFS' => 'http://www.arg0.net/encfs'}, #{link 'eCryptfs' => 'http://ecryptfs.org/'}, #{link 'DMCrypt' => 'http://en.wikipedia.org/wiki/Dm-crypt'}
+      %td
+      %td #{link 'AOSP' => 'http://source.android.com/'}, #{link 'Cryptonite' => 'https://code.google.com/p/cryptonite/'}
+      %td #{link 'SafeWith.me' => 'https://SafeWith.me'}
+    %tr
+      %td Backup
+      %td #{link 'Duplicati' => 'http://duplicati.com/'}
+      %td
+      %td #{link 'Déjà Dup' => 'https://launchpad.net/deja-dup'}
+      %td
+      %td #{link 'FlashBack' => 'http://www.whispersys.com/flashback.html'}
+      %td
+    %tr
+      %td Synchronization
+      %td{:colspan => 3}
+        #{link 'seafile' => 'http://seafile.com'}, #{link 'git-annex' => 'http://git-annex.branchable.com/assistant/'}, #{link 'SparkleShare' => 'http://sparkleshare.org/'},
+        #{link 'Syncany' => 'http://www.syncany.org/'}
+      %td
+      %td
+      %td
+    %tr
+      %td Data Wipe
+      %td #{link 'Eraser' => 'http://eraser.heidi.ie/'}, #{link 'BleachBit' => 'http://bleachbit.sourceforge.net/'}, #{link 'DBAN' => 'http://www.dban.org/'}
+      %td #{link 'DBAN' => 'http://www.dban.org/'}
+      %td #{link 'BleachBit' => 'http://bleachbit.sourceforge.net/'}, #{link 'DBAN' => 'http://www.dban.org/'}, wipe
+      %td
+      %td #{link 'InTheClear' => 'https://github.com/SaferMobile/InTheClear'}
+      %td N/A
+    -# %tr
+      %td Collaboration
+      %td
+      %td
+      %td
+      %td
+      %td
+      %td
+  %tbody
+    %tr
+      %td.section{:rowspan => 3} Audio/Video
+      %td Direct Calling
+      %td{:colspan => 2} #{link 'Jitsi' => 'https://jitsi.org/'}
+      %td #{link 'Jitsi' => 'https://jitsi.org/'}, #{link 'linphone' => 'http://www.linphone.org/'}, #{link 'sflphone' => 'http://sflphone.org/'}
+      %td
+      %td #{link 'RedPhone' => 'https://github.com/WhisperSystems/RedPhone'}, #{link 'CSimpleSip' => 'https://code.google.com/p/csipsimple/'}
+      %td
+    %tr
+      %td Conference
+      %td{:colspan => 3} #{link 'Mumble' => 'http://mumble.sourceforge.net/'}
+      %td
+      %td #{link 'Mumble' => 'http://mumble.sourceforge.net/'}
+      %td
+    %tr
+      %td Capture & Reporting
+      %td
+      %td
+      %td
+      %td
+      %td #{link 'ObscuraCam' => 'https://guardianproject.info/apps/obscuracam/'}
+      %td
+  %tbody
+    %tr
+      %td.section{:rowspan => 2} Network
+      %td Availability
+      %td{:colspan => 5} #{link 'Commotion' => 'http://commotionwireless.net/'}
+      %td N/A
+    %tr
+      %td Confidentiality & Anonymity
+      %td{:colspan => 5} #{link 'Tor' => 'https://torproject.org'}, #{link 'OpenVPN' => 'http://openvpn.net'}
+      %td N/A
+  %tbody
+    %tr
+      %td.section{:rowspan => 3} Identity
+      %td Passwords
+      %td{:colspan => 3} #{link 'KeePassX' => 'http://www.keepassx.org/'}
+      %td
+      %td #{link 'KeePassDroid' => 'http://www.keepassdroid.com/'}
+      %td
+    %tr
+      %td Validation
+      %td{:colspan => 6} OpenPGP, #{link 'OTR' => 'http://www.cypherpunks.ca/otr/'}
+    %tr
+      %td Authentication
+      %td{:colspan => 6} #{link 'Mozilla Persona' => 'https://login.persona.org/'}, #{link 'WebID' => 'http://www.w3.org/2005/Incubator/webid/spec/'}
+  -# %tbody
+    %tr
+      %td.section{:rowspan => 2} Anti-intrusion
+      %td Firewall
+      %td
+      %td
+      %td Many
+      %td
+      %td DroidWall
+      %td N/A
+    %tr
+      %td Anti-virus
+      %td
+      %td ClamXav
+      %td ClamAV
+      %td
+      %td
+      %td N/A
+  -# %tbody
+    %tr
+      %td.section{:rowspan => 3} Productivity
+      %td Events & Scheduling
+      %td
+      %td
+      %td
+      %td
+      %td
+      %td
+    %tr
+      %td Tasks & Planning
+      %td
+      %td
+      %td
+      %td
+      %td
+      %td

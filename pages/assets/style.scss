@@ -1,0 +1,58 @@
+
+//
+// BOOTSTRAP VARIABLES
+//
+
+$link-color: #00F;
+//$link-visited-color: #339;
+
+$link-hover-color: lighten($link-color, 15%);
+$line-height-base: 1.8;
+
+@import "bootstrap-3.3.2";
+
+//
+// CUSTOM VARIABLES
+//
+
+$small-screen: $screen-xs-max;
+
+$link-visited-color: darken($link-color, 15%);
+
+$background-color: #fff;
+
+$masthead-border-color: black;
+$masthead-border: 1px solid $masthead-border-color;
+$masthead-bg-color: #555;
+$masthead-color: #fff;
+
+$masthead-height: 128px;
+$masthead-bg: url(/img/leap180.png) 0px 50% no-repeat;
+$masthead-text-left-margin: 175px;
+$masthead-text-top-margin: 45px;
+$masthead-text-size: 36px;
+
+$masthead-small-height: 96px;
+$masthead-small-bg: url(/img/leap128.png) 0px 50% no-repeat;
+$masthead-small-text-left-margin: 96px;
+$masthead-small-text-top-margin: 20px;
+$masthead-small-text-size: 24px;
+
+//$tabs-small-size:
+//$tabs-small-padding:
+
+$cutout-color: darken($background-color,13%);
+$background-color-start: darken($background-color,17%);
+
+$side-column-bg-color: #d0d0d0; // rgba(0,0,0,0.05); // #e3e3e3
+$side-column-border-color: #aaa; // rgba(0,0,0,0.2);
+$side-column-active-bg-color: #000;
+$side-column-active-color: $masthead_color;
+$side-column-text-color: #000;
+$side-column-indent: 15px;
+
+$well-bg-color: #fff;
+$well-border-color: #555;
+
+@import "mixins";
+@import "leap";

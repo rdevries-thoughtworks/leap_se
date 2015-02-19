@@ -1,0 +1,54 @@
+- @title = 'LEAP Platform release 0.5.0'
+- @author = 'Micah'
+- @posted_at = '2014-04-21'
+- @more = true
+- @preview = capture_haml do
+  We are happy to announce that the 0.5.0 version of the Leap Platform has been released! There have been a staggering number of improvements since the last release that touch a lot of areas. I'll give you a higher level summary of the changes here.
+
+%p We are happy to announce that the 0.5.0 version of the Leap Platform has been released! There have been a staggering number of improvements since the last release that touch a lot of areas. I'll give you a higher level summary of the changes here.
+
+%p There is a signed 0.5.0 tag in the platform git repository, which you can find here: https://leap.se/git/leap_platform
+
+%p Without further ado, here is what is included:
+
+%h2 Monitoring
+
+%p With this release a new monitoring service was added, including the ability to monitor multiple environments with one monitor node. Many logging improvements go along with this feature, like improvements in rotation, making more daemons write to standardized syslog locations.
+
+%h2 TLS fun
+
+%p Many improvements related to TLS were rolled out. For mail we now require TLS between satellite servers and the relayhost, and leap mx, we've also improved overall opportunistic TLS configurations.
+
+%p For the web configurations, the https TLS configurations were modified to take advantage of TLS1.2 features, enhancements to help protect against BREACH and CRIME attacks, and cipher preferences adjusted to prefer PFS, and best-practices strongest cipher selections.
+
+%p Thanks to heartbleed, we got to test rolling certs and keys in the platform. We are pleased that it went so easily. We simply had to remove the existing ones, ask leap cli to generate new ones, plop in the commercial cert/keys and deploy. Everything was then put where it should be and restarted. With the exception of soledad-server, which was fixed.
+
+%h2 Whitebox tests
+
+%p Whitebox tests were added, now you can run 'leap test' in your provider and various critical tests will be run to determine the overall health of your provider. In particular these tests are performed right now: connectivity, checking that correct daemons are running, checking cluster health, and membership, checking for required ACL users and required databases.
+
+%h2 Bigcouch
+
+%p  There were many Bigcouch scaling improvements dealing with exhausting inodes and body to large issues, and cluster settling before deployment of design documents, databases and users, as well as automatic shard compaction. We also ship some couch scripts that help us with debugging and backups.
+
+%p We added deployment of new design documents for soledad, and for the new shared database and more robust handling of design document deployment We also migrated u2db metadata to a better structure that allowed for atomic operations and elimination of potential cases of inconsistency
+
+%h2 Webapp
+
+%p Functionality was added to allow for a customized webapp git repository, and we now anonymize webapp ips (ipv4 only) by default (in addition to ips in system logs, which cover most cases)
+
+%h2 Leap CLI
+
+%p The leap CLI was also improved to fix various corner case bugs, some notable improvements: invalid hostname detection; making sure the ssh key is available in the agent; adding a --no-color flag so log files are not colorized; add a --no-deploy feature; added a 'plain' node, which has no services deployed to it.
+
+%h2 Tapicero
+
+%p New tapicero was also deployed with enhancements and fixes to deal better when failing to create databases, and avoiding bigcouch conflicts, adding a flag to re-run for all known users, and a flag to overwrite the _security document.
+
+%h2 Miscellaneous
+
+%p Mail for admins is now properly routed to the address configured in provider.json. We also updated the default nameservers to account for changes in upstream availability. Make sure nodes have proper time synchronization setup and configured, even when nodes are snapshot nodes that have been off for a long time. Improvements in code restructuring to help eliminate some redundancy in setting things up, tearing them down and then setting them up again in between initial run stages
+
+%p We make sure that sensitive components are downloaded over encrypted protocols, such as ruby gems and vagrant baseboxes, we also made sure that bigcouch admin processes were only listening on localhost.
+
+%p Finally, the latest versions of leap-mx, soledad, keymanager, the webapp and the associated libraries will also be updated when deploying this release.

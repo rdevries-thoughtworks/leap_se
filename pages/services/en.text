@@ -1,0 +1,22 @@
+@nav_title = 'Services'
+@title = 'Supported Services'
+
+LEAP's multi-year plan to secure everyday communication breaks down into discrete services, to be rolled out one at a time. When we introduce a new service, integrated support will be added to both the user-facing [[client]] and the server-side [[platform]]. All communication content will be client-side encrypted, and as much of the metadata as possible. Most importantly, all LEAP services will be based on our plan for [[federated secure identity => nicknym]] and [[unmappable routing => routing]].
+
+h2. Roadmap
+
+h3. Phase 1 - Encrypted Internet Proxy
+
+Our first service will be [[eip]], providing circumvention, location anonymization, and traffic encryption that is hassle-free, automatically self-configuring, and has an enhanced level of security.
+
+h3. Phase 2 - Email
+
+Our second service will be [[client-encrypted email => email]]. The LEAP approach to email is to support communication with the legacy email infrastructure while also adding optional layers to the protocol that bring email more in line with modern security practices. Encryption and decryption will take place transparently via local IMAP and SMTP proxies, allowing the user their choice of mail client.
+
+h3. Phase 3 - Chat
+
+Our third service will be [[secure chat => chat]]. We plan to build on top of XMPP, but modify the protocol to allow for higher security and greater usability (while being able to fall back to traditional XMPP when necessary).
+
+h3. Phases 4, 5, 6
+
+In the long term, we plan to develop and deploy client-encrypted file sync/backup, voice communication, and document collaboration.

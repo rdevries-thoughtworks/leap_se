@@ -1,0 +1,43 @@
+- @title = 'Bitmask "long time no see" release'
+- @author = 'Kali'
+- @posted_at = '2014-04-25'
+- @more = true
+- @preview = capture_haml do
+  %div{:style => 'float:left; margin: 8px 8px 8px 0'}
+    %img{:src => "/img/pages/bitmask-icon.png"}
+  It's is with pleasure that we <a href="https://raw.githubusercontent.com/leapcode/bitmask_client/develop/relnotes.txt">announce</a> the arrival of the 0.5.0 version of Bitmask, code named "long time no see"! With over 187 files changed, 19627 insertions(+) and 5005 deletions(-), this release of the bitmask client is one of the largest to date! To get the latest version, you can visit the <a href="https://dl.bitmask.net">Bitmask downloads page</a>.
+
+%p It's is with pleasure that we <a href="https://raw.githubusercontent.com/leapcode/bitmask_client/develop/relnotes.txt">announce</a> the arrival of the 0.5.0 version of Bitmask, code named "long time no see"!
+
+%p With over 187 files changed, 19627 insertions(+) and 5005 deletions(-), this release of the bitmask client is one of the largest to date! To get the latest version, you can visit the <a href="https://dl.bitmask.net/linux/download">Bitmask downloads page</a>.
+
+%p Here is a summary of the main changes, with links to the complete changelogs for those who want the details:
+
+%h3 Bitmask
+
+%p <a href="https://raw.githubusercontent.com/leapcode/bitmask_client/master/CHANGELOG.rst">changelog</a>
+
+%p On this release we are fixing a ton and a half of bugs in the user interface on different desktops, hopefully getting closer and closer to a really smooth experience. There is also a shiny new button for easy log pasting. A couple of bugs that were also interfering with the correct functioning of Encrypted Internet Proxy have also been smashed for your benefit. And the first steps have been integrated for paving the way to the big client code refactor coming in the next few releases.
+
+%h3 Soledad
+
+%p <a href="https://raw.githubusercontent.com/leapcode/soledad/master/CHANGELOG">changelog</a>
+
+%p Improvements to soledad in this iteration include several optimizations to make data synchronization faster and more efficient, and fixing a couple of bugs that were making concurrent syncs fail. We also got rid of a bug that was making the server consume way too much memory.
+
+%h3 leap.mail
+
+%p <a href="https://raw.githubusercontent.com/leapcode/leap_mail/master/CHANGELOG">changelog</a>
+
+%p Although mail is not ready for prime time yet, this release addresses several fixes to make the service correctly parse different types of mails, including all of your unicodes. Mail code went through a extensive refactor to allow for smaller syncs. We also added partial support for SEARCH commands to allow thunderbird to save your drafts.
+
+%h3 leap.mx
+
+%p <a href="https://raw.githubusercontent.com/leapcode/leap_mx/master/CHANGELOG">changelog</a>
+This version brings in some fixes for dealing with multipart documents.
+
+%h3 leap.keymanager
+
+%p <a href="https://raw.githubusercontent.com/leapcode/keymanager/master/CHANGELOG">changelog</a>
+
+%p Keymanager was updated to work with the latest webapp release, and now is able to memoize calls.
