@@ -62,3 +62,33 @@ loading mails while are reaching your inbox.
 
 - Managing a huge ammount of mails (e.g.: moving mails to a folder) will block
   the UI (see https://leap.se/code/issues/4837)
+
+
+Key generation too slow?
+========================
+
+When you create a new mail account, the key generation may take a while. While
+it is normal that takes approx. 5mins, on virtual machines sometimes takes a
+very long time. As long as a 40min!.
+Using one of this tricks/hacks that time can be reduced to <5min.
+
+If you are just testing mail accounts and **do not worry about security** you can
+use some tricks to generate the extra entropy needed to speed up the process.
+
+1. Manually generate entropy
+
+    Move the mouse, type stuff, browse the internet and local files, etc.
+
+1. Use haveged
+
+    Install the haveged package, most likely is available through your distro's
+    package manager.
+
+    See: http://www.issihosts.com/haveged/
+
+1. Generate IO (may not work on SSDs)
+
+        find / -type f -print0 2>&1 | xargs -0 cat &> /dev/null
+
+If you want more information you can take a look at:
+https://leap.se/code/issues/4656
