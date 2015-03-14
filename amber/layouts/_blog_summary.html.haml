@@ -11,6 +11,9 @@
         = time_tag(page.props.posted_at.to_date, :format => :long, :pubdate => true)
   %div.content
     - if page.props.preview
+      - if page.props.preview_image
+        .preview-img
+          %img{:src => page.props.preview_image}
       = page.props.preview
       - if page.props.more
         = link(I18n.t(:read_more) => amber_path(page))

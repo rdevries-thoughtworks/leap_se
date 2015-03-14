@@ -238,3 +238,18 @@ article.page-summary {
     margin: 0px;
   }
 }
+
+.preview-img {
+  float:left;
+  margin-right: 8px;
+  margin-left: 0;
+  img {
+    width: 175px;
+    height: auto;
+  }
+}
+
+img.left {
+  float:left;
+  margin: 7px 14px 0px 0px;
+}

@@ -2,7 +2,8 @@
 @author = 'Ivan'
 @posted_at = '2015-03-07'
 @more = true
-@preview = '<div style="float:left; margin-right: 8px; margin-left: 0;"><img src="/img/pages/bitmask.png"></div><p>Bitmask for Linux 0.8.1 has been released. This release includes a couple of important bugfixes and a secure ZMQ fallback for distros that does not have CurveZMQ available.</p>'
+@preview_image = '/img/pages/bitmask.png'
+@preview = 'Bitmask for Linux 0.8.1 has been released. This release includes a couple of important bugfixes and a secure ZMQ fallback for distros that does not have CurveZMQ available.'
 
 Bitmask for Linux 0.8.1 has been released.
 

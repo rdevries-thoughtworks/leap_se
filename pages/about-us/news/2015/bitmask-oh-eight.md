@@ -2,7 +2,8 @@
 @author = 'Ivan'
 @posted_at = '2015-02-09'
 @more = true
-@preview = '<div style="float:left; margin-right: 8px; margin-left: 0;"><img src="/img/pages/bitmask.png"></div><p>Good news everyone! Bitmask for Linux 0.8 has been released. For version 0.8, we focused on fixing bugs and rewriting much of the backend code. There are no new features to try out but if you had some issue bothering you then give this new version a try and tell us how it goes.</p>'
+@preview_image = '/img/pages/bitmask.png'
+@preview = 'Good news everyone! Bitmask for Linux 0.8 has been released. For version 0.8, we focused on fixing bugs and rewriting much of the backend code. There are no new features to try out but if you had some issue bothering you then give this new version a try and tell us how it goes.'
 
 Good news everyone! Bitmask for Linux 0.8 has been released.
 
