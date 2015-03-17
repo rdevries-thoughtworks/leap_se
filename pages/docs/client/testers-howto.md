@@ -1,12 +1,5 @@
 @nav_title = "Testing"
-@title = "Howto for Testers"
-
-This document covers a how-to guide to:
-
-1.  Where and how report bugs for Bitmask \<reporting\_bugs\>, and
-2.  Quickly fetching latest development code \<fetchinglatest\>.
-
-Let's go!
+@title = "HOWTO for Testers"
 
 Reporting bugs
 --------------
@@ -18,10 +11,8 @@ way to get it fixed quickly, and get our unconditional gratitude.
 It is quick, easy, and probably the best way to contribute to Bitmask
 development, other than submitting patches.
 
-> **Reporting better bugs**
->
-> New to bug reporting? Here you have a [great document about this noble
-> art](http://www.chiark.greenend.org.uk/~sgtatham/bugs.html).
+**Reporting better bugs:** New to bug reporting? Here you have a
+[great document about this noble art](http://www.chiark.greenend.org.uk/~sgtatham/bugs.html).
 
 ### Where to report bugs
 
@@ -80,9 +71,9 @@ web](http://webchat.freenode.net/?nick=leaper....&channels=%23leap&uio=d4).
 Fetching latest development code
 --------------------------------
 
-Normally, testing the latest client bundles \<standalone-bundle\> should
-be enough. We are engaged in a three-week release cycle with minor
-releases that are as stable as possible.
+Normally, testing the latest client bundles should be enough. We are engaged
+in a three-week release cycle with minor releases that are as stable as
+possible.
 
 However, if you want to test that some issue has *really* been fixed
 before the next release is out (if you are testing a new provider, for
