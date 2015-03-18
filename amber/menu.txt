@@ -30,6 +30,7 @@ docs
     overview
     bonafide
     nicknym
+    transitional-key-validation
     soledad
   platform
     guide
