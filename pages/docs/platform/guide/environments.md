@@ -67,3 +67,9 @@ The available options are `platform.version`, `platform.branch`, or `platform.co
     }
 
 You can use any combination of `version`, `branch`, and `commit` to specify the binding. The values for `branch` and `commit` only work if the `leap_platform` directory is a git repository.
+
+The value for `commit` is passed directly through to `git log` to query for a list of acceptable commits. See [[man gitrevisions => https://www.kernel.org/pub/software/scm/git/docs/gitrevisions.html#_specifying_ranges]] to see how to specify ranges. For example:
+
+* `HEAD^..HEAD` - current commit must be head of the branch.
+* `3172444652af71bd771609d6b80258e70cc82ce9..HEAD` - current commit must be after 3172444652af71bd771609d6b80258e70cc82ce9.
+* `refs/tags/0.6.0rc1..refs/tags/0.6.0rc2` - current commit must be after tag 0.6.0rc1 and before or including tag 0.6.0rc2.
