@@ -1,7 +1,7 @@
 @nav_title = 'Installing'
 @title = 'Installing Bitmask'
 
-For download links and installation instructions go to https://dl.bitmask.net/
+For download links and installation instructions go to [[dl.bitmask.net => https://dl.bitmask.net/]].
 
 Distribute & Pip
 ----------------
@@ -9,8 +9,8 @@ Distribute & Pip
 **Note**
 
 If you are familiar with python code and you can find your way through the
-process of dependencies install, you can installing Bitmask using [pip](http://www.pip-installer.org/)
-for the already released versions :
+process of dependencies install, you can installing Bitmask using
+[[pip => http://www.pip-installer.org/]] for the already released versions:
 
     $ pip install leap.bitmask
 
@@ -21,31 +21,33 @@ Once we have all features that we have planned for the next release of bitmask
 ready we build a **release candidate** bundle. This bundle is heavily tested
 before becoming stable. Here your contribution is important, we can not imagine
 all they ways people uses bitmask, we need you to try it out, break it and
-report back to us the problems. Read the [Bundle QA
-section](/docs/client/bundle-testing) to learn how to help.
+report back to us the problems. Read the [[Bundle QA
+section => bundle-testing]] to learn how to help.
 
 After extensive testing and being fixed all blocking issues we release the
 **stable** bundle, what is meant for public consumption. This is the bundle that
-is linked for download in the [bitmask web](https://bitmask.net/).
+is linked for download from the [[bitmask.net => https://bitmask.net]] website.
 
-You can find all the bundles at https://dl.bitmask.net/client/
+You can find all the bundles at [[dl.bitmask.net/client => https://dl.bitmask.net/client/]].
 
 Automatic upgrades
 ------------------
 
-The bundle uses [The Update Framework](http://theupdateframework.com/) (TUF) for
+The bundle uses [[The Update Framework => http://theupdateframework.com/]] (TUF) for
 upgrades. If there is an upgrade available it will download it in background
 when bitmask is running and ask you to restart bitmask to apply it.
 
 We have two TUF repositories:
+
 - **stable**. For the stable bundles. This allows the released bundles to
   upgrade to the next version automatically.
-- **unstable**. For the *release candidate* (RC) bundles. The RC bundles upgrade
-  automatically to the next RC bundle that we release, but never to the stable
-  one. For example, if you are using the 0.7.0RC6 (the latest RC bundle for the
-  0.7.0 version) you will not be upgraded to 0.7.0 but the next RC bundle
-  released. The latest RC bundle should be exactly the same than the stable
-  version with the difference of the TUF repos that are configured in them.
+- **unstable**. For the *release candidate* (RC) bundles. The RC bundles
+  upgrade automatically to the next RC bundle that we release, but never to
+  the stable one. For example, if you are using the 0.7.0RC6 (the latest RC
+  bundle for the 0.7.0 version) you will not be upgraded to 0.7.0 but the next
+  RC bundle released (e.g. 0.7.1RC1). The last RC bundle will be the same as
+  the final release for that version number, except that it will be pinned
+  to get future TUF updates from the unstable repository.
 
 Packages
 --------
@@ -56,7 +58,7 @@ packages are meant for testing, like the *release candidate* bundles.
 
 The repository url looks like:
 
-	deb http://deb.leap.se/[debian|experimental] [utopic|trusty|wheezy|jessy|sid] main
+    deb http://deb.leap.se/[debian|experimental] [utopic|trusty|wheezy|jessy|sid] main
 
 - **debian** are for stable packages.
 - **experimental** are for experimental packages.
@@ -78,5 +80,5 @@ Or from the github mirror :
 
     $ git clone https://github.com/leapcode/bitmask_client.git
 
-For more information go to the [Hacking](client/dev-environment) section :)
+For more information go to the [[Hacking => client/dev-environment]] section :)
 
