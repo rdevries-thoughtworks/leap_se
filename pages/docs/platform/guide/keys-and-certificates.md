@@ -171,7 +171,7 @@ This command will generate the CSR and private key matching `provider.domain` (y
 The related commercial cert files are:
 
     files/
-      certs/
+      cert/
         domain.org.crt    # Server certificate for domain.org, obtained by commercial CA.
         domain.org.csr    # Certificate signing request
         domain.org.key    # Private key for you certificate
