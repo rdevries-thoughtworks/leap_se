@@ -22,7 +22,14 @@ After deploying, this node will regularly poll every node to ask for the status 
 
 We use [Nagios](http://www.nagios.org/) together with [Check MK agent](https://en.wikipedia.org/wiki/Check_MK) for running checks on remote hosts.
 
-You can log into the monitoring web interface via [https://MONITORNODE/nagios3/](https://MONITORNODE/nagios3/). The username is `nagiosadmin` and the password is found in the secrets.json file in your provider directory.
+One nagios installation will monitor all nodes in all your environments. You can log into the monitoring web interface via [https://DOMAIN/nagios3/](https://DOMAIN/nagios3/). The username is `nagiosadmin` and the password is found in the secrets.json file in your provider directory.
+Nagios will send out mails to the `contacts` address provided in `provider.json`.
+
+
+## Nagios Frontents
+
+There are other ways to check and get notified by Nagios besides regularly checking the Nagios webinterface or reading email notifications. Check out the [Frontends (GUIs and CLIs)](http://exchange.nagios.org/directory/Addons/Frontends-%28GUIs-and-CLIs%29) on the Nagios project website.
+A recommended status tray application is [Nagstamon](https://nagstamon.ifw-dresden.de/), which is available for Linux, MacOS X and Windows. It can not only notify you of hosts/services failures, you can also acknoledge or recheck these with it.
 
 ### Log Monitoring
 
