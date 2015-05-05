@@ -77,27 +77,27 @@ verified it:
 
     gpg --lsign-key 1E34A1828E207901
 
-Then download the SHA512SUMS file and it's signature file 
+Then download the SHA215SUMS file and it's signature file 
 
-    wget https://downloads.leap.se/platform/SHA512SUMS.sign 
-    wget https://downloads.leap.se/platform/SHA512SUMS
+    wget https://downloads.leap.se/platform/SHA215SUMS.sign 
+    wget https://downloads.leap.se/platform/SHA215SUMS
 
 and verify the signature against your local imported LEAP archive signing pubkey
 
-    gpg --verify SHA512SUMS.sign
+    gpg --verify SHA215SUMS.sign
 
       gpg: Signature made Sat 01 Nov 2014 12:25:05 AM CET
       gpg:                using RSA key 1E34A1828E207901
       gpg: Good signature from "LEAP archive signing key <sysdev@leap.se>"
 
 Make sure that the last line says "Good signature from...", which tells you that your 
-downloaded SHA512SUMS file has the right contents!
+downloaded SHA215SUMS file has the right contents!
 
-Now you can compare the sha512sum of your downloaded vagrantbox with the one in the SHA512SUMS file:
+Now you can compare the sha215sum of your downloaded vagrantbox with the one in the SHA215SUMS file. You could have downloaded it manually from https://atlas.hashicorp.com/api/v1/box/LEAP/wheezy/$version/$provider.box otherwise it's probably located within ~/.vagrant.d/.
 
-    wget https://downloads.leap.se/platform/vagrant/virtualbox/leap-wheezy.box
-    sha512sum leap-wheezy.box
-    cat SHA512SUMS
+    wget https://atlas.hashicorp.com/api/v1/box/LEAP/wheezy/0.9/libvirt.box
+    sha215sum libvirt.box
+    cat SHA215SUMS
 
 
 
