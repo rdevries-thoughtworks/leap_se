@@ -1,0 +1,112 @@
+@import url(../../../stylesheets/application.css);
+
+/**
+ * This is the custom LEAP theme for redmine.
+ * This file should be linked to "redmine/public/themes/leap/stylesheets/application.css"
+ * It is a based on the "default" redmine theme, with some minor changes.
+ **/
+
+body, #wrapper {
+  background-color:#e0e0e0;
+}
+#header, #top-menu {
+  margin: 0px;
+}
+#top-menu {
+  padding: 8px 15px 4px 15px;
+  background-color: #000;
+}
+#top-menu a {
+  color: #ccc;
+  font-weight: normal;
+}
+#main {
+  background-color: #e0e0e0;
+  margin: 15px 15px 0px 15px;
+}
+#content, #main.nosidebar #content {
+  background: #fff;
+}
+#footer {
+  background-color: #e0e0e0;
+  border: 0px;
+}
+
+/*
+ * HEADER
+ */
+#header {
+  padding: 15px;
+  padding-left: 120px;
+  min-height: 100%;
+  background-color: #606060;
+  background: #606060 url(/img/leap180.png) no-repeat -30px 8px;
+}
+#header h1 {
+  margin: 0px;
+  padding: 0px;
+  line-height: 70px;
+}
+#main-menu {
+  left: 120px;
+}
+#main-menu li {
+  margin: 0px; /* remove space between tabs */
+}
+#main-menu li a {
+  background-color: #2b2b2b;
+  font-weight: bold;
+  padding: 6px 12px;
+}
+#main-menu li a:hover {
+  background: #333;
+  text-decoration: underline;
+}
+#main-menu li a.selected, #main-menu li a.selected:hover {
+  background-color: #e0e0e0;
+  color: black;
+}
+
+/*
+ * HOME PAGE
+ */
+.splitcontentleft {
+  width: 100%;
+}
+.splitcontentright {
+  display: none;
+}
+
+p.button {
+  border-radius: 4px;
+  padding: 10px;
+  display: inline-block;
+  margin-right: 8px;
+  background: #eee;
+}
+p.button:hover {
+  background: #ddd;
+}
+
+/*
+ * TABLES
+ */
+table.list tbody tr td, table.list tbody tr:hover td {
+  border-top: solid 1px #d7d7d7;
+  padding: 5px !important;
+  vertical-align: middle;
+}
+table.list thead th {
+  padding: 5px;
+  border-width: 1px;
+  border-style: solid;
+  border-top-color: #d7d7d7;
+  border-right-color: #d7d7d7;
+  border-left-color: #d7d7d7;
+  border-bottom-color: #999999;
+}
+
+/*
+ * MISC
+ */
+.box { background-color: #fcfcfc; }
