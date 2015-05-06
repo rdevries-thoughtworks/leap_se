@@ -20,5 +20,7 @@ an update to the website. To deploy the current version:
     cd leap_se
     cap deploy
 
-This will deploy directly from master branch of https://leap.se/git/leap_se
+You will need pubkey access to ssh://website@hare.leap.se for this to work.
+
+The deploy pulls directly from master branch of https://leap.se/git/leap_se
 (in other words, local changes are not deployed).
