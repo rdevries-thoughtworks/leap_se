@@ -68,27 +68,6 @@ body, #wrapper {
 }
 
 /*
- * HOME PAGE
- */
-.splitcontentleft {
-  width: 100%;
-}
-.splitcontentright {
-  display: none;
-}
-
-p.button {
-  border-radius: 4px;
-  padding: 10px;
-  display: inline-block;
-  margin-right: 8px;
-  background: #eee;
-}
-p.button:hover {
-  background: #ddd;
-}
-
-/*
  * TABLES
  */
 table.list tbody tr td, table.list tbody tr:hover td {
@@ -104,6 +83,30 @@ table.list thead th {
   border-right-color: #d7d7d7;
   border-left-color: #d7d7d7;
   border-bottom-color: #999999;
+}
+
+/*
+ * ISSUES
+ */
+.subject h3 {
+  font-size: 24px;
+}
+
+/*
+ * HOME PAGE
+ */
+#content > .splitcontentleft {width: 100%;}
+#content > .splitcontentright {display: none;}
+
+p.button {
+  border-radius: 4px;
+  padding: 10px;
+  display: inline-block;
+  margin-right: 8px;
+  background: #eee;
+}
+p.button:hover {
+  background: #ddd;
 }
 
 /*
