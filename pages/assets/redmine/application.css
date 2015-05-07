@@ -31,6 +31,13 @@ body, #wrapper {
   background-color: #e0e0e0;
   border: 0px;
 }
+#content, #sidebar {
+  box-sizing: border-box;
+  padding: 15px;
+}
+#sidebar {
+  width: 25%;
+}
 
 /*
  * HEADER
