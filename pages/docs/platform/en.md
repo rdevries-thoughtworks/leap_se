@@ -66,6 +66,15 @@ These two approaches, masterless push and pre-compiled static configuration, all
 
 The `leap` command line tool is distributed as a git repository: `https://leap.se/git/leap_cli`. It can be installed with `sudo gem install leap_cli`.
 
+Tip: With rubygems, you can always specify the gem version as the first argument to any executable installed by rubygems. For example:
+
+    sudo gem install leap_cli --version 1.6.2
+    sudo gem install leap_cli --version 1.7.2
+    leap _1.6.2_ --version
+    => leap 1.6.2, ruby 2.1.2
+    leap _1.7.2_ --version
+    => leap 1.7.2, ruby 2.1.2
+
 Getting started
 ----------------------------------
 
