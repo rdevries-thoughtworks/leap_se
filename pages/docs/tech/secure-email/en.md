@@ -21,6 +21,7 @@ Contents:
    1. [Whiteout](#whiteout)
 1. [Browser Extensions](#browser-extensions)
    1. [Mailvelope](#mailvelope)
+   2. [End-to-End](#end-to-end)
 1. [Mail Clients](#mail-clients)
    1. [Bitmail](#bitmail)
    1. [Mailpile](#mailpile)
@@ -32,8 +33,9 @@ Contents:
    1. [Mail-in-a-box](#mail-in-a-box)
    1. [kinko](#kinko)
 1. [Email Infrastructure](#email-infrastructure)
-   1. [Dark Mail Alliance](#dark-mail-alliance)
+   1. [DIME](#dime)
    1. [LEAP Encryption Access Project](#leap)
+   1. [Pixelated](#pixelated)
 1. [Post-email alternatives](#post-email-alternatives)
    1. [Bitmessage](#bitmessage)
    1. [Bote mail](#bote-mail)
@@ -43,6 +45,11 @@ Contents:
    1. [FlowingMail](#flowingmail)
    1. [Goldbug](#goldbug)
    1. [Pond](#pond)
+1. [Centralized non-email](#centralized-non-email)
+   1. [Enlocked](#enlocked)
+   1. [ProtonMail](#protonmail)
+   1. [ShazzleMail](#shazzlemail)
+   1. [Tutanota](#tutanota)
 1. [Related Works](#related-works)
 
 <a name="common-problems"></a>Common Problems
@@ -70,8 +77,8 @@ Some of the major experimental approaches to solving the problem of public key d
 
 1. Inline: Many of the projects here plan to simply include the user's public key as an attachment to every outgoing email (or in a footer or SMTP header).
 1. DNS: Key distributed via DNSSEC, where a service provider adds a DNS entry for each user containing the user's public key or fingerprint.
-1. Append-only log: Proposal to modify Certificate Transparency to handle user accounts, where audits are performed against append-only logs.
-1. Network perspective: Validation by key endorsement (third party signatures), with audits performed via network perspective.
+1. Append-only log: key endorsers issue public append-only logs of their work, so that users and providers can audit all key endorsements. The leading design using this approach is [CONIKS](http://www.coniks.org/). This approach is similar to how Certificate Transparency works for TLS certs.
+1. Network perspective: Validation by key endorsement (third party signatures), with audits performed via network perspective. One design following this approach is [Nyms](http://nyms.io)
 1. Introductions: Discovery and validation of keys through acquaintance introduction.
 1. Mobile: Although too lengthy to manually transcribe, an app on a mobile device can be used to easily exchange keys in person (for example, via a QR code or bluetooth connection).
 
@@ -82,7 +89,9 @@ Traditional schemes for secure email have left metadata exposed. We now know tha
 
 Metadata protection, however, is **hard**. In order to protect metadata, the message routing protocol must hide the sender and recipient from all the intermediaries responsible for relaying the message. This is not possible with the traditional protocol for email transport, although it will probably be possible to piggyback additional (non-backward compatible) protocols on top of traditional email transport in order to achieve metadata protection.
 
-Alternately, some projects reject traditional email transport entirely. These decentralized peer-to-peer approaches to metadata protection generally fall into four camps: (1) directly relay the message from sender's device to recipients device; (2) relay messages through a network of friends; (3) broadcast messages to everyone; (4) relay messages through an anonymization network such as Tor. The first two approaches protect metadata, but at the expense of increasing vulnerability to traffic analysis that could reveal the same metadata. The third solution faces serious problems of scalability. Pond uses the fourth method, discussed below.
+Alternately, some projects reject traditional email transport entirely. These decentralized peer-to-peer approaches to metadata protection generally fall into four camps: (1) directly relay the message from sender's device to recipients device; (2) relay messages through a network of friends; (3) broadcast messages to everyone; (4) relay messages through an anonymization network. The first two approaches protect metadata, but at the expense of increasing vulnerability to traffic analysis that could reveal the same metadata. The third solution faces serious problems of scalability. Pond uses the fourth method, discussed below.
+
+The most advanced scheme in this area is the high-latency anonymizing mix-network PANORAMIX (forthcoming).
 
 All schemes for metadata protection face the prospect of increasing Spam (since one of the primary methods used to prevent Spam is analysis of metadata). This is why some schemes with strong metadata protection make it impossible to send or receive messages to anyone you are not already in contact with. This works brilliantly for reducing Spam, but is unlikely to be a viable long term strategy for entirely replacing the utility of email.
 
@@ -132,14 +141,19 @@ Third, developers of web-based secure email face an additional challenge when de
 
 These challenges to do not apply to downloaded mail clients that happen to use HTML5 as their interface (Mailpile, for example).
 
+Currently, all the applications listed here load the data and javascript code from the same origin. This means that the user is entirely trusting the server for their security, which is in many ways not that much different than what users already do with gmail or hotmail. The difference is that the window of attack is narrowed (the user must login in order for the service to gain cleartext access). For those services that allow sending compatible OpenPGP or S/MIME emails to other users outside the service, there is an arguable benefit for being able to conveniently communicate with other users of secure email, albeit at the cost of trusting the provider.
+
 <a name="lavaboom"></a>Lavaboom
 -----------------------------------------------------------
 
 [lavaboom.com](https://www.lavaboom.com)
 
-Lavaboom is a new web-based mail provider from Germany using client-side encryption in the browser. No further details are available at this time.
+Lavaboom is a web-based email provider from Germany using client-side encryption in the browser.
 
 Lavaboom's name is a tribute to the shuttered Lavabit service, although Lavaboom has no affiliation or people in common with Lavabit.
+
+* Source code: https://github.com/lavab
+* License: MIT
 
 <a name="mega"></a>Mega
 -----------------------------------------------------------
@@ -153,6 +167,8 @@ The relaunch of Mega has featured client-side encryption via a javascript applic
 
 PrivateSky was a secure web-based email service that chose to shut down because their design was not compatible with UK law. Many in the press have [said GCHQ forced the closure](http://www.ibtimes.co.uk/articles/529392/20131211/gchq-forced-privatesky-secure-email-service-offline.htm), which the [company refutes](http://www.certivox.com/blog/bid/359788/The-real-story-on-the-PrivateSky-takedown).
 
+* License: proprietary
+
 <a name="startmail"></a>StartMail
 -----------------------------------------------------------
 
@@ -163,6 +179,8 @@ The makers of the secure search engine [startpage.com](https://startpage.com) ha
 Despite the tag line as the "world's most private email," StartMail is remarkably insecure. It offers regular IMAP service and a webmail interface that supports OpenPGP, but the user still must trust StartMail entirely. For example when you authenticate, your password string is sent to StartMail, and new OpenPGP keypairs are generated on the server, not the client. The website also makes some dubious statements, such as claiming to be more secure because their TLS server certificate supports extended validation.
 
 Verdict: oil of snake
+
+* License: proprietary
 
 <a name="scramble"></a>Scramble
 -----------------------------------------------------------
@@ -188,11 +206,21 @@ Scramble is an OpenPGP email application that can be loaded from a website (with
 
 [whiteout.io](https://whiteout.io)
 
-Whiteout is a commercial service featuring an HTML5-based OpenPGP email client that is loaded from the web.
+Whiteout is an open source IMAP/SMTP client with integrated support for OpenPGP.
+
+It can be run in three different ways:
+
+1. App: The installation of an app is the default and most secure mode. There are builds for for Chrome, Android and iOS (coming soon). The apps are installed from an App Store and the installed source code can be compared with tagged releases on GitHub.
+2. Self-hosted: In the self-hosted use case, you install Whiteout Mail to your own web server and use it in the browser. Use cases could include your company's server or setting up your own self-hosted solution. Since users are getting the Javascript crypto code from the web server, they must trust the web server.
+3. [Webmail](https://mail.whiteout.io): The third mode of operation is managed hosting by Whiteout. Due to the TLS connection from the browser to the IMAP server, the Whiteout proxy will never see any of your data. But you will be trusting the Whiteout web server to deliver the correct code to your browser in this mode.
+
+IMAP/SMTP logic is implemented completely in Javascript on the client. TCP traffic is proxied with the TLS session terminated in the user's browser using [socket.io](http://socket.io/) and a [Javascript TLS impelementation](https://github.com/digitalbazaar/forge). This means that the proxy on the web server will see only encrypted traffic and never any user data like IMAP/SMTP passwords or message contents.
+
+**Keys:** Key pairs are generated on the client, client-encrypted, and synchronized (via IMAP) among the various devices a user might be running Whiteout.
 
 * Written in: Javascript
 * Source code: https://github.com/whiteout-io/mail-html5
-* License: proprietary, but the code is available for inspection.
+* License: MIT
 
 <a name="browser-extensions"></a>Browser Extensions
 ===========================================================
@@ -218,6 +246,20 @@ Mailvelope is a browser extension that allows you to use OpenPGP email with trad
 * Design documentation: http://www.mailvelope.com/help
 * License: AGPL
 * Platforms: Windows, Mac, Linux (with Android planned).
+
+<a name="end-to-end"></a>End-to-End
+-----------------------------------------------------------
+
+[code.google.com/p/end-to-end](https://code.google.com/p/end-to-end/)
+
+End-to-End is a Chrome extension from Google that is currently in an alpha stage. Google is solliciting feedback, and security bugs are eligible for Google’s Vulnerability Rewards Program. More background about the browser extension is available in [Google's blog post announcing End-to-End](http://googleonlinesecurity.blogspot.com/2014/06/making-end-to-end-encryption-easier-to.html).
+
+* Contact: end-to-end@google.com
+* Written in: JavaScript
+* Source code: https://code.google.com/p/end-to-end/source/browse/javascript/crypto/e2e
+* Design documentation: https://code.google.com/p/end-to-end/
+* License: Apache License Version 2.0
+* Platforms: Chrome
 
 <a name="mail-clients"></a>Mail Clients
 ===========================================================
@@ -339,15 +381,17 @@ Although Mailpile is primarily a mail client, the background Python component ca
 
 <a href="https://github.com/JoshData/mailinabox">github.com/JoshData/mailinabox</a>
 
-Mail-in-a-box helps people set up self-hosted email for linux hobbyists and email developers. It will install and configure the necessary Debian packages required to turn a machine running Ubuntu into a self-hosted email server. It provides a fairly straightforward, standard email server with IMAP, SMTP, greylisting, DKIM and SPF. It also includes a command line tool for adding and removing accounts.
+Mail-in-a-box helps people set up their own email address, on a server they own or lease. It turns any machine running the latest version of Ubuntu into a functioning email server, using modern email protocols and encryption (IMAP, SMTP, greylisting, DKIM, SPF, and DNSSEC). It includes a rudimentary webmail interface (Roundcube), and helps you set up an SSL certificate for web and email.
 
-**Advantages:** Something quick for anyone with some linux skill who wants to experiment with email.
+The project has a [website](https://mailinabox.email/), [setup guide](https://mailinabox.email/guide.html), and [discussion forum](https://discourse.mailinabox.email/).
 
-**Limitations:** Setting up an email server is the easy part, maintaining the service over time is the tricky part. Without any automation recipes using something like Puppet, Chef, Salt, or CFEngine, mail-in-a-box is unlikely to be useful to anyone but the curious hobbyist.
+**Advantages:** For a simple, one-server setup, someone with some command line experience (or a willingness to learn), it's pretty straightforward to get an email address working quickly.
 
-* Written in: Bash
+**Limitations:** Setting up an email server is the easy part, maintaining the service over time can be tricky. There still aren't well-developed tools to help troubleshoot and resolve problems (for example, a broken spam detector, or overloaded memory).
+
+* Written in: Bash, Python
 * Source code: https://github.com/JoshData/mailinabox
-* License: CC0 1.0 Universal
+* License: CC0 1.0 Universal (public domain)
 
 <a name="kinko"></a>kinko
 -----------------------------------------------------------
@@ -393,26 +437,19 @@ Despite the potential of this approach, there are several unknown factors that m
 * Where once there were many ISPs that offered email service, it is no longer clear if there is either the demand to sustain many email providers or the supply of providers interested in offering email as a service.
 * Users must download and install a custom application.
 
-<a name="dark-mail-alliance"></a>Dark Mail Alliance
+<a name="dime"></a>DIME
 -----------------------------------------------------------
 
 [darkmail.info](https://darkmail.info)
 
-The Dark Mail Alliance will include both a client application and server software. The plan is to support traditional encrypted email (both OpenPGP and S/MIME), a new federated email-like protocol adapted from SilentCircle's instant message protocol (SCIMP), and a pure peer-to-peer messaging protocol. Both the client and server will be made available as free software.
+The Dark Internet Mail Alliance (DIME) is a specification for a complete secure email-like communication system. It will include both a client application and server software.
 
-**Keys:** Key pairs will be generated on the user's device and uploaded to the service provider. [Certificate Transparency](http://certificate-transparency.org) will be used to automatically validate the service provider's endorsement of these public keys. Dark Mail additionally plans to support fingerprint confirmation, short authentication strings, and shared secret for manual key validation. Automatic discovery of public keys will happen using DNS, HTTPS, and via the messages themselves.
+**Keys:** Key pairs will be generated on the user's device and uploaded to the service provider. Keys, called "Signets," are validating using a system similar to DNSSec/DANE.
 
-**Routing:** The post-email messaging protocol promises to have forward secrecy and protection from metadata analysis (details have not yet been posted, and SCIMP does not currently support meta-data protection). Dark Mail Alliance plans to additionally support pure peer-to-peer messaging using a key fingerprint as the user identifier.
+**Routing:** Message routing is obfuscated using automatic aliases for addresses.
 
-**Infrastructure:** Dark Mail plans to support three types of architectures: traditional client/server, self-hosted, and pure peer-to-peer. No details yet on how these will work.
-
-**Application:** The client application will work with any existing MUA by exposing a local IMAP/SMTP server that the MUA can connect to.
-
-**Limitations:** Dark Mail has not yet released any code or design documents. However, they certainly have the resources to carry out their plans.
-
-* Written in: C
 * Source code: none yet
-* Design documentation: none yet
+* Design documentation: https://darkmail.info/downloads/dark-internet-mail-environment-december-2014.pdf
 * License: planned to be OSI-compatible
 * Platforms: initially Android and iOS, followed by Windows, OS X, Linux, and Windows Phone.
 * Contact: press@darkmail.info
@@ -436,6 +473,39 @@ LEAP includes both a client application and turn-key system to automate the proc
 * Source code: https://leap.se/source
 * Design documentation: https://leap.se/docs
 * License: mostly GPL v3, some MIT and AGPL.
+
+
+<a name="pixelated"></a>Pixelated
+-----------------------------------------------------------
+[pixelated-project.org](https://pixelated-project.org/)
+
+Pixelated is an OpenPGP group email solution based on the <a href="#leap">LEAP Platform.</a>
+
+It consists of:
+
+* a Mail User Agent (MUA) facilitating usage and enhancing usability of email encryption via open-pgp
+* a (single node) LEAP installation on the server side assuring encryption of mail body and metadata at rest
+* a dispatcher to allow for multi-user setups
+
+Pixelated aims at fostering encryption and federation of email services. Its approach is to combine enhanced usability of email encryption for the email user with facilitation of email server set up and maintenance of secure email hosting for system administrators.
+
+The Pixelated MUA can be run either as a web front end on the server or on the client machine. In a group setting, both setups can be run in parallel.
+
+**Keys**: Private keys are generated and stored in the MUA (either on the server or the client machine, depending on where the MUA runs while generating keys) and encrypted with the user's passphrase. Hence, depending on where the MUA lives, the keys are stored either on the server or on the user’s machine.
+
+**Federation**: Pixelated follows the idea of infrastructure as code to facilitate the setup and maintenance of email servers. It builds on [LEAP's nicknym protocol](https://leap.se/en/docs/design/nicknym) to discover and validate public keys.
+
+**Application**: The Pixelated User Agent (MUA) is a HTML5 javascript (FlightJS) application with a python backend. The application can also be installed locally and connected against the Pixelated platform or any LEAP provider with enabled email support.
+
+**Limitations**: In some set ups of Pixelated, the user's private keys are stored on the server in order to facilitate usability for a broad public (handling of key material). Pixelated assumes some level of trust to the server (e.g. self hosted for a particular organisation) and a high level of federation.
+The same limitions as described for LEAP also apply to Pixelated.
+
+* Written in: Python, FlightJs (Mail User Agent); Python (Dispatcher); Puppet (Pixelated Platform)
+* Source code: https://github.com/pixelated-project
+* Design documentation: https://github.com/pixelated-project/pixelated-user-agent, https://github.com/pixelated-project/pixelated-dispatcher, https://github.com/pixelated-project/pixelated-platform
+* License: AGPL
+
+
 
 <a name="post-email-alternatives"></a>Post-email alternatives
 ===========================================================
@@ -566,6 +636,61 @@ Ultimately, Pond's unique design makes it a very strong candidate for incorporat
 * Source code: https://github.com/agl/pond
 * License: BSD
 * Platforms: anything you can compile Go on (for command line interface) or anything you can compile Go + Gtk (for GUI interface).
+
+<a name="centralized-non-email"></a>Centralized Non-email
+===========================================================
+
+There are many projects that take the following approach:
+
+* If you send an email to someone else using the same system, it is end-to-end encrypted.
+* If you send an email outside the system, then the recipient gets a URL they can use to view the message. Often, the message is symmetrically encrypted using a shared secret.
+
+These systems are not strictly "secure email," even if they look and smell like email, because you cannot actually send a secure message to an email user on another system. You can send them a message that they can read after visiting another site, but this is not really email. Also, there is no way for someone using an external email account to send a secure email to a user of one of these systems.
+
+This approach is able to increase usability by centralizing the problems of key authenticity. Hopefully, these systems will evolve into real secure email solutions over time.
+
+<a name="enlocked"></a>Enlocked
+-----------------------------------------------------------
+
+[enlocked.com](https://www.enlocked.com)
+
+Enlocked uses OpenPGP, but does not use public key cryptography: sent messages are simply included as an attachment that is symmetrically encrypted with a passphrase.
+
+* Platforms: Web
+* License: Proprietary
+
+<a name="protonmail"></a>ProtonMail
+-----------------------------------------------------------
+
+[protonmail.ch](https://protonmail.ch)
+
+ProtonMail is a web-based mail provider from Switzerland using client-side encryption in the browser. It uses two separate passwords: one to authenticate and one to unlock encryption secrets. Emails sent to and from other ProtonMail users are end to end encrypted. You can encrypt emails to other users using a custom symmetric encryption scheme that requires the recipient to visit the ProtonMail website and to know a shared secret.
+
+The way ProtonMail describes itself on the website raises some concerns: they promote the service as being secure because of its location and because the people behind it have worked at MIT and CERN. These are typical strategies used to promote snake oil products, although there is no evidence that ProtonMail is snake oil.
+
+* License: proprietary
+
+<a name="shazzlemail"></a>ShazzleMail
+-----------------------------------------------------------
+
+[shazzlemail.com](http://shazzlemail.com)
+
+End to end encrypted messaging that uses your mobile phone to directly route a message to the recipient. For routing, it does a lookup in a central registry to discover the recipient's device. A mini IMAP server to allows you to check messages via a desktop MUA.
+
+* Platforms: Android, iOS
+* License: Proprietary
+
+<a name="tutanota"></a>Tutanota
+-----------------------------------------------------------
+
+[tutanota.de](https://www.tutanota.de)
+
+Tutanota is an installable webclient and browser app. A message to another user on the system uses public-key encryption. Emails to users outside the system are symmetrically encrypted with a pre-shared secret (the message is viewable on the Tutanota website). There are plans to support end-to-end public-key encryption of messages sent to and received from other providers in the future.
+
+Keys: Private keys are generated in the browser app, encrypted with the user's password, and then stored on the server. The server never sees the user's password (password is hashed using bcrypt and SHA256 before being sent to the server during account creation and authentication).
+
+* Platforms: Web Browser
+* License: Proprietary
 
 <a name="related-works"></a>Related Works
 ===========================================================
