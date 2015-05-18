@@ -32,5 +32,9 @@ automatically with `leap::logfile` and you can deploy the change with:
 
     leap deploy *NODE* --fast --tags=leap::logfile
 
+or, if you just want
+
+    leap deploy --tags=dist_upgrade
+
 See http://docs.puppetlabs.com/puppet/2.7/reference/lang_tags.html for puppet tag usage.
 
