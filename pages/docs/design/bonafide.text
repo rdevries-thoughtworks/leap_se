@@ -53,23 +53,15 @@ TODO: define a schema for this file.
 
 h3. GET API_BASE/configs.json
 
-For each supported service code, `configs.json` lists the available configuration file (there might be more than one for a particular service if there are different formats available). The service codes are listed in "services" in `provider.json`. A provider can use whatever service codes they want, but the user agent will only respond to the ones that it understands.
+For each supported service code, `configs.json` lists the available configuration file. The service codes are listed in "services" in `provider.json`. A provider can use whatever service codes they want, but the user agent will only respond to the ones that it understands.
 
 For example:
 
 bc.. {
-  "openvpn": {
-    "formats": ["1", "2"],
-    "1": "eip-service.json",
-    "2": "eip-service-2.json"
-  },
-  "soledad": {
-    "formats": ["1"],
-    "1": "soledad-service.json"
-  },
-  "mx": {
-    "formats": ["1"],
-    "1": "smtp-service.json"
+  "services":{
+    "soledad":"/1/configs/soledad-service.json",
+    "eip":"/1/configs/eip-service.json",
+    "smtp":"/1/configs/smtp-service.json"
   }
 }
 
@@ -77,7 +69,7 @@ h3. GET API_BASE/config/eip-service.json
 
 e.g. https://api.bitmask.net:4430/1/config/eip-service.json
 
-This file defines the "encrypted internet proxy" capabilities and gateways.
+This file defines the "encrypted internet proxy" capabilities and gateways. The actual URL that should be used to fetch this is specified in the response from @/1/configs.json@.
 
 h2. Keys
 
