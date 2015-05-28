@@ -352,4 +352,8 @@ Known Issues
 * for shared folder support, you need nfs-kernel-server installed on the host machine and set up sudo to allow unpriviledged users to modify /etc/exports. See [vagrant-libvirt#synced-folders](https://github.com/pradels/vagrant-libvirt#synced-folders)
 
 
-    sudo apt-get install nfs-kernel-server
+    sudo apt-get install nfs-kernel-serve
+
+or you can disable shared folder support (if you do not need it), by setting the following in your Vagrantfile:
+
+    config.vm.synced_folder "src/", "/srv/website", disabled: trueconfig.vm.synced_folder "src/", "/srv/website", disabled: true
