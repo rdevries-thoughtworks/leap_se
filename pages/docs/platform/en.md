@@ -1,15 +1,14 @@
 @title = 'LEAP Platform for Service Providers'
 @nav_title = 'Provider Platform'
-@summary = 'Software platform to automate the process of running a communication service provider.'
-@toc = true
+@toc = false
 
 The *LEAP Platform* is set of complementary packages and server recipes to automate the maintenance of LEAP services in a hardened Debian environment. Its goal is to make it as painless as possible for sysadmins to deploy and maintain a service provider's infrastructure for secure communication.
 
 The LEAP Platform consists of three parts, detailed below:
 
-1. The platform recipes.
-2. The provider instance.
-3. The `leap` command line tool.
+1. [The platform recipes.](#the-platform-recipes)
+2. [The provider instance.](#the-provider-instance)
+3. [The `leap` command line tool.](#the-leap-command-line-tool)
 
 The platform recipes
 --------------------
