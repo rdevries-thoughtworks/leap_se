@@ -10,9 +10,39 @@ To run tests on FILTER node list:
 
     leap test run FILTER
 
+For example, you can also test a single node (`leap test elephant`); test a specific environment (`leap test development`), or any tag (`leap test soledad`).
+
 Alternately, you can run test on all nodes (probably only useful if you have pinned the environment):
 
     leap test
+
+The tests that are performed are located in the platform under the tests directory. 
+
+## Testing with the bitmask client
+
+Download the provider ca:
+
+    wget --no-check-certificate https://example.org/ca.crt -O /tmp/ca.crt
+
+Start bitmask:
+
+    bitmask --ca-cert-file /tmp/ca.crt
+
+## Testing Recieving Mail
+
+Use i.e. swaks to send a testmail
+
+    swaks -f noone@example.org -t testuser@example.org -s example.org
+
+and use your favorite mail client to examine your inbox.
+
+You can also use [offlineimap](http://offlineimap.org/) to fetch mails:
+
+     offlineimap -c vagrant/.offlineimaprc.example.org
+
+WARNING: Use offlineimap *only* for testing/debugging,
+because it will save the mails *decrypted* locally to
+your disk !
 
 ## Monitoring
 

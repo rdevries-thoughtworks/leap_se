@@ -48,6 +48,7 @@ docs
       tests
       where-to-look
       known-issues
+      vagrant
     details
       couchdb
       faq
