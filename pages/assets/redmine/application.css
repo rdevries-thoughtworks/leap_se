@@ -110,6 +110,14 @@ table.list thead th {
 }
 
 /*
+ * agile board
+ */
+
+table.list.issues-board tbody tr td, table.list.issues-board tbody tr:hover td {
+	  vertical-align: top;
+  }
+
+/*
  * ISSUES
  */
 .subject h3 {
