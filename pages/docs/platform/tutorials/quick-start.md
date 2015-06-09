@@ -6,7 +6,7 @@
 Our goal
 ------------------
 
-We are going to create a minimal LEAP provider offering OpenVPN service. This basic setup can be expanded by adding more OpenVPN nodes to increase capacity, or more webapp and couchdb nodes to increase availability (performance wise, a single couchdb and a single webapp are more than enough for most usage, since they are only lightly used, but you might want redundancy). Please note: currently it is not possible to safely add additional couchdb nodes at a later point. They should all be added in the beginning, so please consider carefully if you would like more before proceeding.
+We are going to create a minimal LEAP provider offering OpenVPN service. This basic setup can be expanded by adding more OpenVPN nodes to increase capacity or geographical diversity, or more webapp nodes to increase availability (at the moment, a single couchdb and single webapp server are all that is supported, and performance wise, are more than enough for most usage, since they are only lightly used). At the moment, we strongly advise only have one couchdb server for stability purposes. 
 
 Our goal is something like this:
 
@@ -269,7 +269,7 @@ Deploy the LEAP platform to the nodes
 
 Now you should deploy the platform recipes to the nodes. [Deployment can take a while to run](http://xkcd.com/303/), especially on the first run, as it needs to update the packages on the new machine.
 
-*Important notes:* currently nodes must be deployed in a certain order. The underlying couch database node(s) must be deployed first, and then all other nodes. Also you need to configure and deploy all of the couchdb nodes that you plan to use at this time, as currently you cannot add more of them later later ([See](https://leap.se/es/docs/platform/known-issues#CouchDB.Sync)).
+*Important notes:* currently nodes must be deployed in a certain order. The underlying couch database node(s) must be deployed first, and then all other nodes.
 
     $ leap deploy cheetah
 
