@@ -1,10 +1,16 @@
 @title = 'LEAP Platform for Service Providers'
+@summary = "The LEAP Platform is set of complementary packages and server recipes to automate the maintenance of LEAP services in a hardened Debian environment."
 @nav_title = 'Provider Platform'
 @toc = false
 
 The *LEAP Platform* is set of complementary packages and server recipes to automate the maintenance of LEAP services in a hardened Debian environment. Its goal is to make it as painless as possible for sysadmins to deploy and maintain a service provider's infrastructure for secure communication.
 
-NOTE: The *LEAP Platform* currently supports deploying to servers running Debian Wheezy, and no other distribution or version.
+**REQUIREMENTS** -- Before you begin, make sure you meet these requirements:
+
+* *Debian Servers*: Servers that you deploy to must be running Debian Wheezy, and no other distribution or version.
+* *Real or Paravirtualized Servers*: Servers must be real machines or paravirtualized VMs (e.g. KVM, Xen, OpenStack, AWS, Google Compute). OS level virtualization is not supported (e.g. OpenVZ, Linux-VServer, etc), nor are system emulators (VirtualBox, QEMU, etc).
+* *Your Machine*: You must have a Linux or Mac computer to deploy from (this can be a headless machine with no GUI). Windows is not supported (Cygwin would probably work, but is untested).
+* *Your Own Domain*: You must own a domain name. Before your provider can be put into production, you will need to make modifications to the DNS for the provider's domain.
 
 The LEAP Platform consists of three parts, detailed below:
 
