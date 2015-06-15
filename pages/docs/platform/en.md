@@ -4,6 +4,8 @@
 
 The *LEAP Platform* is set of complementary packages and server recipes to automate the maintenance of LEAP services in a hardened Debian environment. Its goal is to make it as painless as possible for sysadmins to deploy and maintain a service provider's infrastructure for secure communication.
 
+NOTE: The *LEAP Platform* currently supports deploying to servers running Debian Wheezy, and no other distribution or version.
+
 The LEAP Platform consists of three parts, detailed below:
 
 1. [The platform recipes.](#the-platform-recipes)
