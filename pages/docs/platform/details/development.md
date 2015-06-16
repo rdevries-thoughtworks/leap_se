@@ -357,3 +357,7 @@ Known Issues
 or you can disable shared folder support (if you do not need it), by setting the following in your Vagrantfile:
 
     config.vm.synced_folder "src/", "/srv/website", disabled: trueconfig.vm.synced_folder "src/", "/srv/website", disabled: true
+
+if you are wanting this disabled for all the leap vagrant integration, you can add this to ~/.leaprc:
+
+    @custom_vagrant_vm_line = 'config.vm.synced_folder "src/", "/srv/website", disabled: true'
