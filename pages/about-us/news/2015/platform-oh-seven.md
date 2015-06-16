@@ -14,7 +14,7 @@ We are happy to release the next iteration of the LEAP Platform, and its associa
 
 Compatibility:
 
-* Requires leap_cli version 1.7.2
+* Requires leap_cli version >= 1.7.3
 * Requires bitmask client version >= 0.7
 * Previous releases supported cookies when using the provider API. Now, only tokens are supported.
 * Includes:
@@ -25,7 +25,7 @@ Compatibility:
 
 Upgrading:
 
-* `gem install leap_cli --version 1.7.2`.
+* `gem install leap_cli --version 1.7.3`.
 * `cd leap_platform; git pull; git checkout 0.7.0`.
 * `leap deploy`
 * `leap db destroy --db sessions,tokens` You can ignore message about needing to redeploy (since, in this case, we just want to permanently delete those databases).
