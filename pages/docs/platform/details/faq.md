@@ -3,6 +3,29 @@
 @summary = "Frequently Asked Questions"
 @toc = true
 
+Webapp
+======
+
+How do I set the admins?
+------------------------
+
+Edit your services/webapp.json (or create it, if it doesn't exist) and place something like the following in it:
+
+    {
+      "webapp": {
+        "admins": ["joe"]
+      }
+    }
+
+
+Nagios
+======
+
+How do I find the login information for nagios?
+-----------------------------------------------
+
+The login information is in the secrets.json file, under "nagios_admin" (please note: the login name is 'nagiosadmin', not 'nagios_admin').
+
 APT
 ===============
 
