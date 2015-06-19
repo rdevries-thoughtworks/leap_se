@@ -3,29 +3,6 @@
 @summary = "Frequently Asked Questions"
 @toc = true
 
-Webapp
-======
-
-How do I set the admins?
-------------------------
-
-Edit your services/webapp.json (or create it, if it doesn't exist) and place something like the following in it:
-
-    {
-      "webapp": {
-        "admins": ["joe"]
-      }
-    }
-
-
-Nagios
-======
-
-How do I find the login information for nagios?
------------------------------------------------
-
-The login information is in the secrets.json file, under "nagios_admin" (please note: the login name is 'nagiosadmin', not 'nagios_admin').
-
 APT
 ===============
 
@@ -40,7 +17,13 @@ Puppet
 Where do i find the time a server was last deployed ?
 -----------------------------------------------------
 
-The puppet state file on the node indicates the last puppetrun:
+Run:
+
+    leap history FILTER
+
+This will tail the log file `/var/log/leap/deploy-summary.log`.
+
+If that command fails, you can manually check the puppet state file on the node indicates the last puppetrun:
 
     ls -la /var/lib/puppet/state/state.yaml
 

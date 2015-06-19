@@ -1,7 +1,4 @@
-services
-  eip
-  email
-  chat
+download
 about-us
   donate
   vision
@@ -44,6 +41,14 @@ docs
       quick-start
       single-node-vpn
       single-node-email
+    services
+      couchdb
+      openvpn
+      monitor
+      mx
+      soledad
+      tor
+      webapp
     troubleshooting
       tests
       where-to-look

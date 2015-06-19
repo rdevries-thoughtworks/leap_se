@@ -1,7 +1,24 @@
-@title = "CouchDB"
+@title = "couchdb"
+@summary = "Data storage for all user data."
 
-Rebalance Cluster
-=================
+Topology
+------------------------
+
+`couchdb` nodes communicate heavily with `webapp`, `mx`, and `soledad` nodes. Typically, `couchdb` nodes will also have the `soledad` service.
+
+`couchdb` nodes do not need to be reachable from the public internet, although the `soledad` service does require this.
+
+Configuration
+----------------------------
+
+There are no options that should be modified for `couchdb` nodes.
+
+NOTE: The LEAP platform is designed to support many database nodes. The goal is for you to be able to add nodes and remove nodes and everything should rebalance and work smoothly. Currently, however, we are using a broken CouchDB variant called BigCouch. Until we migrate off BigCouch, you should only have one `couchdb` node. More than one will work most of the time, but there are some bugs that can pop up and that are unfixed.
+
+Manual Tasks
+---------------------
+
+### Rebalance Cluster
 
 Bigcouch currently does not have automatic rebalancing.
 It will probably be added after merging into couchdb.
@@ -39,8 +56,7 @@ If you add a node, or remove one node from the cluster,
      /srv/leap/couchdb/scripts/couchdb_restoreall.sh
 
 
-Re-enabling blocked account
-===========================
+### Re-enabling blocked account
 
 When a user account gets destroyed from the webapp, there's still a leftover doc in the identities db so other ppl can't claim that account without admin's intervention. Here's how you delete that doc and therefore enable registration for that particular account again:
 
@@ -54,8 +70,7 @@ When a user account gets destroyed from the webapp, there's still a leftover doc
     curl -s --netrc-file /etc/couchdb/couchdb.netrc -X DELETE 'http://127.0.0.1:5984/identities/b25cf10f935b58088f0d547fca823265?rev=2-715a9beba597a2ab01851676f12c3e4a'
 
 
-How to find out which userstore belongs to which identity ?
-===========================================================
+### How to find out which userstore belongs to which identity ?
 
     /usr/bin/curl -s --netrc-file /etc/couchdb/couchdb.netrc '127.0.0.1:5984/identities/_all_docs?include_docs=true' | grep testuser
 
@@ -65,8 +80,7 @@ How to find out which userstore belongs to which identity ?
 * in this example testuser@example.org uses the database user-665e004870ee17aa4c94331ff3cd59eb
 
 
-How much disk space is used by a userstore
-==========================================
+### How much disk space is used by a userstore
 
 Beware that this returns the uncompacted disk size (see http://wiki.apache.org/couchdb/Compaction)
 
