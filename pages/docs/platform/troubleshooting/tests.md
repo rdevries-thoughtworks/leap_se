@@ -56,10 +56,10 @@ One nagios installation will monitor all nodes in all your environments. You can
 Nagios will send out mails to the `contacts` address provided in `provider.json`.
 
 
-## Nagios Frontents
+## Nagios Frontends
 
 There are other ways to check and get notified by Nagios besides regularly checking the Nagios webinterface or reading email notifications. Check out the [Frontends (GUIs and CLIs)](http://exchange.nagios.org/directory/Addons/Frontends-%28GUIs-and-CLIs%29) on the Nagios project website.
-A recommended status tray application is [Nagstamon](https://nagstamon.ifw-dresden.de/), which is available for Linux, MacOS X and Windows. It can not only notify you of hosts/services failures, you can also acknoledge or recheck these with it.
+A recommended status tray application is [Nagstamon](https://nagstamon.ifw-dresden.de/), which is available for Linux, MacOS X and Windows. It can not only notify you of hosts/services failures, you can also acknowledge or recheck them.
 
 ### Log Monitoring
 
