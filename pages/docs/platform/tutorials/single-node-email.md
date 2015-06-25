@@ -164,7 +164,7 @@ This will initialize the node "node1". When `leap node init` is run, you will be
 Deploy the LEAP platform to the nodes
 --------------------
 
-Now you should deploy the platform recipes to the node. [Deployment can take a while to run](http://xkcd.com/303/), especially on the first run, as it needs to update the packages on the new machine.
+Now you should deploy the platform recipes to the node. [Deployment can take a while to run](https://xkcd.com/303/), especially on the first run, as it needs to update the packages on the new machine.
 
     $ leap deploy
 

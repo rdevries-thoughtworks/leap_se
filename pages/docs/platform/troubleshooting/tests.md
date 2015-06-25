@@ -50,7 +50,7 @@ In order to set up a monitoring node, you simply add a `monitor` service tag to 
 
 After deploying, this node will regularly poll every node to ask for the status of various health checks. These health checks include the checks run with `leap test`, plus many others.
 
-We use [Nagios](http://www.nagios.org/) together with [Check MK agent](https://en.wikipedia.org/wiki/Check_MK) for running checks on remote hosts.
+We use [Nagios](https://www.nagios.org/) together with [Check MK agent](https://en.wikipedia.org/wiki/Check_MK) for running checks on remote hosts.
 
 One nagios installation will monitor all nodes in all your environments. You can log into the monitoring web interface via [https://DOMAIN/nagios3/](https://DOMAIN/nagios3/). The username is `nagiosadmin` and the password is found in the secrets.json file in your provider directory.
 Nagios will send out mails to the `contacts` address provided in `provider.json`.

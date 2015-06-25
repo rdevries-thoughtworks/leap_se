@@ -70,7 +70,7 @@ Esta abordagem é potencialmente eficaz contra os observadores externos na rede,
 
 No longo prazo, pretendemos trabalhar com outros grupos para criar novos padrões de protocolo de criptografia que podem ser tanto assíncronos quanto permitir o sigilo futuro:
 
-  * [Extensões para sigilo futuro para o OpenPGP](http://tools.ietf.org/html/draft-brown-pgp-pfs-03).
+  * [Extensões para sigilo futuro para o OpenPGP](https://tools.ietf.org/html/draft-brown-pgp-pfs-03).
   * [Handshake Diffie-Hellman triplo com curvas elípticas](https://whispersystems.org/blog/simplifying-otr-deniability/).
 
 ### Problema do grupo
