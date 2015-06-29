@@ -66,7 +66,7 @@ Related software
 
 [Firefox Sync](https://wiki.mozilla.org/Services/Sync) - A client-encrypted data sync from Mozilla, designed to securely synchronize bookmarks and other browser settings.
 
-[U1DB](http://pythonhosted.org/u1db/) - Similar API as Soledad, without encryption.
+[U1DB](https://pythonhosted.org/u1db/) - Similar API as Soledad, without encryption.
 
 Soledad protocol
 ===================================
