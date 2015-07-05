@@ -85,7 +85,7 @@ There are a number of established methods for binding identifier to key:
 * [X.509 Certificate Authority System](https://en.wikipedia.org/wiki/X.509)
 * Trust on First Use (TOFU)
 * Mail-back Verification
-* [Web of Trust (WOT)](http://en.wikipedia.org/wiki/Web_of_trust)
+* [Web of Trust (WOT)](https://en.wikipedia.org/wiki/Web_of_trust)
 * [DNSSEC](https://en.wikipedia.org/wiki/Dnssec)
 * [Shared Secret](https://en.wikipedia.org/wiki/Socialist_millionaire)
 * [Network Perspective](http://convergence.io/)
@@ -156,7 +156,7 @@ For a long discussion of the simple thing, see [messaging list](https://moderncr
 
 **WebID and Mozilla Persona**
 
-What about [WebID](http://www.w3.org/wiki/WebID) or [Mozilla Persona](https://www.mozilla.org/en-US/persona/)? These are both interesting standards for cryptographically proving identify, so why do we need something new?
+What about [WebID](https://www.w3.org/wiki/WebID) or [Mozilla Persona](https://www.mozilla.org/en-US/persona/)? These are both interesting standards for cryptographically proving identify, so why do we need something new?
 
 These protocols, and the poorly conceived OpenID Connect, are designed to address a fundamentally different problem: authenticating a user to a website. The problem of authenticating users to one another requires a different architecture entirely. There are some similarities, however, and in the long run a Nicknym provider could also be a WebID and Mozilla Persona provider.
 

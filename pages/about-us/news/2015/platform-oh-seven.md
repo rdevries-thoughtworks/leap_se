@@ -1,4 +1,4 @@
-@title = "Platform release 7.0"
+@title = "Platform release 0.7"
 @author = 'Micah'
 @posted_at = '2015-06-11'
 @more = true

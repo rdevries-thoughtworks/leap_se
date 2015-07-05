@@ -51,7 +51,7 @@ There are a number of established methods for binding identifier to key:
 * [X.509 Certificate Authority System](https://en.wikipedia.org/wiki/X.509)
 * Trust on First Use (TOFU)
 * Mail-back Verification
-* [Web of Trust (WOT)](http://en.wikipedia.org/wiki/Web_of_trust)
+* [Web of Trust (WOT)](https://en.wikipedia.org/wiki/Web_of_trust)
 * [DNSSEC](https://en.wikipedia.org/wiki/Dnssec)
 * [Shared Secret](https://en.wikipedia.org/wiki/Socialist_millionaire)
 * [Network Perspective](http://convergence.io/)

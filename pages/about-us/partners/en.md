@@ -4,11 +4,11 @@
 
 <img src="/img/partners/thoughtworks.png">
 
-<b><a href="http://thoughtworks.com/">ThoughtWorks</a></b> is a privately owned global software delivery and products company with 2500 employees. ThoughtWorks has hired a team to work on various free software projects related to email security as part of their [[Pixelated Project => https://pixelated-project.org/]].
+<b><a href="https://thoughtworks.com/">ThoughtWorks</a></b> is a privately owned global software delivery and products company with 2500 employees. ThoughtWorks has hired a team to work on various free software projects related to email security as part of their [[Pixelated Project => https://pixelated-project.org/]].
 
 <img src="/img/partners/greenhost.png">
 
-<b><a href="http://greenhost.net/">Greenhost</a></b> is a Dutch company that has taken a lead in sustainable hosting, and also supports various projects in the fields of education, culture and journalism.
+<b><a href="https://greenhost.net/">Greenhost</a></b> is a Dutch company that has taken a lead in sustainable hosting, and also supports various projects in the fields of education, culture and journalism.
 
 ## Financial sponsors
 
@@ -18,7 +18,7 @@
 
 <img src="/img/partners/hivos.jpg">
 
-<b><a href="http://www.hivos.org/">Hivos International</a></b> international development organisation guided by humanist values. Together with local civil society organisations in developing countries, Hivos wants to contribute to a free, fair and sustainable world. A world in which all citizens – both women and men – have equal access to opportunities and resources for development and can participate actively and equally in decision-making processes that determine their lives, their society and their future.
+<b><a href="https://www.hivos.org/">Hivos International</a></b> international development organisation guided by humanist values. Together with local civil society organisations in developing countries, Hivos wants to contribute to a free, fair and sustainable world. A world in which all citizens – both women and men – have equal access to opportunities and resources for development and can participate actively and equally in decision-making processes that determine their lives, their society and their future.
 
 <img src="/img/partners/wallace.png">
 
@@ -40,7 +40,6 @@
 
 The Shuttleworth Foundation is dedicated to building an open knowledge society and a better future organized around open principles. To help us get there, we identify amazing people with innovative ideas, give them a fellowship grant, and multiply the money they put into their own project by a factor of ten or more.
 
-
 ## Early adopters of the LEAP Platform
 
 <b><a href="https://www.calyxinstitute.org/">Calyx Institute</a></b> is a research, education and legal support group devoted to researching and implementing privacy technology and tools to promote free speech, free expression, civic engagement and privacy rights on the Internet. Calyx plans to be an early adopter of the [[LEAP platform => platform]].
@@ -51,5 +50,5 @@ The Shuttleworth Foundation is dedicated to building an open knowledge society a
 
 <b><a href="http://colnodo.apc.org/">Colnodo</a></b> is a Colombian NGO working to facilitate communications and the exchange of information, experience and expertise between Colombian organizations at all levels regarding issues such as human rights, environment, housing, the betterment of women’s lives and others. Colnodo has promoted and democratized the use of ICTs among social organizations and groups (women, the youth, indigenous groups, local communities, etc.) and has been a facilitator of governmental projects regarding the promotion of ICTs. One of its principles is to develop its services based on free open source software.
 
-<b><a http://www.codigodelsur.com/>CodigoDelSur</a></b> is a mobile app development and design company, having created over 70 apps for iOS and Android.
+<b><a href="http://www.codigodelsur.com/">CodigoDelSur</a></b> is a mobile app development and design company, having created over 70 apps for iOS and Android.
 
