@@ -34,6 +34,7 @@ docs
       nodes
       keys-and-certificates
       environments
+      domains
       miscellaneous
       config
       commands
