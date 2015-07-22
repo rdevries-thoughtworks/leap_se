@@ -31,12 +31,13 @@ docs
     soledad
   platform
     guide
+      config
       nodes
       keys-and-certificates
-      environments
       domains
+      provider-configuration
+      environments
       miscellaneous
-      config
       commands
     tutorials
       quick-start

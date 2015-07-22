@@ -86,6 +86,13 @@ Suppose you want to remove `userx` from having any further ssh access to the ser
 X.509 Certificates
 ================================
 
+NOTE: the following files are extremely sensitive and must be carefully protected:
+
+* `files/ca/ca.key`
+* `files/<domain>.key` (where "domain" is the primary domain of the provider).
+
+These files must be kept private and you must not lose them. All the other key files can be regenerated if you lose them or if they are compromised.
+
 Configuration options
 -------------------------------------------
 
@@ -192,3 +199,10 @@ If you want to add additional fields to the CSR, like country, city, or locality
       }
 
 If they are not present, the CSR will be created without them.
+
+Examine Certs
+-----------------
+
+To see details about the keys and certs you can use `leap inspect` like so:
+
+    $ leap inspect files/ca/ca.crt

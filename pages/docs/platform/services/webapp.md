@@ -30,7 +30,11 @@ Configuration
 
 Essential options:
 
-* `webapp.admin`: An array of username that will be blessed with administrative permissions. These admins can delete users, answer help tickets, and so on.
+* `webapp.admin`: An array of usernames that will be blessed with administrative permissions. These admins can delete users, answer help tickets, and so on. These usernames are for users that have registered through the webapp or through the Bitmask client application, NOT the sysadmin usernames lists in the provider directory `users`.
+
+Other options:
+
+* `webapp.engines`: A list of the engines you want enabled in leap_web. Currently, only "support" is available, and it is enabled by default.
 
 For example, `services/webapp.json`:
 
@@ -41,6 +45,8 @@ For example, `services/webapp.json`:
     }
 
 By putting this in `services/webapp.json`, all the `webapp` nodes will inherit the same admin list.
+
+There are many options in `provider.json` that also control how the webapp behaves. See [[provider-configuration]] for details.
 
 Customization
 ---------------------------
@@ -74,9 +80,10 @@ For example:
       de.yml -- overrides for German
       and so on...
 
-To play with these customizations, it is easiest to first modify the contents of the directory `/srv/leap/webapp/config/customization` on the `webapp` node. When doing this, you may need to restart leap_web in order for changes to take effect (`touch /srv/leap/webapp/tmp/restart.txt`).
+To interactively develop your customizations before you deploy them, you have two options:
 
-Sometimes a `rake tmp:clear` and a rails restart is required to pick up a new stylesheet.
+1. Edit a `webapp` node. This approach involves directly modifying the contents of the directory `/srv/leap/webapp/config/customization` on a deployed `webapp` node. This can, and probably should be, a "local" node. When doing this, you may need to restart leap_web in order for changes to take effect (`touch /srv/leap/webapp/tmp/restart.txt`). Sometimes a `rake tmp:clear` and a rails restart is required to pick up a new stylesheet.
+2. Alternately, you can install leap_web to run on your computer and edit files in `config/customization` locally. This approach does not require a provider or a `webapp` node. For more information, see the [leap_web README](https://github.com/leapcode/leap_web).
 
 Once you have what you want, then copy these files to the local provider directory `files/webapp` so that they will be installed each time you deploy.
 
@@ -108,8 +115,6 @@ Known problems
   application extremely vulnerable to denial of service attacks. This was not an issue until we
   started to allow the possibility of anonymously fetching a client certificate without
   authenticating first.
-
 * By its very nature, the user database is vulnerable to enumeration attacks. These are
   very hard to prevent, because our protocol is designed to allow query of a user database via
   proxy in order to provide network perspective.
-
