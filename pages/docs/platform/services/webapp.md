@@ -82,10 +82,144 @@ For example:
 
 To interactively develop your customizations before you deploy them, you have two options:
 
-1. Edit a `webapp` node. This approach involves directly modifying the contents of the directory `/srv/leap/webapp/config/customization` on a deployed `webapp` node. This can, and probably should be, a "local" node. When doing this, you may need to restart leap_web in order for changes to take effect (`touch /srv/leap/webapp/tmp/restart.txt`). Sometimes a `rake tmp:clear` and a rails restart is required to pick up a new stylesheet.
+1. Edit a `webapp` node. This approach involves directly modifying the contents of the directory `/srv/leap/webapp/config/customization` on a deployed `webapp` node. This can, and probably should be, a "local" node. When doing this, you may need to restart leap_web in order for changes to take effect (`touch /srv/leap/webapp/tmp/restart.txt`).
 2. Alternately, you can install leap_web to run on your computer and edit files in `config/customization` locally. This approach does not require a provider or a `webapp` node. For more information, see the [leap_web README](https://github.com/leapcode/leap_web).
 
+NOTE: If you add a `tails.scss` or `head.scss` file, then you usually need to run `rake tmp:clear` and restart rails in order for the new stylesheet to get recognized. You should only need to do this once.
+
 Once you have what you want, then copy these files to the local provider directory `files/webapp` so that they will be installed each time you deploy.
+
+Customization tutorial
+----------------------------
+
+This mini-tutorial will walk you through creating a custom "branding" of the leap_web application. We will be creating a provider called "Prehistoric Computer."
+
+Here are the files we are going to create:
+
+    leap_web/config/customization
+    ├── locales
+    │   ├── en.yml
+    │   └── es.yml
+    ├── public
+    │   ├── favicon.ico
+    │   └── img
+    │       └── masthead.png
+    ├── stylesheets
+    │   └── tail.scss
+    └── views
+        └── pages
+            ├── privacy-policy.en.md
+            └── privacy-policy.es.md
+
+All these files are available in the source code in the [[customization.example => https://github.com/leapcode/leap_web/tree/develop/config/customization.example]] directory.
+
+Remember, these files may live different places:
+
+* `user@localmachine$ leap_web/config/customization`: This will be the path if you have checked out a local copy of leap_web.git and are running `rails server` locally in order to test your customizations.
+* `user@localmachine$ PROVIDER/files/webapp`: This is the local provider directory where the files should be put so that they get correctly deployed to webapp nodes.
+* `root@webappnode# /srv/leap/webapp/config/customization`: This is where the files in the local provider directory `PROVIDER/files/webapp` get copied to after a `leap deploy` to a live webapp nodes.
+
+### Override translations
+
+You can add additional locale files in order to change the text used in the existing application and to add translations for string that you added to the application.
+
+In this example, we will be altering the default text for the "login_info" string. In `config/locales/en/home.en.yml` there is this entry:
+
+    en:
+      login_info: "Log in to change your account settings, create support tickets, and manage payments."
+
+We are going to override this with some custom text in English and Spanish:
+
+`leap_web/config/customization/locale/en.yml`:
+
+    en:
+      login_info: Authenticate to change your "Prehistoric Computer" settings.
+
+`leap_web/config/customization/locale/es.yml`:
+
+    es:
+      login_info: Autenticar a cambiar la configuración de "Computer Prehistoria."
+
+Now, the home page of leap_web will use these new strings instead of the default. Remember that you must restart rails in order for new locale files to take effect.
+
+### Override static pages
+
+You can also override any of the static files included with leap_web, such as the privacy policy or terms of service.
+
+Here is how we would create a custom privacy policy in English and Spanish:
+
+`leap_web/config/customization/views/pages/privacy-policy.en.md`:
+
+    # Custom Privacy Policy
+    This is our privacy policy.
+
+`leap_web/config/customization/views/pages/privacy-policy.es.md`:
+
+    # Custom Política de Privacidad
+    Esta es nuestra política de privacidad.
+
+### Add a custom header
+
+Now we will add a custom header to every page. First, we add the images:
+
+    leap_web/config/customization
+        ├── public
+            ├── favicon.ico
+            └── img
+                └── masthead.png
+
+You can create your own, or use the example files in https://github.com/leapcode/leap_web/tree/develop/config/customization.example
+
+Now, we add some custom CSS so that we can style the masthead:
+
+`leap_web/config/customization/stylesheets/tail.scss`
+
+    $custom-color: #66bbaa;
+
+    a {
+      color: $custom-color;
+    }
+
+    //
+    // MASTHEAD
+    //
+
+    #masthead {
+      background-color: $custom-color;
+      border-bottom: none;
+
+      // make the masthead clickable by replacing the
+      // site name link with the masthead image:
+      .title {
+        padding: 0px;
+        .sitename a {
+          display: block;
+          background: url(/img/masthead.png) 0 0 no-repeat;
+          font-size: 0px;
+          height: 100px;
+          background-size: auto 100px;
+        }
+      }
+    }
+
+    // make the home page masthead slightly larger
+    body.home #masthead {
+      .sitename a {
+        height: 150px;
+        background-size: auto 150px;
+      }
+    }
+
+    //
+    // FOOTER
+    //
+
+    #footer .links {
+      background-color: $custom-color;
+    }
+
+NOTE: If you add a `tails.scss` or `head.scss` file, then you usually need to run `rake tmp:clear` and restart rails in order for the new stylesheet to get recognized. You should only need to do this once.
+
 
 Custom Fork
 ----------------------------
