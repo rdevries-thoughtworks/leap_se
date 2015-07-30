@@ -61,7 +61,7 @@ Bitmask depends on these libraries:
 
 In debian-based systems:
 
-    $ sudo apt-get install git python-dev python-setuptools python-virtualenv python-pip libssl-dev python-openssl libsqlite3-dev g++ openvpn pyside-tools python-pyside libffi-dev
+    $ sudo apt-get install git make python-dev python-setuptools python-virtualenv python-pip libssl-dev python-openssl libsqlite3-dev g++ openvpn pyside-tools python-pyside libffi-dev libzmq-dev protobuf-compiler
 
 
 Working with virtualenv
