@@ -38,25 +38,25 @@ Publicly open ports
   <td>SMTPS</td>
   <td>mx</td>
   <td>465</td>
-  <td>The client uses this port to submit outgoing email messages via SMTP over TLS. There is no easy way to change this, although you can create a custom <code>files/service-definitions/v1/smtp-service.json.erb</code> to do so.</td>
+  <td>The client uses this port to submit outgoing email messages via SMTP over TLS. There is no easy way to change this, although you can create a custom <code>files/service-definitions/v1/smtp-service.json.erb</code> to do so. This will be changed to port 443 in the future.</td>
 </tr>
 <tr>
   <td>Soledad</td>
   <td>soledad</td>
   <td>2323</td>
-  <td>The client uses this port to synchronize its storage data. This can be changed via the configuration property <code>soledad.port</code>.</td>
+  <td>The client uses this port to synchronize its storage data. This can be changed via the configuration property <code>soledad.port</code>. This will be changed to port 443 in the future.</td>
 </tr>
 <tr>
   <td>Nicknym</td>
   <td>webapp</td>
   <td>6425</td>
-  <td>The client uses this port for discovering public keys. This can be changed via the configuration property <code>nickserver.port</code>.</td>
+  <td>The client uses this port for discovering public keys. This can be changed via the configuration property <code>nickserver.port</code>. This will be changed to port 443 in the future.</td>
 </tr>
 <tr>
   <td>OpenVPN</td>
   <td>openvpn</td>
   <td>80, 443, 53, 1194</td>
-  <td>By default, OpenVPN gateways will listen on all those ports. This can be changed via the configuration property <code>openvpn.ports</code>. Note that these ports must be open for <code>openvpn.gateway_address</code>, but not for <code>ip_address</code>.</td>
+  <td>By default, OpenVPN gateways will listen on all those ports. This can be changed via the configuration property <code>openvpn.ports</code>. Note that these ports must be open for <code>openvpn.gateway_address</code>, not for <code>ip_address</code>.</td>
 </tr>
 <tr>
   <td>API</td>
@@ -86,7 +86,7 @@ Privately open ports
   <td>Stunnel</td>
   <td>all</td>
   <td>10000-20000</td>
-  <td>This is the range of ports that might be used for the encrypted stunnel connectsions between two nodes. These port numbers are automatically generated, but will fall somewhere in the specified range.</td>
+  <td>This is the range of ports that might be used for the encrypted stunnel connections between two nodes. These port numbers are automatically generated, but will fall somewhere in the specified range.</td>
 </tr>
 </table>
 
