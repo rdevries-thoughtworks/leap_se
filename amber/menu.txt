@@ -57,8 +57,9 @@ docs
       known-issues
       vagrant
     details
-      couchdb
       faq
+      ports
+      couchdb
       development
       under-the-hood
   client
