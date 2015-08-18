@@ -1,0 +1,37 @@
+{
+  "api_uri": "https://api.user.leap.se:4430",
+  "api_version": "1",
+  "ca_cert_fingerprint": "SHA256: 256656231f63193b0b9a810dbf0fd8dbfea05b57ad6a952aa78a9519c71f5bec",
+  "ca_cert_uri": "https://user.leap.se/ca.crt",
+  "default_language": "en",
+  "description": {
+    "en": "LEAP Encryption Access Project"
+  },
+  "domain": "leap.se",
+  "enrollment_policy": "open",
+  "languages": [
+    "en"
+  ],
+  "name": {
+    "en": "LEAP Encryption Access Project"
+  },
+  "service": {
+    "allow_anonymous": false,
+    "allow_free": true,
+    "allow_limited_bandwidth": false,
+    "allow_paid": false,
+    "allow_registration": true,
+    "allow_unlimited_bandwidth": true,
+    "bandwidth_limit": 102400,
+    "default_service_level": 1,
+    "levels": {
+      "1": {
+        "description": "Please donate.",
+        "name": "free"
+      }
+    }
+  },
+  "services": [
+    "mx"
+  ]
+}

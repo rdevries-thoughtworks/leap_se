@@ -18,6 +18,8 @@ namespace :leap do
     on roles(:all) do |host|
       execute "rm -f #{current_path}/public/code"
       execute "ln -s /var/www/redmine/public #{current_path}/public/code"
+      #execute "mkdir -p /var/www/redmine/public/themes/leap/stylesheets"
+      #execute "ln -s #{current_path}/public/assets/redmine/application.css /var/www/redmine/public/themes/leap/stylesheets/application.css"
     end
   end
 end
@@ -27,6 +29,7 @@ namespace :amber do
     on roles(:all) do |host|
       within release_path do
         execute :amber, 'rebuild'
+        execute "cat ${current_path}/pages/.htaccess >> ${current_path}/public/.htaccess"
       end
     end
   end

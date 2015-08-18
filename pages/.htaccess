@@ -1,0 +1,4 @@
+
+  <Location /provider.json>
+    Header set X-Minimum-Client-Version 0.7
+  </Location>
