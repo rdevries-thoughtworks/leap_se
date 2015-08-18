@@ -5,7 +5,7 @@
 Introduction
 =====================
 
-Soledad allows client applications to securely share synchronized document databases. Soledad aims to provide a cross-platform, cross-device, syncable document storage API, with the addition of client-side encryption of database replicas and document contents stored on the server.
+Soledad consists of a client library and server daemon that allows applications to securely share a common state among devices. The local application is presented with a simple, document-centric searchable database API. Any data saved to the database by the application is client-encrypted, backed up in the cload, and synchronized among a user's devices. Soledad is cross-platform, open source, scalable, and features a highly efficient synchronization algorithm.
 
 Key aspects of Soledad include:
 
@@ -17,6 +17,15 @@ Key aspects of Soledad include:
 The current reference implementation of Soledad is written in Python and distributed under a GPLv3 license.
 
 Soledad is an acronym of "Synchronization of Locally Encrypted Documents Among Devices" and means "solitude" in Spanish.
+
+The importance of data availability
+-------------------------------------------------
+
+Users today demand high data availability in their applications. As a user switches from device to device, the expectation is that each application will reflect the same state information across devices. Additionally, if all devices are lost or destroyed, the contemporary user expects to be able to restore her or his application data from the cloud.
+
+In many ways, data availability has become a necessary precondition for an application to be considered "user friendly." Unfortunately, most applications attempt to provide high data availability by rolling their own custom solution or relying on a third party API, such as Dropbox. This approach is has several drawbacks: the user has no control or access to the data should they wish to switch applications or data providers; custom data synchronizations schemes are often an afterthought, poorly designed, and vulnerable to attack and data breaches; and the user must place total trust in the provider to safeguard her or his information against requests by repressive governments.
+
+Soledad provides secure data availability in a way that is easy for application developers to incorporate into their code.
 
 Goals
 ======================
