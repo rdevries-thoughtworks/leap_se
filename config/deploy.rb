@@ -29,7 +29,6 @@ namespace :amber do
     on roles(:all) do |host|
       within release_path do
         execute :amber, 'rebuild'
-        execute "cat ${current_path}/pages/.htaccess >> ${current_path}/public/.htaccess"
       end
     end
   end
