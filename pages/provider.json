@@ -1,8 +1,8 @@
 {
   "api_uri": "https://api.user.leap.se:4430",
   "api_version": "1",
-  "ca_cert_fingerprint": "SHA256: 256656231f63193b0b9a810dbf0fd8dbfea05b57ad6a952aa78a9519c71f5bec",
-  "ca_cert_uri": "https://user.leap.se/ca.crt",
+  "ca_cert_fingerprint": "SHA256: c42c35a7ba6cc2a90ab20d7bc40329d47d69911a749844099d334a28af16d842",
+  "ca_cert_uri": "https://leap.se/ca.crt",
   "default_language": "en",
   "description": {
     "en": "LEAP Encryption Access Project"
