@@ -90,15 +90,15 @@ This file defines the "encrypted internet proxy" capabilities and gateways. The 
 
 h2. Provider Keys
 
-h3. GET ca_cert_uri
+h3. GET $ca_cert_uri
 
 e.g. [[https://demo.bitmask.net/ca.crt]]
 
 The value for @ca_cert_uri@ is contained in @provider.json@.
 
-This request returns the file @ca.crt@, the provider's self-signed CA certificate. *Every* TLS connection with the provider API is validated using this CA certificate. The one exception is when the client is downloading @ca_cert_uri@ for the first time AND when @ca_cert_uri@ specifies an API URL.
+This request returns the file @ca.crt@, the provider's self-signed CA certificate.
 
-After this file is downloaded, it's fingerprint MUST be checked against the value @ca_cert_fingerprint@ in @provider.json@.
+If @ca_cert_uri@ specifies an HTTPS connection, the client must allow TLS connections even if the authenticity of the server certificate cannot be established. This is the only request where the authenticity of the TLS certificate can (and should) be ignored. Instead, after this file is downloaded, it's fingerprint MUST be checked against the value @ca_cert_fingerprint@ in @provider.json@.
 
 h1. REST API
 
