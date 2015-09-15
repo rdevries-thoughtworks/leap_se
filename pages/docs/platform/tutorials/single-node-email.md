@@ -26,7 +26,7 @@ Requirements
 
 In order to complete this Quick Start, you will need a few things:
 
-* You will need `one real or paravirtualized virtual machine` (Vagrant, KVM, Xen, Openstack, Amazon, …) that have a basic Debian Stable installed.
+* You will need `one real or paravirtualized virtual machine` (Vagrant, KVM, Xen, Openstack, Amazon, …) that have a basic Debian Wheezy installed (sorry, we don't support Jessie at the moment).
 * You should be able to `SSH into them` remotely, and know their root password, IP addresses and their SSH host keys
 * The ability to `create/modify DNS entries` for your domain is preferable, but not needed. If you don't have access to DNS, you can workaround this by modifying your local resolver, i.e. editing `/etc/hosts`.
 * You need to be aware that this process will make changes to your machines, so please be sure that these machines are a basic install with nothing configured or running for other purposes
