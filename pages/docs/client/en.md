@@ -2,22 +2,29 @@
 @title = 'Bitmask'
 @summary = "The Internet Encryption Toolkit: Encrypted Internet Proxy and Encrypted Mail"
 
-**Bitmask** is the multiplatform desktop client for the services offered by [[the LEAP Platform => platform]]. For more information, see [[bitmask.net => https://bitmask.net]].
+**Bitmask** is the multiplatform desktop client for the services offered by
+[[the LEAP Platform => platform]]. For more information, see [[bitmask.net =>
+https://bitmask.net]].
 
-It is written in python using [PySide](http://qt-project.org/wiki/PySide) and licensed under the GPL3. Currently we distribute pre-compiled bundles for Linux and OSX, with Windows bundles following soon.
+It is written in python using [PySide](http://qt-project.org/wiki/PySide) and
+licensed under the GPL3. Currently we distribute pre-compiled bundles for Linux
+and OSX, with Windows bundles following soon.
 
-We include below some sections of the user guide and the development documentation so you can get started.
+We include below some sections of the user guide and the development
+documentation so you can get started.
+
 
 User Guide
 ----------
 
-* [[Installing Bitmask => user-install]]
-* [[Running Bitmask => user-running]]
+For installation docs see the [Bitmask website](https://bitmask.net/en/install)
+
 
 Tester Guide
 ------------
 
-This part of the documentation details how to fetch the last development version and how to report bugs.
+This part of the documentation details how to fetch the last development
+version and how to report bugs.
 
 * [[HOWTO for testers => testers-howto]]
 
@@ -29,13 +36,6 @@ If you want to contribute to the project, we wrote this for you.
 * [[Setting up a development environment => dev-environment]]
 
 
-<!--
-* [Running latest code](client/bleeding-edge)
-* [Getting started with development](client/dev-guide)
-* [Configuration](client/configuration)
-* [Client API](client/client-api) -->
-
-
 Supported OSs
 -------------
 
@@ -43,10 +43,7 @@ We currently support:
 
 ### Through the bundle
 
-* Debian 7
-* Ubuntu 12.04 (LTS)
 * Ubuntu 14.04 (LTS)
-* Ubuntu 14.10 (latest)
 * Mac OSX >= 10.8 (coming very soon)
 * Note: It *should* work in other Debian based distros
 

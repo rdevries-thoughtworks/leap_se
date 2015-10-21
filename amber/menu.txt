@@ -64,7 +64,6 @@ docs
       under-the-hood
   client
     user-install
-    user-running
     testers-howto
     bundle-testing
     dev-environment

@@ -1,7 +1,9 @@
 @nav_title = 'Installing'
 @title = 'Installing Bitmask'
 
-For download links and installation instructions go to [[dl.bitmask.net => https://dl.bitmask.net/]].
+For download links and installation instructions go to [[bitmask.net website =>
+https://bitmask.net/en/install]].
+
 
 Distribute & Pip
 ----------------
@@ -28,7 +30,8 @@ After extensive testing and being fixed all blocking issues we release the
 **stable** bundle, what is meant for public consumption. This is the bundle that
 is linked for download from the [[bitmask.net => https://bitmask.net]] website.
 
-You can find all the bundles at [[dl.bitmask.net/client => https://dl.bitmask.net/client/]].
+You can find all the bundles at [[bitmask.net =>
+https://bitmask.net/en/install/linux#install-stand-alone-bundle]].
 
 Automatic upgrades
 ------------------
@@ -66,7 +69,7 @@ The repository url looks like:
 - **wheezy**, **jessy** and **sid** are the debian versions.
 
 More details on how to configure the repositories in your system in
-https://dl.bitmask.net/linux/
+https://bitmask.net/en/install/linux#install-as-packages
 
 Show me the code!
 -----------------
@@ -81,4 +84,3 @@ Or from the github mirror :
     $ git clone https://github.com/leapcode/bitmask_client.git
 
 For more information go to the [[Hacking => client/dev-environment]] section :)
-

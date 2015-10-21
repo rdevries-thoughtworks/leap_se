@@ -4,7 +4,7 @@
 @toc = true
 
 Here you can find documentation about known issues and potential work-arounds
-in the current Leap Platform release.
+in the current Bitmask release.
 
 No polkit agent available
 -------------------------
@@ -20,12 +20,13 @@ The currently recognized polkit agents are:
 | `polkit-gnome-authentication-agent-1` | Gnome                             |
 | `polkit-kde-authentication-agent-1`   | KDE                               |
 | `polkit-mate-authentication-agent-1`  | Mate                              |
-| `lxpolkit`                            | LXDE                              |
+| `lxpolkit` or `lxsession`             | LXDE                              |
+| `xfce-polkit`                         | XFCE                              |
 | `gnome-shell`                         | Gnome shell                       |
 | `fingerprint-polkit-agent`            | the `fingerprint-gui` package     |
 
 
-If you have a different polkit agent running that it's not in theat list,
+If you have a different polkit agent running that it's not in that list,
 please report a bug so we can include in our checks.
 
 You can get the list of running processes that match polkit with the following
@@ -38,6 +39,10 @@ Here is an example on my KDE desktop:
     user      3259  0.0  0.4 559764 38464 ?        Sl   Sep22   0:05 /usr/lib/kde4/libexec/polkit-kde-authentication-agent-1
 
 
+Note that `polkitd` is not a valid agent, is just the daemon, you still need an
+agent running.
+
+
 Other Issues
 ------------
 
@@ -46,11 +51,11 @@ Other Issues
   See: https://leap.se/code/issues/4023
 
 Mail issues
------------
+===========
 
 Note that email is not stable yet so this list may not be accurate.
 
-- If you have received a big ammount of mails (tested with more than 400), you
+- If you have received a big amount of mails (tested with more than 400), you
   may experience that Thunderbird won't respond.
 
 That problem does not happen if you have the client open and Thunderbird
@@ -60,12 +65,15 @@ loading mails while are reaching your inbox.
 - Opening the same account from more than one box at the same time will
   possibly break your account.
 
-- Managing a huge ammount of mails (e.g.: moving mails to a folder) will block
-  the UI (see https://leap.se/code/issues/4837)
+- You may get an error on Thunderbird about not being able to reach the IMAP
+  server. This happens during long syncs.
+
+- If you have a big amount of emails and email traffic the syncs may be very
+  slow and your account will be most of the time syncing.
 
 
 Key generation too slow?
-========================
+------------------------
 
 When you create a new mail account, the key generation may take a while. While
 it is normal that takes approx. 5mins, on virtual machines sometimes takes a
