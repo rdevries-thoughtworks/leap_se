@@ -64,7 +64,6 @@ docs
       under-the-hood
   client
     user-install
-    testers-howto
     bundle-testing
     dev-environment
     known-issues

@@ -1,5 +1,5 @@
-@nav_title = "Bundle QA"
-@title = "Guidelines for bundle QA"
+@nav_title = "Testing"
+@title = "Guidelines for testing Bitmask"
 
 Recommended setup
 -----------------
@@ -69,7 +69,7 @@ Tests to do
 Problems report
 ---------------
 
-You should to create an issue with the followinw information:
+You should to create an issue with the following information:
 
 - OS, version, architecture, desktop environment (if relevant).
 - bitmask.log file located in the root folder of the uncompressed bundle
@@ -79,7 +79,7 @@ If you find a problem, try to reproduce and take note of the steps needed to get
 
 Also, in some cases, a failure appears but if you run again is not there anymore (e.g.: some initialization issue), please report that too.
 
-For more details look at [Reporting bugs](client/testers-howto) section.
+For more details look at [Contributing - Reporting bugs](https://github.com/leapcode/bitmask_client/blob/develop/CONTRIBUTING.rst#reporting-bugs)
 
 
 Utils
