@@ -14,6 +14,25 @@ For each system that you are going to test, you should do:
 
 The OS should be installed with the default settings and no extra packages. However, you can choose your language, username, timezone, etc
 
+Testing
+-------
+
+* Setup Instructions: https://bitmask.net/help
+
+* Fresh install (stable): https://dl.bitmask.net/client/linux/stable/
+
+* Fresh install (release candidate): https://dl.bitmask.net/client/linux/release-candidate/
+
+* Upgrading from bundle: if you are running bundle version 0.7 or new then
+  Bitmask should update automatically.
+
+* Upgrading from package: if you have added deb.bitmask.net to your
+  sources.list, then Bitmask should update automatically (make sure it is not
+  commented  out).
+
+Note: If you have a bundle version older than 0.7, please reinstall Bitmask.
+
+Some notes on how to test: https://github.com/leapcode/bitmask_client/blob/develop/docs/testing-rcs.README
 
 Test process
 ------------
