@@ -65,7 +65,10 @@ Run `leap deploy` to enable the option.
 
 You can then generate invite codes by running the following rake task from the webapp directory:
 
-  `sudo -u leap-webapp RAILS_ENV=production bundle exec rake generate_invites[x,y]`
+```
+cd /srv/leap/webapp/
+sudo -u leap-webapp RAILS_ENV=production bundle exec rake generate_invites[x,y]
+```
 
 The *x* specifies the amount of codes to generate. The *y* parameter is optional: By default, all new invite codes can be used once and will then become invalid. If you provide another value for *y*, you can set a different amount of maximum uses for the codes you generate.
 
