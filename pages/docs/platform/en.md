@@ -3,7 +3,7 @@
 @nav_title = 'Provider Platform'
 @this.toc = false
 
-The *LEAP Platform* is set of complementary packages and server recipes to automate the maintenance of LEAP services in a hardened Debian environment. Its goal is to make it as painless as possible for sysadmins to deploy and maintain a service provider's infrastructure for secure communication.
+Its goal is to make it as painless as possible for sysadmins to deploy and maintain a service provider's infrastructure for secure communication.
 
 **REQUIREMENTS** -- Before you begin, make sure you meet these requirements:
 
