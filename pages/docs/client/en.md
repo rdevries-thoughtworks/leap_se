@@ -2,23 +2,17 @@
 @title = 'Bitmask'
 @summary = "The Internet Encryption Toolkit: Encrypted Internet Proxy and Encrypted Mail"
 
-**Bitmask** is the multiplatform desktop client for the services offered by
-[[the LEAP Platform => platform]]. For more information, see [[bitmask.net =>
-https://bitmask.net]].
+**Bitmask** is the multiplatform desktop client for the services offered [[the
+LEAP Platform => platform]].  It is written in
+[Python](https://www.python.org/) using [PySide](https://wiki.qt.io/PySide) and
+licensed under the
+[GPL3](https://github.com/leapcode/bitmask_client/blob/develop/LICENSE).
+Currently we distribute pre-compiled bundles for Linux, with OS X and Windows
+bundles following soon.
 
-It is written in python using [PySide](http://qt-project.org/wiki/PySide) and
-licensed under the GPL3. Currently we distribute pre-compiled bundles for Linux
-and OSX, with Windows bundles following soon.
+For more info and a users guide goto [[bitmask.net => https://bitmask.net]].
 
-We include below some sections of the user guide and the development
-documentation so you can get started.
-
-
-User Guide
-----------
-
-For installation docs see the [Bitmask website](https://bitmask.net/en/install)
-
+Testers and Hackers see below.
 
 Testers Guide
 -------------
