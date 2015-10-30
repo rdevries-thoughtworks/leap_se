@@ -6,11 +6,70 @@
 Here you can find documentation about known issues and potential work-arounds
 in the current Bitmask release.
 
-No polkit agent available
--------------------------
+
+Connection Errors
+-----------------
+
+You may get the error: “Unable to connect: Problem with provider”. This can
+result from a problem with your network not the the provider. We are tracking
+this issue here https://leap.se/code/issues/4023 and plan to have more specific
+error notifications in the future.
+
+Mail issues
+-----------
+
+
+* If you have received a large amount of mails (testing with more than 400),
+Thunderbird may not respond. This problem wont happen if you already had the
+client open and Thunderbird loading mails at the same time.
+
+* Opening the same account from more than one computer at the same time might
+possibly break your account.
+
+* You may get an error on Thunderbird about not being able to reach the IMAP
+server. This happens during long syncs.
+
+* If you have a big amount of emails and email traffic the syncs are
+sometimes very slow. We are working on this.
+
+
+
+Key generation too slow?
+------------------------
+
+When you create a new mail account, the key generation may take a while. It can
+take up to 5mins, but be aware, on virtual machines it sometimes takes a very
+long time. As long as a 40min!. The below tricks can reduce the time for
+testers using virtual machines.
+
+If you are just testing mail accounts and **are not worried about security**
+you can use some tricks to generate the extra entropy needed to speed up the
+process.
+
+1. Manually generate entropy by moving the mouse, type stuff, browse the internet and local files, etc.
+
+1. Use haveged
+
+    Install the haveged package, most likely is available through your distro's
+    package manager.
+
+    See: http://www.issihosts.com/haveged/
+
+1. Generate IO (may not work on SSDs)
+
+        find / -type f -print0 2>&1 | xargs -0 cat &> /dev/null
+
+If you want more information you can take a look at:
+https://leap.se/code/issues/4656
+
+
+"No polkit agent available" Error
+---------------------------------
+
+(For people using minimal distros/desktops like awesome/i3)
 
 To run Bitmask and the services correctly you need to have a running polkit
-agent. If you don't have one you will get an error and won't be able to start
+agent. If you don’t have one you will get an error and won’t be able to start
 Bitmask.
 
 The currently recognized polkit agents are:
@@ -41,62 +100,3 @@ Here is an example on my KDE desktop:
 
 Note that `polkitd` is not a valid agent, is just the daemon, you still need an
 agent running.
-
-
-Other Issues
-------------
-
-- You may get the error: "Unable to connect: Problem with provider" in
-  situations when the problem is the network instead of the provider.
-  See: https://leap.se/code/issues/4023
-
-Mail issues
-===========
-
-Note that email is not stable yet so this list may not be accurate.
-
-- If you have received a big amount of mails (tested with more than 400), you
-  may experience that Thunderbird won't respond.
-
-That problem does not happen if you have the client open and Thunderbird
-loading mails while are reaching your inbox.
-
-
-- Opening the same account from more than one box at the same time will
-  possibly break your account.
-
-- You may get an error on Thunderbird about not being able to reach the IMAP
-  server. This happens during long syncs.
-
-- If you have a big amount of emails and email traffic the syncs may be very
-  slow and your account will be most of the time syncing.
-
-
-Key generation too slow?
-------------------------
-
-When you create a new mail account, the key generation may take a while. While
-it is normal that takes approx. 5mins, on virtual machines sometimes takes a
-very long time. As long as a 40min!.
-Using one of this tricks/hacks that time can be reduced to <5min.
-
-If you are just testing mail accounts and **do not worry about security** you can
-use some tricks to generate the extra entropy needed to speed up the process.
-
-1. Manually generate entropy
-
-    Move the mouse, type stuff, browse the internet and local files, etc.
-
-1. Use haveged
-
-    Install the haveged package, most likely is available through your distro's
-    package manager.
-
-    See: http://www.issihosts.com/haveged/
-
-1. Generate IO (may not work on SSDs)
-
-        find / -type f -print0 2>&1 | xargs -0 cat &> /dev/null
-
-If you want more information you can take a look at:
-https://leap.se/code/issues/4656
