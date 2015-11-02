@@ -45,7 +45,7 @@ We currently support:
 
 ### Using the debian package
 
-* Ubuntu 14.04 (Trusty Tahr)
 * Ubuntu 15.04 (Vivid Vervet)
-* Debian 7.0 (Wheezy)
+* Ubuntu 15.10 (Wily Werewolf)
 * Debian 8.0 (Jessie)
+* Debian unstable (Sid)
