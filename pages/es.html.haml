@@ -1,0 +1,54 @@
+- @title = "Inicio"
+- @this.show_title = false
+- @this.toc = false
+
+%p.bigger.first
+  LEAP es una organización sin fines de lucro dedicada a darle a todos los
+  usuarios de internet acceso a comunicación segura. Nuestro foco esta en
+  adaptar las tecnologias de cifrado para hacerlas fáciles de usar y
+  disponibles ampliamente.  #{link 'Más acerca de LEAP »' => 'about-us'}
+
+.row.standout
+  .col-xs-4.text-right
+    %span
+      %i.fa.fa-2x.fa-twitter
+      = link('@leapcode' => 'https://twitter.com/leapcode')
+  .col-xs-4.text-center
+    %span
+      %i.fa.fa-2x.fa-envelope
+      <a href='mailto:discuss-subscribe@leap.se'>discuss@leap.se</a>
+  .col-xs-4.text-left
+    %span
+      %i.fa.fa-2x.fa-comments
+      = link('#leap' => 'http://irc.lc/freenode/leap')
+
+.row.p
+  .col-sm-4
+    .well
+      .heading
+        %i.fa.fa-user
+        Para Usuarios
+      %p Trabajamos para crear un conjunto de herramientas de comunicación de alta seguridad que sean confiables y fáciles de usar.
+      = link(:read_more => 'https://bitmask.net/features', :class => 'btn btn-default btn-sm')
+  .col-sm-4
+    .well
+      .heading
+        %i.fa.fa-tasks
+        Para Proveedores
+      %p Trabajamos en herramientas para automatizar la puesta en producción de la infraestructura para un proveedor de servicios seguros.
+      = link(:read_more => 'platform', :class => 'btn btn-default btn-sm')
+  .col-sm-4
+    .well
+      .heading
+        %i.fa.fa-wrench
+        Para Hackers
+      %p ¿Tienes habilidades? las necesitamos. Clona los repositorios, contribuye, testea, y envía parches para nusetro software. Siempre 100% Libre/Free.
+      = link(:read_more => 'docs', :class => 'btn btn-default btn-sm')
+
+.row
+  .col-sm-12
+    %h1.first
+      Noticias Recientes
+      =# news_feed_link
+    = recent_summaries(:limit => 10) do |page|
+      = render :partial => 'layouts/blog_summary', :locals => {:page => page}
