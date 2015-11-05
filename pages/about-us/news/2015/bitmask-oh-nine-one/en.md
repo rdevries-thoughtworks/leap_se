@@ -11,7 +11,7 @@ href='http://boingboing.net/tag/hacking-team'>corporate</a> and <a
 href="https://boingboing.net/2015/11/05/british-government-will-unsuc.html">government
 powers is mainstream</a> we need the ability to communicate without fear. We
 are happy to announce <a
-href="https://github.com/ivanalejandro0/bitmask_client/blob/release/0.9.1/CHANGELOG.rst">Bitmask
+href="https://github.com/leapcode/bitmask_client/blob/0.9.1/CHANGELOG.rst">Bitmask
 0.9.1</a>, the Beta release of Bitmask Encrypted Email- a secure email
 application that is easy to use and easy to provide.  Bitmask is 100%
 free/libre software and uses the gold standard of encryption technology - GPG
