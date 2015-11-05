@@ -11,8 +11,9 @@ href='http://www.xataka.com/seguridad/reino-unido-propondra-manana-prohibir-el-u
 y <a
 href='http://www.xataka.com/seguridad/el-spyware-finfisher-suma-y-sigue-espana-y-otros-32-gobiernos-podrian-estar-utilizandolo'>corporaciones
 nos someten a una vigilancia online omnipresente</a>, necesitamos más que nunca
-la capacidad de comunicarnos sin temor. Nos complace anunciar la **versión
-0.9.1 de Bitmask**, con la que se inicia la fase Beta del servicio de Correo
+la capacidad de comunicarnos sin temor. Nos complace anunciar la <a
+href="https://github.com/ivanalejandro0/bitmask_client/blob/release/0.9.1/CHANGELOG.rst">versión
+0.9.1 de Bitmask</a>, con la que se inicia la fase Beta del servicio de Correo
 Cifrado: un sistema de correo electronico seguro que es a la vez facil de usar
 en el cliente, y fácil de proveer del lado del servidor. Bitmask es software
 libre, y la tecnologia subyacente esta basada en estandares solidos de cifrado

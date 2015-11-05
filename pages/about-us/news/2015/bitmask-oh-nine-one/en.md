@@ -10,11 +10,13 @@ At a time when online surveillance by <a
 href='http://boingboing.net/tag/hacking-team'>corporate</a> and <a
 href="https://boingboing.net/2015/11/05/british-government-will-unsuc.html">government
 powers is mainstream</a> we need the ability to communicate without fear. We
-are happy to announce **Bitmask 0.9.1**, the Beta release of Bitmask Encrypted
-Email- a secure email application that is easy to use and easy to provide.
-Bitmask is 100% free/libre software and uses the gold standard of encryption
-technology - GPG end to end public key encryption. **Now we need your help to
-test this beta release** so we can make it ready for wide spread use.
+are happy to announce <a
+href="https://github.com/ivanalejandro0/bitmask_client/blob/release/0.9.1/CHANGELOG.rst">Bitmask
+0.9.1</a>, the Beta release of Bitmask Encrypted Email- a secure email
+application that is easy to use and easy to provide.  Bitmask is 100%
+free/libre software and uses the gold standard of encryption technology - GPG
+end to end public key encryption. **Now we need your help to test this beta
+release** so we can make it ready for wide spread use.
 
 If you are a linux user, follow the steps below. (Mac and windows users, we're
 coming at you real soon.)
