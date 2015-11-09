@@ -7,6 +7,7 @@ General
 =======
 
 * Please increase verbosity when debugging / filing issues in our issue tracker. You can do this with adding i.e. `-v 5` after the `leap` cmd, i.e. `leap -v 2 deploy`.
+* We use the `example.org` domain for documentation purposes here, please replace it with the you domain.
 
 Webapp
 ======
@@ -18,6 +19,7 @@ Places to look for errors
 * `/srv/leap/webapp/log/production.log`
 * `/var/log/syslog` (watch out for stunnel issues)
 * `/var/log/leap/*`
+
 
 Is haproxy ok ?
 ---------------
@@ -59,13 +61,21 @@ Check couchdb acl as unpriviledged user
     curl -s --netrc-file /etc/couchdb/couchdb-webapp.netrc -X GET "http://127.0.0.1:4096/_all_dbs"
 
 
+All URLs accessible ?
+---------------------
+
+* https://example.org
+* https://api.example.org:4430/provider.json
+* https://example.org/ca.crt
+
+
 Check client config files
 -------------------------
 
-    https://example.net/provider.json
-    https://example.net/1/config/smtp-service.json
-    https://example.net/1/config/soledad-service.json
-    https://example.net/1/config/eip-service.json
+* https://example.net/provider.json
+* https://example.net/1/config/smtp-service.json
+* https://example.net/1/config/soledad-service.json
+* https://example.net/1/config/eip-service.json
 
 
 Soledad
