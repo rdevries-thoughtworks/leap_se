@@ -267,6 +267,12 @@ To target only particular environment, modify instead `common.ENV.json`, where E
 
 See https://github.com/leapcode/leap_web/blob/develop/doc/DEVELOP.md for notes on getting started hacking on leap_web.
 
+Maintenance mode
+------------------
+
+You can put the webapp into maintainance mode by simply dropping a html file to `/srv/leap/webapp/public/system/maintainance.html`.
+
+
 Known problems
 ---------------------------
 
