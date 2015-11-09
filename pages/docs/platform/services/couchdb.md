@@ -26,8 +26,18 @@ If you add a node, or remove one node from the cluster,
 
 . make sure you have a backup of all DBs !
 
-    /srv/leap/couchdb/scripts/couchdb_dumpall.sh
+. put the webapp into [maintenance mode](https://leap.se/en/docs/platform/services/webapp#maintenance-mode)
+. Stop all services that access the database:
 
+  * leap-mx
+  * postfix
+  * soledad-server
+  * nickserver
+
+. dump the dbs:
+
+    cd /srv/leap/couchdb/scripts
+    time ./couchdb_dumpall.sh
 
 . delete all dbs
 . shut down old node
@@ -53,7 +63,52 @@ If you add a node, or remove one node from the cluster,
 
 . restore the backup
 
-     /srv/leap/couchdb/scripts/couchdb_restoreall.sh
+    cd /srv/leap/couchdb/scripts
+    time ./couchdb_restoreall.sh
+
+
+### Migrating from bigcouch to plain couchdb
+
+. make sure you have a backup of all DBs !
+
+. put the webapp into [maintenance mode](https://leap.se/en/docs/platform/services/webapp#maintenance-mode)
+. Stop all services that access the database:
+
+  * leap-mx
+  * postfix
+  * soledad-server
+  * nickserver
+
+. dump the dbs:
+
+    cd /srv/leap/couchdb/scripts
+    time ./couchdb_dumpall.sh
+
+. stop bigcouch
+
+    /etc/init.d/bigcouch stop
+
+. remove bigcouch
+
+    apt-get remove bigcouch
+
+. configure couch node to use plain couchdb instead of bigcouch. See section "Use plain couchdb instead of bigcouch" below for details.
+. deploy to all couch nodes
+
+    leap deploy development +couchdb
+
+. restore the backup
+
+    cd /srv/leap/couchdb/scripts
+    time ./couchdb_restoreall.sh
+
+. start services again that were stopped in the beginning
+
+. check if everything is working, including running the test on your deployment machine:
+
+    leap test
+
+. Remove old bigcouch data dir `/opt` after you double checked everything is in place
 
 
 ### Re-enabling blocked account
@@ -85,4 +140,13 @@ When a user account gets destroyed from the webapp, there's still a leftover doc
 Beware that this returns the uncompacted disk size (see http://wiki.apache.org/couchdb/Compaction)
 
     echo "`curl --netrc -s -X GET 'http://127.0.0.1:5984/user-dcd6492d74b90967b6b874100b7dbfcf'|json_pp|grep disk_size|cut -d: -f 2`/1024"|bc
+
+## Use plain couchdb instead of bigcouch
+
+Use this in your couchdb node config:
+
+    "couch": {
+      "master": true,
+      "pwhash_alg": "pbkdf2"
+    }
 
