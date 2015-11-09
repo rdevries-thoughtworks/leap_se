@@ -303,7 +303,7 @@ Install vagrant-libvirt plugin and add box
     sudo apt-get install ruby-dev libxslt-dev libxml2-dev libvirt-dev
     vagrant plugin install vagrant-libvirt
     vagrant plugin install sahara
-    vagrant box add leap-wheezy https://downloads.leap.se/platform/vagrant/libvirt/leap-wheezy.box --provider libvirt
+    vagrant box add leap/wheezy --provider libvirt
 
 Remove Virtualbox
 -----------------
