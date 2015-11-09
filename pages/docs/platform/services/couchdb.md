@@ -143,10 +143,25 @@ Beware that this returns the uncompacted disk size (see http://wiki.apache.org/c
 
 ## Use plain couchdb instead of bigcouch
 
+Be aware that latest stable couchdb 1.6 cannot be clustered like bigcouch, so you can use this only if you have a single couchdb node.
+
 Use this in your couchdb node config:
 
     "couch": {
       "master": true,
       "pwhash_alg": "pbkdf2"
     }
+
+Local couch data dumps
+======================
+
+You can let one or more nodes do a nightly couchdb data dump adding this to your node config:
+
+    "couch": {
+      "backup": true
+    }
+
+Data will get dumped to `/var/backups/couchdb`.
+
+Be aware that this will gather all data possibly shared over multiple nodes on one node.
 
