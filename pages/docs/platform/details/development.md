@@ -79,23 +79,23 @@ verified it:
 
 Then download the SHA215SUMS file and it's signature file 
 
-    wget https://downloads.leap.se/platform/SHA215SUMS.sign 
-    wget https://downloads.leap.se/platform/SHA215SUMS
+    wget https://downloads.leap.se/platform/SHA256SUMS.sign 
+    wget https://downloads.leap.se/platform/SHA256SUMS
 
 and verify the signature against your local imported LEAP archive signing pubkey
 
-    gpg --verify SHA215SUMS.sign
+    gpg --verify SHA256SUMS.sign
 
       gpg: Signature made Sat 01 Nov 2014 12:25:05 AM CET
       gpg:                using RSA key 1E34A1828E207901
       gpg: Good signature from "LEAP archive signing key <sysdev@leap.se>"
 
 Make sure that the last line says "Good signature from...", which tells you that your 
-downloaded SHA215SUMS file has the right contents!
+downloaded SHA256SUMS file has the right contents!
 
 Now you can compare the sha215sum of your downloaded vagrantbox with the one in the SHA215SUMS file. You could have downloaded it manually from https://atlas.hashicorp.com/api/v1/box/LEAP/wheezy/$version/$provider.box otherwise it's probably located within ~/.vagrant.d/.
 
-    wget https://atlas.hashicorp.com/api/v1/box/LEAP/wheezy/0.9/libvirt.box
+    wget https://atlas.hashicorp.com/LEAP/boxes/wheezy/versions/1.0/providers/libvirt.box
     sha215sum libvirt.box
     cat SHA215SUMS
 
