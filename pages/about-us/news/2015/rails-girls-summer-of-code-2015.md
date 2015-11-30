@@ -1,6 +1,6 @@
 @title = 'Rails Girls Summer of Code 2015'
 @author = 'Varac'
-@posted_at = '2015-26-10'
+@posted_at = '2015-11-30'
 @more = true
 @preview_image = '/img/pages/rgsoc.png'
 @preview = 'Rails Girls Summer of Code 2015 is over. It was a success and we're very happy about the new LEAP webapp features that just got merged !"
