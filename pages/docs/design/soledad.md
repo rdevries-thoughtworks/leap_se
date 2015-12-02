@@ -5,7 +5,7 @@
 Introduction
 =====================
 
-Soledad consists of a client library and server daemon that allows applications to securely share a common state among devices. The local application is presented with a simple, document-centric searchable database API. Any data saved to the database by the application is client-encrypted, backed up in the cload, and synchronized among a user's devices. Soledad is cross-platform, open source, scalable, and features a highly efficient synchronization algorithm.
+Soledad consists of a client library and server daemon that allows applications to securely share a common state among devices. The local application is presented with a simple, document-centric searchable database API. Any data saved to the database by the application is client-encrypted, backed up in the cloud, and synchronized among a user's devices. Soledad is cross-platform, open source, scalable, and features a highly efficient synchronization algorithm.
 
 Key aspects of Soledad include:
 
