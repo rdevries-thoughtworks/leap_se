@@ -8,6 +8,7 @@ language negotiation. A static website generator called `amber` is used to
 render the source files into html files.
 
 To submit changes, please fork this repo and issue pull requests on github.
+Content and color changes are in Pages, layout and menu in the Amber subdirectory.
 
 For more information how to use `amber`, see:
 https://github.com/leapcode/amber.
