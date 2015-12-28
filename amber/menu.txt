@@ -43,6 +43,7 @@ docs
       quick-start
       single-node-vpn
       single-node-email
+      vagrant
     services
       couchdb
       openvpn
