@@ -6,9 +6,20 @@ Use Vagrant to install the LEAP platform
 ========================================
 
 There are two ways you can setup leap platform using vagrant.
+If you aim at getting the platform running as quick as possible,
+you should follow the second option (`2. Using the Vagrantfile provided by Leap Platform`).
 
-Using the Vagrantfile provided by Leap Platform
------------------------------------------------
+1. Use the leap_cli vagrant integration
+=======================================
+
+Install `leap_cli` and LEAP Platform on your host, configure a provider from scratch and use the `leap local` commands to manage your vagrant node(s).
+
+See [Development Environment](https://leap.se/en/docs/platform/details/development) how to use the `leap_cli` vagrant
+integration and follow the [Single Node Email Tutorial](https://leap.se/en/docs/platform/tutorials/single-node-email) afterwards how
+to setup a single node email server.
+
+2. Using the Vagrantfile provided by Leap Platform
+==================================================
 
 This is by far the easiest way. It will install a single node mail server in the default
 configuration with one single command.
@@ -95,14 +106,5 @@ There are 2 users preconfigured:
 login as `testadmin` to access the webapp with admin priviledges.
 
 
-
-Use the leap_cli vagrant integration
-------------------------------------
-
-Install leap_cli and leap_platform on your host, configure a provider from scratch and use the `leap local` commands to manage your vagrant node(s).
-
-See https://leap.se/en/docs/platform/development how to use the leap_cli vagrant
-integration and https://leap.se/en/docs/platform/tutorials/single-node-email how
-to setup a single node mail server.
 
 
