@@ -141,7 +141,7 @@ Create a temporary cert for your main domain (you should replace with a real com
 Setup the provider's node and services
 --------------------------------------
 
-A "node" is a server that is part of your infrastructure. Every node can have one or more services associated with it. Some nodes are "local" and used only for testing, see [Development](development) for more information.
+A "node" is a server that is part of your infrastructure. Every node can have one or more services associated with it. Some nodes are "local" and used only for testing, see [[ development -> platform/details/development]] for more information.
 
 Create a node, with `all the services needed for Email: "couchdb", "mx", "soledad" and "webapp"`
 
