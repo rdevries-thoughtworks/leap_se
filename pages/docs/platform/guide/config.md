@@ -83,7 +83,7 @@ Vagrant options:
 
 * `@vagrant_network`. Allows you to override the default network used for local nodes. It should include a netmask like `@vagrant_network = '10.0.0.0/24'`.
 * `@custom_vagrant_vm_line`. Insert arbitrary text into the auto-generated Vagrantfile. For example, `@custom_vagrant_vm_line = "config.vm.boot_mode = :gui"`.
-* `@vagrant_basebox` allows specifying a different basebox as the default one. Of example, `@vagrant_basebox = "LEAP/wheezy"`
+* `@vagrant_basebox` allows specifying a different basebox as the default one. For example, `@vagrant_basebox = "LEAP/wheezy"`
 
 Logging options:
 
