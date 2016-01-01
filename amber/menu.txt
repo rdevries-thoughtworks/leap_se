@@ -60,7 +60,6 @@ docs
     details
       faq
       ports
-      couchdb
       development
       under-the-hood
   client
