@@ -17,4 +17,4 @@ The LEAP email system has several security advantages over typical encryption ap
 
 In addition to encrypted email, Bitmask offers automatically self-configuring encrypted internet proxy (aka VPN). Most VPN technology can be a pain to configure correctly without introducing vulnerabilities of DNS leakage, IPv6 leakage, and failing into an open, unencrypted state. The goals for LEAP’s VPN service are to make it so easy to use that people will want to keep it on all the time, and to make it more secure than most other VPN services.
 
-For more information, see our [[documentation => docs]], [[talk slides => https://leap.se/slides/]], or [[email overview => email]].
+For more information, see our [[documentation => docs]], [[talk slides => https://leap.se/slides/]], or [[bitmask.net => https://bitmask.net]].
