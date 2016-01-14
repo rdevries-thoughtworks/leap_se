@@ -402,3 +402,35 @@ The idea is to allow or require tokens in the signup process. These tokens might
 * Contact: azul, jessi, elijah
 * Difficulty: Easy
 * Skills: Ruby and Javascript
+
+### Add a status system
+
+Having a simple way for users to be able to visit the website to see if there are any system problems they should be aware of would be very useful. Exposing to the administrators a way to add a system status notification, and set a critical priority level and then the newest message would be displayed on the top of a status page, using different colors for the severity levels. 
+
+* Contact: guido, azul, elijah, micah
+* Difficulty: Easy
+* Skills: Rails
+
+### Internal knowledge base
+
+When a user reports a problem, suggest related help pages that could solve their problem. Many of the more useful help ticket systems out there will do this, its a great way to cut down on requests for help that are handled by the documentation. If the suggested help pages could be additionally triggered by some tags, enabling the provider to hint the suggestions based on their experiences would be very helpful.
+
+* Contact: elijah, azul
+* Difficulty: Easy to medium
+* Skills: Ruby and Javascript
+
+### Dynamic form validation
+
+Any form element should have dynamic feedback for the user. For example, if you tried to add the username "hello im an username with spaces", a message should come up on the page that says that you cannot have a username with spaces. 
+
+* Contact: elijah, azul
+* Difficulty: Easy
+* Skills: Ruby and Javascript
+
+### Help ticket routing
+
+If there is a problem with the bitmask application itself, it doesn't make sense to send that to the provider, it should be sent to the bitmask development team. This this could be something that could be changed for different classes of help tickets, and  something that links to other ticketing systems.
+
+* Contact: elijah, azul
+* Difficulty: Medium
+* Skills: Ruby
