@@ -61,6 +61,17 @@ Set the `invite_code` option to `true` in `services/webapp.json`:
       }
     }
 
+At the moment, you need to use the develop branch of the webapp to use this feature. Add this to your webapp node config file:
+
+    "sources": {
+      "webapp": {
+        "type": "git",
+        "source": "https://leap.se/git/leap_web",
+        "revision": "origin/develop"
+      }
+    }
+
+
 Run `leap deploy` to enable the option.
 
 You can then generate invite codes by running the following rake task from the webapp directory:
