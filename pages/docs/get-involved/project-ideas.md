@@ -372,13 +372,6 @@ Another possibility is something like, [PSELS](http://www.ncsa.illinois.edu/peop
 LEAP Webapp
 ============================
 
-### Add support for bitcoin payments to the billing module
-
-The webapp has a payment infrastructure setup (Braintree), but it only supports credit card and bank wire payments. The webapp should be extended to also accept payments from bitcoin.
-
-* Contact: azul, elijah, jessi
-* Difficulty: Easy
-
 ### Add support for newsletter
 
 Sometimes simple push notifications aren't enough, you may want to mail a newsletter to your users or more descriptive notifications, it should be possible for an administrator of a provider to use the webapp to quickly send mail to all its users.
@@ -394,14 +387,6 @@ Description: Once the Soledad server quota enforcement code is in place, it woul
 * Contact: azul, elijah
 * Difficulty: Easy
 * Skills: Ruby
-
-### Add support for token-based user registration
-
-The idea is to allow or require tokens in the signup process. These tokens might allow to claim a particular username, give you a credit when you sign up, allow you to sign up, etc.
-
-* Contact: azul, jessi, elijah
-* Difficulty: Easy
-* Skills: Ruby and Javascript
 
 ### Add a status system
 
