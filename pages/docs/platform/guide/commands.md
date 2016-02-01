@@ -147,15 +147,16 @@ Default Value: None
 Override the default SSH port.
 Default Value: None
 
-* `--tags TAG[,TAG]`
-Specify tags to pass through to puppet (overriding the default).
-Default Value: leap_base,leap_service
-
 * `--dev`
 Development mode: don't run 'git submodule update' before deploy.
 
 * `--fast`
 Makes the deploy command faster by skipping some slow steps. A "fast" deploy can be used safely if you recently completed a normal deploy.
+See [[ Under the hood -> platform/details/under-the-hood#tags]] for more details.
+
+* `--tags TAG[,TAG]`
+Specify tags to pass through to puppet (overriding the default). See [[ Under the hood -> platform/details/under-the-hood#tags]] for more details.
+Default Value: leap_base,leap_service
 
 * `--force`
 Deploy even if there is a lockfile.
