@@ -3,9 +3,8 @@
 @posted_at = '2015-11-30'
 @more = true
 @preview_image = '/img/pages/rgsoc.png'
-@preview = "Rails Girls Summer of Code 2015 is over. It was a success and we're very happy about the new LEAP webapp features that just got merged !"
 
-We had two teams this year working on two major feature for the [LEAP webapp](https://leap.se/en/docs/platform/services/webapp). The webapp is using ruby on rails, so we applied with it to this years RGSOC as an organisation.
+Rails Girls Summer of Code 2015 is over. It was a success and we're very happy about the new LEAP webapp features that just got merged! We had two teams this year working on two major feature for the [LEAP webapp](https://leap.se/en/docs/platform/services/webapp). The webapp is using ruby on rails, so we applied with it to this years RGSOC as an organisation.
 
 # Bitcoin Payments
 
