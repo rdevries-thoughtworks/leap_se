@@ -28,7 +28,7 @@ namespace :amber do
   task :rebuild do
     on roles(:all) do |host|
       within release_path do
-        execute "~/amber/bin/amber", 'rebuild'
+        execute :amber, 'rebuild'
       end
     end
   end
