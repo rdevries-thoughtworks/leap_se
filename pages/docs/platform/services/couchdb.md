@@ -72,54 +72,56 @@ If you add a node, or remove one node from the cluster,
 At the end of this process, you will have just *one* couchdb server. If you had a bigcouch cluster before, you will be removing all but one of those machines to consolidate them into
 one couchdb machine.
 
-* if you have multiple nodes with the couchdb service on them, pick one of them to be your couchdb server, and remove the service from the others. If these machines were only doing couchdb, you can remove the nodes completely with `leap node rm <nodename>` and then you can decommission the servers
+. if you have multiple nodes with the couchdb service on them, pick one of them to be your couchdb server, and remove the service from the others. If these machines were only doing couchdb, you can remove the nodes completely with `leap node rm <nodename>` and then you can decommission the servers
 
-* put the webapp into [maintenance mode](https://leap.se/en/docs/platform/services/webapp#maintenance-mode)
+. put the webapp into [maintenance mode](https://leap.se/en/docs/platform/services/webapp#maintenance-mode)
 
-* connect to the machine you chose in step one and then disable access to the database and stop services that access the database, you may not have all these services on this
+. connect to the machine you chose in step one and then disable access to the database and stop services that access the database, you may not have all these services on this
 node, so if some of the following do not work, that isn't a problem:
+
     leap ssh couchdbnode
     /etc/init.d/stunnel4 stop
     /etc/init.d/soledad-server stop
     /etc/init.d/nickserver stop
     /etc/init.d/postfix stop
 
-* then backup all of the databases, this can take some time and will place several hundred megabytes of data into /var/backups/couchdb. The size and time depends on how many users there are on your system. For example, 15k users took approximately 25 minutes and 308M of space:
+. then backup all of the databases, this can take some time and will place several hundred megabytes of data into /var/backups/couchdb. The size and time depends on how many users there are on your system. For example, 15k users took approximately 25 minutes and 308M of space:
 
     cd /srv/leap/couchdb/scripts
     time ./couchdb_dumpall.sh
 
-* stop bigcouch:
+. stop bigcouch:
 
     /etc/init.d/bigcouch stop
     pkill epmd
 
-* remove bigcouch:
+. remove bigcouch:
 
     apt-get remove bigcouch
 
-* configure your couch node to use plain couchdb instead of bigcouch. See section "Use plain couchdb instead of bigcouch" below for details.
+. configure your couch node to use plain couchdb instead of bigcouch. See section "Use plain couchdb instead of bigcouch" below for details.
 
-* deploy to the couch node:
+. deploy to the couch node:
 
     leap deploy couchdb
 
-* restore the backup, this will take approximately the same amount of time as the backup took above:
+. restore the backup, this will take approximately the same amount of time as the backup took above:
 
     cd /srv/leap/couchdb/scripts
     time ./couchdb_restoreall.sh
 
-* start services again that were stopped in the beginning:
+. start services again that were stopped in the beginning:
+
     /etc/init.d/stunnel4 start
     /etc/init.d/soledad-server start
     /etc/init.d/nickserver start
     /etc/init.d/postfix start
 
-* check if everything is working, including running the test on your deployment machine:
+. check if everything is working, including running the test on your deployment machine:
 
     leap test
 
-* Remove old bigcouch data dir `/opt` after you double checked everything is in place
+. Remove old bigcouch data dir `/opt` after you double checked everything is in place
 
 
 ### Re-enabling blocked account
