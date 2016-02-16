@@ -76,14 +76,19 @@ one couchdb machine.
 
 . put the webapp into [maintenance mode](https://leap.se/en/docs/platform/services/webapp#maintenance-mode)
 
+    leap ssh webap
+      /etc/init.d/nickserver stop
+
+
 . connect to the machine you chose in step one and then disable access to the database and stop services that access the database, you may not have all these services on this
 node, so if some of the following do not work, that isn't a problem:
 
-    leap ssh couchdbnode
-    /etc/init.d/stunnel4 stop
-    /etc/init.d/soledad-server stop
-    /etc/init.d/nickserver stop
-    /etc/init.d/postfix stop
+    leap ssh soledad-nodes
+      /etc/init.d/soledad-server stop
+
+    leap ssh mx-node
+      /etc/init.d/postfix stop
+      /etc/init.d/leap-mx stop
 
 . then backup all of the databases, this can take some time and will place several hundred megabytes of data into /var/backups/couchdb. The size and time depends on how many users there are on your system. For example, 15k users took approximately 25 minutes and 308M of space:
 
