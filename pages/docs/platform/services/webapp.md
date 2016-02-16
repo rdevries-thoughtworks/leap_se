@@ -281,7 +281,7 @@ See https://github.com/leapcode/leap_web/blob/develop/doc/DEVELOP.md for notes o
 Maintenance mode
 ------------------
 
-You can put the webapp into maintainance mode by simply dropping a html file to `/srv/leap/webapp/public/system/maintainance.html`.
+You can put the webapp into maintenance mode by simply dropping a html file to `/srv/leap/webapp/public/system/maintenance.html`.
 
 
 Known problems
