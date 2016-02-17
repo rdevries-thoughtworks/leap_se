@@ -69,79 +69,110 @@ If you add a node, or remove one node from the cluster,
 
 ### Migrating from bigcouch to plain couchdb
 
-At the end of this process, you will have just *one* couchdb server. If you had a bigcouch cluster before, you will be removing all but one of those machines to consolidate them into
-one couchdb machine.
+At the end of this process, you will have just *one* couchdb server. If you had a bigcouch cluster before, you will be removing all but one of those machines to consolidate them into one couchdb machine.
 
-. if you have multiple nodes with the couchdb service on them, pick one of them to be your couchdb server, and remove the service from the others. If these machines were only doing couchdb, you can remove the nodes completely with `leap node rm <nodename>` and then you can decommission the servers
+1. if you have multiple nodes with the couchdb service on them, pick one of them to be your couchdb server, and remove the service from the others. If these machines were only doing couchdb, you can remove the nodes completely with `leap node rm <nodename>` and then you can decommission the servers
 
-. put the webapp into [maintenance mode](https://leap.se/en/docs/platform/services/webapp#maintenance-mode)
+1. put the webapp into [[maintenance mode => webapp#maintenance-mode]]
 
-    leap ssh webap
-      /etc/init.d/nickserver stop
+1. turn off daemons that access the database. For example:
 
+    ```
+    workstation$ leap ssh soledad-nodes
+    server# /etc/init.d/soledad-server stop
 
-. connect to the machine you chose in step one and then disable access to the database and stop services that access the database, you may not have all these services on this
-node, so if some of the following do not work, that isn't a problem:
+    workstation$ leap ssh mx-node
+    server# /etc/init.d/postfix stop
+    server# /etc/init.d/leap-mx stop
 
-    leap ssh soledad-nodes
-      /etc/init.d/soledad-server stop
+    workstation$ leap ssh webapp
+    server# /etc/init.d/nickserver stop
+    ```
 
-    leap ssh mx-node
-      /etc/init.d/postfix stop
-      /etc/init.d/leap-mx stop
+    Alternately, you can create a temporary firewall rule to block access (run on couchdb server):
 
-. then backup all of the databases, this can take some time and will place several hundred megabytes of data into /var/backups/couchdb. The size and time depends on how many users there are on your system. For example, 15k users took approximately 25 minutes and 308M of space:
+    ```
+    server# iptables -A INPUT -p tcp --dport 5984 --jump REJECT
+    ```
 
-    cd /srv/leap/couchdb/scripts
-    time ./couchdb_dumpall.sh
+1. then backup all of the databases, this can take some time and will place several hundred megabytes of data into /var/backups/couchdb. The size and time depends on how many users there are on your system. For example, 15k users took approximately 25 minutes and 308M of space:
 
-. stop bigcouch:
+    ```
+    server# cd /srv/leap/couchdb/scripts
+    server# time ./couchdb_dumpall.sh
+    ```
 
-    /etc/init.d/bigcouch stop
-    pkill epmd
+1. stop bigcouch:
 
-. remove bigcouch:
+    ```
+    server# /etc/init.d/bigcouch stop
+    server# pkill epmd
+    ```
 
-    apt-get remove bigcouch
+1. remove bigcouch:
 
-. configure your couch node to use plain couchdb instead of bigcouch. See section "Use plain couchdb instead of bigcouch" below for details.
+    ```
+    server# apt-get remove bigcouch
+    ```
 
-. deploy to the couch node:
+1. configure your couch node to use plain couchdb instead of bigcouch. See section "Use plain couchdb instead of bigcouch" below for details.
 
-    leap deploy couchdb
+1. deploy to the couch node:
 
-. restore the backup, this will take approximately the same amount of time as the backup took above:
+    ```
+    workstation$ leap deploy couchdb
+    ```
 
-    cd /srv/leap/couchdb/scripts
-    time ./couchdb_restoreall.sh
+1. restore the backup, this will take approximately the same amount of time as the backup took above:
 
-. start services again that were stopped in the beginning:
+    ```
+    server# cd /srv/leap/couchdb/scripts
+    server# time ./couchdb_restoreall.sh
+    ```
 
-    /etc/init.d/stunnel4 start
-    /etc/init.d/soledad-server start
-    /etc/init.d/nickserver start
-    /etc/init.d/postfix start
+1. start services again that were stopped in the beginning:
 
-. check if everything is working, including running the test on your deployment machine:
+    ```
+    workstation$ leap ssh soledad-nodes
+    server# /etc/init.d/soledad-server start
 
-    leap test
+    workstation$ leap ssh mx-node
+    server# /etc/init.d/postfix start
+    server# /etc/init.d/leap-mx start
 
-. Remove old bigcouch data dir `/opt` after you double checked everything is in place
+    workstation$ leap ssh webapp
+    server# /etc/init.d/nickserver start
+    ```
 
+    Or, alternately, if you set up the firewall rule instead, now remove it:
+
+    ```
+    server# iptables -D INPUT -p tcp --dport 5984 --jump REJECT
+    ```
+
+1. check if everything is working, including running the test on your deployment machine:
+
+    ```
+    workstation$ leap test
+    ```
+
+1. Remove old bigcouch data dir `/opt` after you double checked everything is in place
+
+1. Relax, enjoy a refreshing beverage.
 
 ### Re-enabling blocked account
 
-When a user account gets destroyed from the webapp, there's still a leftover doc in the identities db so other ppl can't claim that account without admin's intervention. Here's how you delete that doc and therefore enable registration for that particular account again:
+When a user account gets destroyed from the webapp, there's still a leftover doc in the identities db so other ppl can't claim that account without admin's intervention. You can remove this username reservation through the webapp.
 
-. grep the identities db for the email address:
+However, here is how you could do it manually, if you wanted to:
+
+grep the identities db for the email address:
 
     curl -s --netrc-file /etc/couchdb/couchdb.netrc -X GET http://127.0.0.1:5984/identities/_all_docs?include_docs=true|grep test_127@bitmask.net
 
-
-. lookup "id" and "rev" to delete the doc:
+lookup "id" and "rev" to delete the doc:
 
     curl -s --netrc-file /etc/couchdb/couchdb.netrc -X DELETE 'http://127.0.0.1:5984/identities/b25cf10f935b58088f0d547fca823265?rev=2-715a9beba597a2ab01851676f12c3e4a'
-
 
 ### How to find out which userstore belongs to which identity ?
 

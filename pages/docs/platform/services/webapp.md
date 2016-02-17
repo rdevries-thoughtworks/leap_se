@@ -281,8 +281,10 @@ See https://github.com/leapcode/leap_web/blob/develop/doc/DEVELOP.md for notes o
 Maintenance mode
 ------------------
 
-You can put the webapp into maintenance mode by simply dropping a html file to `/srv/leap/webapp/public/system/maintenance.html`.
+You can put the webapp into maintenance mode by simply dropping a html file to `/srv/leap/webapp/public/system/maintenance.html`. For example:
 
+    workstation$ leap ssh webappnode
+    server# echo "Temporarily down for maintenance. We will be back soon." > /srv/leap/webapp/public/system/maintenance.html
 
 Known problems
 ---------------------------
