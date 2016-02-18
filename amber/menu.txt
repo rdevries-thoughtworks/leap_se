@@ -44,6 +44,7 @@ docs
       quick-start
       single-node-vpn
       single-node-email
+      upgrading
       vagrant
     services
       couchdb
@@ -55,13 +56,13 @@ docs
       webapp
     troubleshooting
       tests
-      where-to-look
       known-issues
       vagrant
+      where-to-look
     details
       faq
-      ports
       development
+      ports
       under-the-hood
   client
     user-install
