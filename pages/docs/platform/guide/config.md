@@ -101,7 +101,7 @@ All configuration files, other than `Leapfile`, are in the JSON format. For exam
       "key2": "value2"
     }
 
-Keys should match `/[a-z0-9_]/`
+Keys should match `/[a-z0-9_]/` and must be in double quotes.
 
 Unlike traditional JSON, comments are allowed. If the first non-whitespace characters are `//` then the line is treated as a comment.
 
@@ -172,6 +172,71 @@ This node will have hostname "willamette" and it will inherit from the following
 The `provider_base` directory is under the `leap_platform` specified in the file `Leapfile`.
 
 To see all the variables a node has inherited, you could run `leap inspect willamette`.
+
+### Inheritance rules
+
+Suppose you have a node configuration `mynode.json`:
+
+    {
+      "tags": "production",
+      "simple_value": 100,
+      "replaced_array": ["dolphin", "kangaroo"],
+      "+add_array": ["red", "black"],
+      "-subtract_array": ["bitter"],
+      "converted_to_array": "not_array_element",
+      "!override": ["insist on this value"],
+      "hash": {
+        "key1": 1,
+        "key2": 2
+      }
+    }
+
+And a file `tags/production.json`:
+
+    {
+      "simple_value": 99999,
+      "replaced_array": ["zebra"],
+      "add_array": ["green],
+      "subtract_array": ["bitter", "sweet", "salty"],
+      "converted_to_array": ["array_element"],
+      "override": "this value will be overridden",
+      "hash": {
+        "key1": "one"
+      }
+    }
+
+In this scenario, `mynode.json` will inherit from `production.json`. The output of this inheritance will be:
+
+    {
+      "tags": "production",
+      "simple_value": 100,
+      "replaced_array": ["dolphin", "kangaroo"],
+      "add_array": ["red", "black", "green"],
+      "subtract_array": ["sweet", "salty"],
+      "converted_to_array": ["not_array_element", "array_element"],
+      "override": ["insist on this value"],
+      "hash": {
+        "key1": 1,
+        "key2": 2
+      }
+
+The rules for inheritance (where 'old' refers to the parent, and 'new' refers to the child):
+
+* Simple values (strings, numbers, boolean):
+  * Replace the old value with the new value.
+* Array values:
+  * Two arrays: replace the old array with the new array.
+  * One array and one simple value: add the simple value to the array.
+  * If property name is prefixed with "+": merge the old and new arrays.
+  * If property name is prefixed with "-": subtract new array from old array.
+* Hash values:
+  * Hashes are always merged (the result includes the keys of both hashes). If there is a key in common, the new one overrides the old one.
+* Mismatch:
+  * Although you can mix arrays and simple values, you cannot mix arrays with hashes or hashes with simple values. If you attempt to do so, it will fail to compile and give you an error message.
+* Override:
+  * If property name is prefixed with "!": then ensure that new value is always used, regardless of old value. In this case, the override takes precedence over type checking, so you will never get a type mismatch.
+
+NOTE: special property name prefixes, like "+", "-", or "!", are not included in the property name. These prefixes determine the merge strategy, but are stripped out when compiling the resulting JSON file.
 
 Common configuration options
 ----------------------------------------
