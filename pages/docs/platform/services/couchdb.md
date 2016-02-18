@@ -95,10 +95,11 @@ At the end of this process, you will have just *one* couchdb server. If you had 
     server# iptables -A INPUT -p tcp --dport 5984 --jump REJECT
     ```
 
-1. then backup all of the databases, this can take some time and will place several hundred megabytes of data into /var/backups/couchdb. The size and time depends on how many users there are on your system. For example, 15k users took approximately 25 minutes and 308M of space:
+1. remove orphaned databases and do a backup of all remaining, active databases. This can take some time and will place several hundred megabytes of data into /var/backups/couchdb. The size and time depends on how many users there are on your system. For example, 15k users took approximately 25 minutes and 308M of space:
 
     ```
     server# cd /srv/leap/couchdb/scripts
+    server# ./cleanup-user-dbs
     server# time ./couchdb_dumpall.sh
     ```
 
