@@ -56,7 +56,7 @@ If you add a node, or remove one node from the cluster,
 
     leap deploy development +couchdb
 
-. most likely, deploy will fail because bigcouch will complain about not all nodes beeing connected. Lets the deploy finish, restart the bigcouch service on all nodes and re-deploy:
+. most likely, deploy will fail because bigcouch will complain about not all nodes beeing connected. Let the deploy finish, restart the bigcouch service on all nodes and re-deploy:
 
     /etc/init.d/bigcouch restart
 
@@ -163,7 +163,7 @@ At the end of this process, you will have just *one* couchdb server. If you had 
 
 ### Re-enabling blocked account
 
-When a user account gets destroyed from the webapp, there's still a leftover doc in the identities db so other ppl can't claim that account without admin's intervention. You can remove this username reservation through the webapp.
+When a user account gets destroyed from the webapp, there's still a leftover doc in the identities db so other people can't claim that account without an admin's intervention. You can remove this username reservation through the webapp.
 
 However, here is how you could do it manually, if you wanted to:
 
@@ -175,7 +175,7 @@ lookup "id" and "rev" to delete the doc:
 
     curl -s --netrc-file /etc/couchdb/couchdb.netrc -X DELETE 'http://127.0.0.1:5984/identities/b25cf10f935b58088f0d547fca823265?rev=2-715a9beba597a2ab01851676f12c3e4a'
 
-### How to find out which userstore belongs to which identity ?
+### How to find out which userstore belongs to which identity?
 
     /usr/bin/curl -s --netrc-file /etc/couchdb/couchdb.netrc '127.0.0.1:5984/identities/_all_docs?include_docs=true' | grep testuser
 
