@@ -9,7 +9,7 @@ Its goal is to make it as painless as possible for sysadmins to deploy and maint
 
 * *Debian Servers*: Servers that you deploy to must be running Debian Wheezy, and no other distribution or version.
 * *Real or Paravirtualized Servers*: Servers must be real machines or paravirtualized VMs (e.g. KVM, Xen, OpenStack, AWS, Google Compute). OS level virtualization is not supported (e.g. OpenVZ, Linux-VServer, etc), nor are system emulators (VirtualBox, QEMU, etc).
-* *Your Machine*: You must have a Linux or Mac computer to deploy from (this can be a headless machine with no GUI). Windows is not supported (Cygwin would probably work, but is untested).
+* *Your Workstation*: You must have a Linux or Mac computer to deploy from (this can be a headless machine with no GUI). Windows is not supported (Cygwin would probably work, but is untested).
 * *Your Own Domain*: You must own a domain name. Before your provider can be put into production, you will need to make modifications to the DNS for the provider's domain.
 
 The LEAP Platform consists of three parts, detailed below:
@@ -32,7 +32,9 @@ LEAP's platform recipes are distributed as a git repository: `https://leap.se/gi
 The provider instance
 ---------------------
 
-A provider instance is a directory tree (typically tracked in git) containing all the configurations for a service provider's infrastructure. A provider instance primarily consists of:
+A provider instance is a directory tree (typically tracked in git) containing all the configurations for a service provider's infrastructure. A provider instance **lives on your workstation**, not on the server.
+
+A provider instance primarily consists of:
 
 * A pointer to the platform recipes.
 * A global configuration file for the provider.
@@ -49,13 +51,17 @@ A minimal provider instance directory looks like this:
         ├── files/              # keys, certificates, and other files.
         └── users/              # public key information for privileged sysadmins.
 
-
 A provider instance directory contains everything needed to manage all the servers that compose a provider's infrastructure. Because of this, any versioning tool and development work-flow can be used to manage your provider instance.
 
 The `leap` command line tool
 ----------------------------
 
-The `leap` [command line tool](commands) is used by sysadmins to manage everything about a service provider's infrastructure. Except when creating an new provider instance, `leap` is run from within the directory tree of a provider instance.
+The `leap` [command line tool](commands) is used by sysadmins to manage everything about a service provider's infrastructure.
+
+Keep these rules in mind:
+
+* `leap` is run on your workstation: The `leap` command is always run locally on your workstation, never on a server you are deploying to.
+* `leap` is run from within a provider instance: The `leap` command requires that the current working directory is a valid provider instance, except when running `leap new` to create a new provider instance.
 
 The `leap` command line has many capabilities, including:
 
@@ -75,19 +81,19 @@ The `leap` command line tool is distributed as a git repository: `https://leap.s
 
 Tip: With rubygems, you can always specify the gem version as the first argument to any executable installed by rubygems. For example:
 
-    sudo gem install leap_cli --version 1.6.2
     sudo gem install leap_cli --version 1.7.2
-    leap _1.6.2_ --version
-    => leap 1.6.2, ruby 2.1.2
+    sudo gem install leap_cli --version 1.8
     leap _1.7.2_ --version
     => leap 1.7.2, ruby 2.1.2
+    leap _1.8_ --version
+    => leap 1.8, ruby 2.1.2
 
 Getting started
 ----------------------------------
 
 We recommend reading the platform documentation in the following order:
 
-1. [Quick start tutorial](tutorials/quick-start).
-2. [Platform Guide](guide).
-3. [Configuration format](platform/config).
-4. The `leap` [command reference](platform/commands).
+1. [[Quick start tutorial => tutorials/quick-start]].
+2. [[Platform Guide => guide]].
+3. [[Configuration format => platform/config]].
+4. The `leap` [[command reference => platform/commands]].
