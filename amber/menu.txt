@@ -44,7 +44,6 @@ docs
       quick-start
       single-node-vpn
       single-node-email
-      upgrading
       vagrant
     services
       couchdb
