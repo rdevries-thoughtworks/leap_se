@@ -7,7 +7,7 @@ Its goal is to make it as painless as possible for sysadmins to deploy and maint
 
 **REQUIREMENTS** -- Before you begin, make sure you meet these requirements:
 
-* *Debian Servers*: Servers that you deploy to must be running Debian Wheezy, and no other distribution or version.
+* *Debian Servers*: Servers that you deploy to must be running **Debian Jessie**, and no other distribution or version.
 * *Real or Paravirtualized Servers*: Servers must be real machines or paravirtualized VMs (e.g. KVM, Xen, OpenStack, AWS, Google Compute). OS level virtualization is not supported (e.g. OpenVZ, Linux-VServer, etc), nor are system emulators (VirtualBox, QEMU, etc).
 * *Your Workstation*: You must have a Linux or Mac computer to deploy from (this can be a headless machine with no GUI). Windows is not supported (Cygwin would probably work, but is untested).
 * *Your Own Domain*: You must own a domain name. Before your provider can be put into production, you will need to make modifications to the DNS for the provider's domain.
@@ -69,31 +69,14 @@ The `leap` command line has many capabilities, including:
 * Manage keys and certificates.
 * Query information about the node configurations.
 
-Traditional system configuration automation systems, like [Puppet](https://puppetlabs.com/puppet/puppet-open-source/) or [Chef](http://www.opscode.com/chef/), deploy changes to servers using a pull method. Each server pulls a manifest from a central master server and uses this to alter the state of the server.
+Everything about your provider is managed by editing JSON configuration files and running `leap` commands.
 
-Instead, the `leap` tool uses a masterless push method: The sysadmin runs `leap deploy` from the provider instance directory on their desktop machine to push the changes out to every server (or a subset of servers). LEAP still uses Puppet, but there is no central master server that each node must pull from.
-
-One other significant difference between LEAP and typical system automation is how interactions among servers are handled. Rather than store a central database of information about each server that can be queried when a recipe is applied, the `leap` command compiles static representation of all the information a particular server will need in order to apply the recipes. In compiling this static representation, `leap` can use arbitrary programming logic to query and manipulate information about other servers.
-
-These two approaches, masterless push and pre-compiled static configuration, allow the sysadmin to manage a set of LEAP servers using traditional software development techniques of branching and merging, to more easily create local testing environments using virtual servers, and to deploy without the added complexity and failure potential of a master server.
-
-The `leap` command line tool is distributed as a git repository: `https://leap.se/git/leap_cli`. It can be installed with `sudo gem install leap_cli`.
-
-Tip: With rubygems, you can always specify the gem version as the first argument to any executable installed by rubygems. For example:
-
-    sudo gem install leap_cli --version 1.7.2
-    sudo gem install leap_cli --version 1.8
-    leap _1.7.2_ --version
-    => leap 1.7.2, ruby 2.1.2
-    leap _1.8_ --version
-    => leap 1.8, ruby 2.1.2
-
-Getting started
+What is next?
 ----------------------------------
 
 We recommend reading the platform documentation in the following order:
 
-1. [[Quick start tutorial => tutorials/quick-start]].
-2. [[Platform Guide => guide]].
-3. [[Configuration format => platform/config]].
-4. The `leap` [[command reference => platform/commands]].
+1. [[quick-start]]
+2. [[getting-started]]
+3. [[platform/guide]]
+

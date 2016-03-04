@@ -32,6 +32,7 @@ docs
     soledad
   platform
     guide
+      getting-started
       config
       nodes
       keys-and-certificates
@@ -58,7 +59,6 @@ docs
     troubleshooting
       tests
       known-issues
-      vagrant
       where-to-look
     details
       faq
