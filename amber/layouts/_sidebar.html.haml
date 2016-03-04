@@ -4,6 +4,15 @@
       %li{:class => "#{item[:active]} level#{item[:level]}"}
         %a{:href => item[:href], :class => ''}= item[:label]
 
+.sidebar-addendum
+  %br
+  %form#searchform(method="get" action="https://duckduckgo.com" onsubmit="document.forms.searchform.q.value = document.forms.searchform.query.value + ' site:leap.se'; true")
+    .input-group
+      %input.form-control(name="query" type="search")
+      .span.input-group-btn
+        %input.btn.btn-default(value="Search" type="submit")
+    %input(name="q" type="hidden")
+
 -# .sidebar-addendum
 -#   .locale-links
 -#     - available_languages.each do |name, code, url|
