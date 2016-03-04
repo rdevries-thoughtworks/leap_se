@@ -8,15 +8,15 @@ At any time, you can run troubleshooting tests on the nodes of your provider inf
 
 To run tests on FILTER node list:
 
-    leap test run FILTER
+    workstation$ leap test run FILTER
 
 For example, you can also test a single node (`leap test elephant`); test a specific environment (`leap test development`), or any tag (`leap test soledad`).
 
 Alternately, you can run test on all nodes (probably only useful if you have pinned the environment):
 
-    leap test
+    workstation$ leap test
 
-The tests that are performed are located in the platform under the tests directory. 
+The tests that are performed are located in the platform under the tests directory.
 
 ## Testing with the bitmask client
 

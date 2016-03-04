@@ -9,6 +9,15 @@ General
 * Please increase verbosity when debugging / filing issues in our issue tracker. You can do this with adding i.e. `-v 5` after the `leap` cmd, i.e. `leap -v 2 deploy`.
 * We use the `example.org` domain for documentation purposes here, please replace it with the you domain.
 
+Firewall
+=======================
+
+Every node in your provider has its own restrictive firewall, but you might have a network firewall in place as well that is not managed by LEAP platform. To see what ports and addresses must be open, run this command:
+
+    workstation$ leap compile firewall
+
+If any of those are blocked, then your provider will not work.
+
 Webapp
 ======
 
@@ -23,7 +32,6 @@ Places to look for errors
 
 Is haproxy ok ?
 ---------------
-
 
     curl -s -X  GET "http://127.0.0.1:4096"
 

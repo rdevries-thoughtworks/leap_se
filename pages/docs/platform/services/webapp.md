@@ -23,7 +23,8 @@ Topology
 
 Currently, the platform only supports a single `webapp` node, although we hope to change this in the future.
 
-`webapp` nodes communicate heavily with `couchdb` nodes.
+* `webapp` nodes communicate heavily with `couchdb` nodes, but the two can be on separate servers.
+* The `monitor` service, if enabled, must be on the same node as `webapp`.
 
 Configuration
 --------------------------
@@ -35,6 +36,7 @@ Essential options:
 Other options:
 
 * `webapp.engines`: A list of the engines you want enabled in leap_web. Currently, only "support" is available, and it is enabled by default.
+* `webapp.invite_required`: If true, registration requires an invite code. Default is `false`.
 
 For example, `services/webapp.json`:
 
@@ -49,9 +51,9 @@ By putting this in `services/webapp.json`, all the `webapp` nodes will inherit t
 There are many options in `provider.json` that also control how the webapp behaves. See [[provider-configuration]] for details.
 
 Invite codes
-------------
+-------------------
 
-Enabling the invite code functionality will require new users to provide a valid invite code while signing up for a new account. This is turned off by default, allowing all new users to create an account. To turn on invite codes, follow these steps after making sure that LEAP webapp and LEAP platform are both v0.8 or greater:
+Enabling the invite code functionality will require new users to provide a valid invite code while signing up for a new account. This is turned off by default, allowing all new users to create an account.
 
 Set the `invite_code` option to `true` in `services/webapp.json`:
 
@@ -61,28 +63,21 @@ Set the `invite_code` option to `true` in `services/webapp.json`:
       }
     }
 
-At the moment, you need to use the develop branch of the webapp to use this feature. Add this to your webapp node config file:
-
-    "sources": {
-      "webapp": {
-        "type": "git",
-        "source": "https://leap.se/git/leap_web",
-        "revision": "origin/develop"
-      }
-    }
-
+This only works with LEAP platform 0.8 or higher.
 
 Run `leap deploy` to enable the option.
 
-You can then generate invite codes by running the following rake task from the webapp directory:
+You can then generate invite codes by logging into the web application with an admin user.
 
-```
-cd /srv/leap/webapp/
-sudo -u leap-webapp RAILS_ENV=production bundle exec rake generate_invites[x,y]
-```
+Alternately, you can also generate invite codes with the command line:
 
-The *x* specifies the amount of codes to generate. The *y* parameter is optional: By default, all new invite codes can be used once and will then become invalid. If you provide another value for *y*, you can set a different amount of maximum uses for the codes you generate.
+    workstation$ leap ssh bumblebee
+    bumblebee# cd /srv/leap/webapp/
+    bumblebee# sudo -u leap-webapp RAILS_ENV=production bundle exec rake "generate_invites[NUM,USES]"
 
+Where `bumblebee` should be replaced with the name of your webapp node.
+
+The **NUM** specifies the amount of codes to generate. The **USES** parameter is optional: By default, all new invite codes can be used once and will then become invalid. If you provide another value for **USES**, you can set a different amount of maximum uses for the codes you generate.
 
 Customization
 ---------------------------

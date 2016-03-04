@@ -7,14 +7,11 @@
 
 Every node (server) must have one or more `services` defined that determines what role the node performs. For example:
 
-
-```
-  cat nodes/stallman.json
-  {
-    "ip_address": "199.99.99.1",
-    "services": ["webapp", "tor"]
-  }
-```
+    workstation$ cat nodes/stallman.json
+    {
+      "ip_address": "199.99.99.1",
+      "services": ["webapp", "tor"]
+    }
 
 Here are common questions to ask when adding a new node to your provider:
 

@@ -4,7 +4,7 @@
 Working with SSH
 ================================
 
-Whenever the `leap` command nees to push changes to a node or gather information from a node, it tunnels this command over SSH. Another way to put this: the security of your servers rests entirely on SSH. Because of this, it is important that you understand how `leap` uses SSH.
+Whenever the `leap` command needs to push changes to a node or gather information from a node, it tunnels this command over SSH. Another way to put this: the security of your servers rests entirely on SSH. Because of this, it is important that you understand how `leap` uses SSH.
 
 SSH related files
 -------------------------------
@@ -32,6 +32,15 @@ Specifically, for local nodes:
 1. `known_hosts` is never updated with local node keys, since the SSH public key of a local node is different for each user.
 2. `leap` entirely skips the checking of host keys when connecting with a local node.
 3. `leap` adds the public Vagrant SSH key to the list of SSH keys for a user. The public Vagrant SSH key is a shared and insecure key that has root access to most Vagrant virtual machines.
+
+To upgrade a SSH host key
+-------------------------------
+
+Most servers will have more than one SSH host key. Sometimes, the server will have a better SSH host key than the one you have on file. In order to upgrade to the better SSH host key, simply re-run the init command:
+
+    workstation$ leap node init NODE_NAME
+
+This will prompt you if you want to upgrade the SSH host key, but only if `leap` thinks that an upgrade is advisable.
 
 When SSH host key changes
 -------------------------------
@@ -85,13 +94,6 @@ Suppose you want to remove `userx` from having any further ssh access to the ser
 
 X.509 Certificates
 ================================
-
-NOTE: the following files are extremely sensitive and must be carefully protected:
-
-* `files/ca/ca.key`
-* `files/<domain>.key` (where "domain" is the primary domain of the provider).
-
-These files must be kept private and you must not lose them. All the other key files can be regenerated if you lose them or if they are compromised.
 
 Configuration options
 -------------------------------------------
