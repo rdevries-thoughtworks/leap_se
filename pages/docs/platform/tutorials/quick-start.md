@@ -95,14 +95,21 @@ You should now have the following files:
 Now add yourself as a privileged sysadmin who will have access to deploy to servers:
 
     workstation$ cd example
-    workstation$ leap add-user --self
+    workstation$ leap add-user louise --self
+
+Replace "louise" with whatever you want your sysadmin username to be.
+
+NOTE: Make sure you change directories so that the `leap` command is run from within the provider instance directory. Most `leap` commands only work when run from a provider instance.
 
 Now create the necessary keys and certificates:
 
     workstation$ leap cert ca
     workstation$ leap cert csr
 
-What do these commands do? The first command will create two Certificate Authorities, one that clients will use to authenticate with the servers and one for backend servers to authenticate with each other. The second command creates a Certificate Signing Request suitable for submission to a commercial CA. It also creates a self-signed certificate for your domain that can be used temporarily for testing.
+What do these commands do? The first command will create two Certificate Authorities, one that clients will use to authenticate with the servers and one for backend servers to authenticate with each other. The second command creates a Certificate Signing Request suitable for submission to a commercial CA. It also creates two "dummy" files for you to use temporarily:
+
+* `files/cert/example.org.crt` -- This is a "dummy" certificate for your domain that can be used temporarily for testing. Once you get a real certificate from a CA, you should replace this file.
+* `files/cert/commercial_ca.crt` -- This is "dummy" CA cert the corresponds to the dummy domain certificate. Once you replace the domain certificate, also replace this file with the CA cert from the real Certificate Authority.
 
 If you plan to run a real service provider, see important information on [[managing keys and certificates => keys-and-certificates]].
 
@@ -135,6 +142,8 @@ Create a node, with the services "webapp" and "couchdb", and then start the loca
     workstation$ leap node add --local wildebeest services:webapp,couchdb
     workstation$ leap local start wildebeest
 
+It will take a while to download the Virtualbox base box and create the virtual machine.
+
 Deploy your provider
 =========================================
 
@@ -144,7 +153,9 @@ Node initialization only needs to be done once, but there is no harm in doing it
 
     workstation$ leap node init wildebeest
 
-This will initialize the node `wildebeest`. When `leap node init` is run, you will be prompted to verify the fingerprint of the SSH host key and to provide the root password of the server(s). You should only need to do this once.
+This will initialize the node `wildebeest`.
+
+For non-local nodes, when `leap node init` is run, you will be prompted to verify the fingerprint of the SSH host key and to provide the root password of the server(s). You should only need to do this once.
 
 ### Deploy to the node
 
@@ -164,7 +175,7 @@ Alternately, if you have access to modify the DNS zone entries for your domain:
 
     workstation$ leap compile zone
 
-NOTE: The resulting zone file is incomplete because it is missing a serial number. Use the output of `leap compile zone` as a guide, but do not just copy and paste the output.
+NOTE: The resulting zone file is incomplete because it is missing a serial number. Use the output of `leap compile zone` as a guide, but do not just copy and paste the output. Also, the `compile zone` output will always exclude mention of local nodes.
 
 The DNS method will not work for local nodes created with Vagrant.
 

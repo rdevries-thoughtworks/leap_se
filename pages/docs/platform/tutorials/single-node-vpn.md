@@ -58,12 +58,23 @@ The node configuration file should now look like this:
 
 Why two different addresses? Without this, the traffic from one VPN user to another would not be encrypted. This is because the routing table of VPN clients must ensure that packets with a destination of the VPN gateway are sent unmodified and don't get passed through the VPN's encryption.
 
+Generate a Diffie-Hellman file
+-------------------------------------------
+
+Next we need to create a Diffie-Hellman parameter file, used for forward secret OpenVPN ciphers. You only need to do this once.
+
+    workstation$ leap cert dh
+
+Feel free to erase the resulting DH file and regenerate it as you please.
+
 Deploy to the node
 --------------------
 
-Now you should deploy to your node.
+Now you should deploy to your node. This may take a while.
 
     workstation$ leap deploy
+
+If the deploy was not successful, try to run it again.
 
 Test it out
 ---------------------------------
@@ -76,6 +87,7 @@ Then fire up the Bitmask client, register a new user with your provider, and tur
 
 Alternately, you can also manually connect to your VPN gateway using OpenVPN on the command line:
 
+    workstation$ sudo apt install openvpn
     workstation$ leap test init
     workstation$ sudo openvpn --config test/openvpn/default_unlimited.ovpn
 

@@ -53,9 +53,10 @@ There are the [Debian release notes on how to upgrade from wheezy to jessie](htt
     script -t 2>~/leap_upgrade-jessiestep.time -a ~/upgrade-jessiestep.script
 
     # ensure you have a good wheezy install:
-    apt-get autoremove
+    export DEBIAN_FRONTEND=noninteractive
+    apt-get autoremove --yes
     apt-get update
-    DEBIAN_FRONTEND=noninteractive apt-get -y -o DPkg::Options::=--force-confold dist-upgrade
+    apt-get -y -o DPkg::Options::=--force-confnew dist-upgrade
 
     # if anything is held, you need to resolve it before continuing:
     dpkg --audit
@@ -63,6 +64,7 @@ There are the [Debian release notes on how to upgrade from wheezy to jessie](htt
 
     # switch sources to jessie
     sed -i 's/wheezy/jessie/g' /etc/apt/sources.list
+    rm /etc/apt/sources.list.d/*
     echo "deb http://deb.leap.se/0.8 jessie main" > /etc/apt/sources.list.d/leap.list
 
     # remove pinnings to wheezy
@@ -77,13 +79,16 @@ There are the [Debian release notes on how to upgrade from wheezy to jessie](htt
     apt-get -o APT::Get::Trivial-Only=true dist-upgrade
 
     # do first stage upgrade
-    DEBIAN_FRONTEND=noninteractive apt-get -y -o DPkg::Options::=--force-confold upgrade
+    apt-get -y -o DPkg::Options::=--force-confnew upgrade
 
     # repeat dist-upgrade until it makes no more changes:
-    DEBIAN_FRONTEND=noninteractive apt-get -y -o DPkg::Options::=--force-confold dist-upgrade
+    apt-get -y -o DPkg::Options::=--force-confnew dist-upgrade
 
     # resolve any apt issues if there are some
     apt-get -f install
+
+    # clean up extra packages
+    apt-get autoremove --yes
 
     reboot
 
