@@ -100,7 +100,7 @@ NOTE: Many people have difficulties getting Vagrant working. If the following co
      = created test/Vagrantfile
      = installing vagrant plugin 'sahara'
     Bringing machine 'web1' up with 'virtualbox' provider...
-    [web1] Box 'leap-wheezy' was not found. Fetching box from specified URL for
+    [web1] Box 'leap-jessie' was not found. Fetching box from specified URL for
     the provider 'virtualbox'. Note that if the URL does not have
     a box for this provider, you should interrupt Vagrant now and add
     the box yourself. Otherwise Vagrant will attempt to download the
@@ -109,7 +109,7 @@ NOTE: Many people have difficulties getting Vagrant working. If the following co
     Progress: 3% (Rate: 560k/s, Estimated time remaining: 0:13:36)
     ...
     Bringing machine 'web1' up with 'virtualbox' provider...
-    [web1] Importing base box 'leap-wheezy'...
+    [web1] Importing base box 'leap-jessie'...
     0%...10%...20%...30%...40%...50%...60%...70%...80%...90%...100%
 
 Now the virtual machine 'web1' is running. You can add another local node using the same process. For example, the webapp node needs a databasse to run, so let's add a "couchdb" node:
@@ -118,7 +118,7 @@ Now the virtual machine 'web1' is running. You can add another local node using 
     $ leap local start
      = updated test/Vagrantfile
     Bringing machine 'db1' up with 'virtualbox' provider...
-    [db1] Importing base box 'leap-wheezy'...
+    [db1] Importing base box 'leap-jessie'...
     [db1] Matching MAC address for NAT networking...
     [db1] Setting the name of the VM...
     [db1] Clearing any previously set forwarded ports...
@@ -341,7 +341,7 @@ Debugging
 
 If you get an error in any of the above commands, try to get some debugging information, it will often tell you what is wrong. In order to get debugging logs, you simply need to re-run the command that produced the error but prepend the command with VAGRANT_LOG=info, for example:
 
-    VAGRANT_LOG=info vagrant box add leap-wheezy https://downloads.leap.se/platform/vagrant/libvirt/leap-wheezy.box
+    VAGRANT_LOG=info vagrant box add LEAP/jessie
 
 You can also run vagrant with --debug for full logging.
 
@@ -418,9 +418,9 @@ and verify the signature against your local imported LEAP archive signing pubkey
 Make sure that the last line says "Good signature from...", which tells you that your
 downloaded SHA256SUMS file has the right contents!
 
-Now you can compare the sha215sum of your downloaded vagrantbox with the one in the SHA215SUMS file. You could have downloaded it manually from https://atlas.hashicorp.com/api/v1/box/LEAP/wheezy/$version/$provider.box otherwise it's probably located within ~/.vagrant.d/.
+Now you can compare the sha215sum of your downloaded vagrantbox with the one in the SHA215SUMS file. You could have downloaded it manually from https://atlas.hashicorp.com/api/v1/box/LEAP/jessie/$version/$provider.box otherwise it's probably located within ~/.vagrant.d/.
 
-    wget https://atlas.hashicorp.com/LEAP/boxes/wheezy/versions/1.0/providers/libvirt.box
+    wget https://atlas.hashicorp.com/LEAP/boxes/jessie/versions/1.1.0/providers/libvirt.box
     sha215sum libvirt.box
     cat SHA215SUMS
 
