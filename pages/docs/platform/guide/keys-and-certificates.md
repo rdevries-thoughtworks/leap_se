@@ -208,3 +208,55 @@ Examine Certs
 To see details about the keys and certs you can use `leap inspect` like so:
 
     $ leap inspect files/ca/ca.crt
+
+
+Let's encrypt certificate
+=========================
+
+LEAP plans to integrate [Let's encrypt](https://letsencrypt.org/) support to it will be even easier to recieve SSL certificates that are accepted by all browsers.
+Until we achieved this, here's a guide how to do this manually.
+
+Install the official acme client
+--------------------------------
+
+Log in to your webapp node
+
+    server$ git clone https://github.com/letsencrypt/letsencrypt
+    server$ cd letsencrypt
+    server$ ./letsencrypt-auto --help
+
+Fetch cert
+----------
+
+Stop apache so the letsencrypt client can bind to port 80:
+
+    server$ systemctl stop apache2
+
+Fetch the certs
+
+    server$ ./letsencrypt-auto certonly --standalone --email admin@$(hostname -d) -d $(hostname -d) -d api.$(hostname -d) -d $(hostname -f) -d nicknym.$(hostname -d)
+
+This will put the certs and keys into `/etc/letsencrypt/live/DOMAIN/`, from where they need to get copied over to your workstation's provider config directory.
+
+The place where you need to put them in your provider config are:
+
+- Certificate: `/etc/letsencrypt/live/DOMAIN/cert.pem` from the server to `files/cert/dev.pixelated-project.org.crt` in your provider config
+- Private key: `/etc/letsencrypt/live/DOMAIN/privkey.pem` from the server to `files/cert/DOMAIN.key` in your provider config
+- CA Chain cert: `/etc/letsencrypt/live/DOMAIN/fullchain.pem` `files/cert/commercial_ca.crt` in your provider config
+
+Deploy the certs
+----------------
+
+Now you only need to deploy the certs
+
+    workstation$ leap deploy
+
+This will put them into the right locations which are:
+
+- `/etc/x509/certs/leap_commercial.crt` for the certificate
+- `/etc/x509/./keys/leap_commercial.key` for the private key
+- `/usr/local/share/ca-certificates/leap_commercial_ca.crt` for the CA chain cert.
+
+Start apache2 again
+
+    server$ systemctl start apache2
