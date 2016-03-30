@@ -7,7 +7,7 @@ What is Vagrant?
 
 [[Vagrant => https://www.vagrantup.com]] is a tool to make it easier to manage virtual machines running on your desktop computer (typically for testing or development purposes). You can use Vagrant to create virtual machines and deploy the LEAP platform locally.
 
-Vagrant can be a pain to get working initially, but this page should help you get through the process.
+Vagrant can be a pain to get working initially, but this page should help you get through the process. Please make sure you have at least Vagrant v1.5 installed.
 
 There are two ways you can setup LEAP platform using Vagrant.
 
