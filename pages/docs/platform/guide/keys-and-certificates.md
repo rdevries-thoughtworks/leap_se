@@ -21,7 +21,7 @@ All of these files should be committed to source control.
 If you rename, remove, or add a node with `leap node [mv|add|rm]` the SSH key files and the `known_hosts` file will get properly updated.
 
 SSH and local nodes
------------------------------
+-------------------
 
 Local nodes are run as Vagrant virtual machines. The `leap` command handles SSH slightly differently for these nodes.
 
@@ -236,13 +236,23 @@ Fetch the certs
 
     server$ ./letsencrypt-auto certonly --standalone --email admin@$(hostname -d) -d $(hostname -d) -d api.$(hostname -d) -d $(hostname -f) -d nicknym.$(hostname -d)
 
-This will put the certs and keys into `/etc/letsencrypt/live/DOMAIN/`, from where they need to get copied over to your workstation's provider config directory.
+This will put the certs and keys into `/etc/letsencrypt/live/DOMAIN/`.
 
-The place where you need to put them in your provider config are:
+Now, go to your workstation's provider configuration directory and copy the newly create files from the server to your local config:
 
-- Certificate: `/etc/letsencrypt/live/DOMAIN/cert.pem` from the server to `files/cert/dev.pixelated-project.org.crt` in your provider config
-- Private key: `/etc/letsencrypt/live/DOMAIN/privkey.pem` from the server to `files/cert/DOMAIN.key` in your provider config
-- CA Chain cert: `/etc/letsencrypt/live/DOMAIN/fullchain.pem` `files/cert/commercial_ca.crt` in your provider config
+    workstation$ cd PATH_TO_PROVIDER_CONFIG
+
+Copy the Certificate
+
+    workstation$ scp root@SERVER:/etc/letsencrypt/live/DOMAIN/cert.pem files/cert/dev.pixelated-project.org.crt
+
+Copy the private key
+
+    workstation$ scp root@SERVER:/etc/letsencrypt/live/DOMAIN/privkey.pem files/cert/DOMAIN.key
+
+Copy the CA chain cert
+
+    workstation$ scp root@SERVER:/etc/letsencrypt/live/DOMAIN/fullchain.pem files/cert/DOMAIN.key
 
 Deploy the certs
 ----------------
