@@ -238,7 +238,7 @@ Fetch the certs
 
 This will put the certs and keys into `/etc/letsencrypt/live/DOMAIN/`.
 
-Now, go to your workstation's provider configuration directory and copy the newly create files from the server to your local config:
+Now, go to your workstation's provider configuration directory and copy the newly create files from the server to your local config. You will override existing files so please make a backup before proceeding, or use a version control system to track changes.
 
     workstation$ cd PATH_TO_PROVIDER_CONFIG
 
