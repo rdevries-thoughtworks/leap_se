@@ -87,7 +87,7 @@ All keys matching 'userx/*_ssh.pub' will be usable.
 Removing sysadmin access
 --------------------------------
 
-Suppose you want to remove `userx` from having any further ssh access to the servers. Do this:
+Suppose you want to remove `userx` from having any further SSH access to the servers. Do this:
 
     rm -r users/userx
     leap deploy
@@ -210,11 +210,11 @@ To see details about the keys and certs you can use `leap inspect` like so:
     $ leap inspect files/ca/ca.crt
 
 
-Let's encrypt certificate
+Let's Encrypt certificate
 =========================
 
-LEAP plans to integrate [Let's encrypt](https://letsencrypt.org/) support to it will be even easier to recieve SSL certificates that are accepted by all browsers.
-Until we achieved this, here's a guide how to do this manually.
+LEAP plans to integrate [Let's Encrypt](https://letsencrypt.org/) support, so it will be even easier to receive X.509 certificates that are accepted by all browsers.
+Until we achieve this, here's a guide how to do this manually.
 
 Install the official acme client
 --------------------------------
@@ -238,7 +238,7 @@ Fetch the certs
 
 This will put the certs and keys into `/etc/letsencrypt/live/DOMAIN/`.
 
-Now, go to your workstation's provider configuration directory and copy the newly create files from the server to your local config. You will override existing files so please make a backup before proceeding, or use a version control system to track changes.
+Now, go to your workstation's provider configuration directory and copy the newly created files from the server to your local config. You will override existing files so please make a backup before proceeding, or use a version control system to track changes.
 
     workstation$ cd PATH_TO_PROVIDER_CONFIG
 
