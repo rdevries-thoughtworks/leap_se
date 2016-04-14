@@ -152,7 +152,7 @@ If you add a node, or remove one node from the cluster,
 
 Here are the steps needed to replace BigCouch with CouchDB.
 
-At the end of this process, you will have just *one* noe with `services` property equal to `couchdb`. If you had a BigCouch cluster before, you will be removing all but one of those machines to consolidate them into one couchdb machine.
+At the end of this process, you will have just *one* node with `services` property equal to `couchdb`. If you had a BigCouch cluster before, you will be removing all but one of those machines to consolidate them into one couchdb machine.
 
 1. if you have multiple nodes with the couchdb service on them, pick one of them to be your couchdb server, and remove the service from the others. If these machines were only doing couchdb, you can remove the nodes completely with `leap node rm <nodename>` and then you can decommission the servers
 
