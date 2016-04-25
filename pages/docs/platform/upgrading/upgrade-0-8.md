@@ -157,44 +157,6 @@ You can ignore these warnings, they will be resolved on upgrade.
 
 If you get this error, run `apt-get update` and then re-run the command.
 
-**udev update errors**
-
-On some systems, you may receive this long error:
-
-```
-Since release 198, udev requires support for the following features in
-the running kernel:
-
-- inotify(2)            (CONFIG_INOTIFY_USER)
-- signalfd(2)           (CONFIG_SIGNALFD)
-- accept4(2)
-- open_by_handle_at(2)  (CONFIG_FHANDLE)
-- timerfd_create(2)     (CONFIG_TIMERFD)
-- epoll_create(2)       (CONFIG_EPOLL)
-Since release 176, udev requires support for the following features in
-the running kernel:
-
-- devtmpfs         (CONFIG_DEVTMPFS)
-
-Please upgrade your kernel before or while upgrading udev.
-
-AT YOUR OWN RISK, you can force the installation of this version of udev
-WHICH DOES NOT WORK WITH YOUR RUNNING KERNEL AND WILL BREAK YOUR SYSTEM
-AT THE NEXT REBOOT by creating the /etc/udev/kernel-upgrade file.
-There is always a safer way to upgrade, do not try this unless you
-understand what you are doing!
-
-
-dpkg: error processing archive /var/cache/apt/archives/udev_215-17+deb8u4_amd64.deb (--unpack):
- subprocess new pre-installation script returned error exit status 1
-update-rc.d: warning: start and stop actions are no longer supported; falling back to defaults
-update-rc.d: warning: start and stop actions are no longer supported; falling back to defaults
-```
-
-You can resolve this by doing: `touch /etc/udev/kernel-upgrade` and then
-re-doing the upgrade command you were running when this error happened. Once you
-are finished with the upgrade process, be sure to reboot.
-
 **Unmet dependencies. Try using -f.**
 
 Sometimes you might get an error similar to this (although the package names may be different):
