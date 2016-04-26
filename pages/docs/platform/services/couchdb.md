@@ -148,4 +148,4 @@ If you add a node, or remove one node from the cluster,
     time ./couchdb_restoreall.sh
     ```
 
-<%= render 'common/bigcouch_migration.md' %>
+<%= render :partial => 'docs/platform/common/bigcouch_migration.md' %>

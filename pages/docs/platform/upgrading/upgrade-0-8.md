@@ -18,7 +18,7 @@ Upgrading to Platform 0.8
 
 ### Step 2: Migrate BigCouch to CouchDB
 
-<%= render 'common/bigcouch_migration.md' %>
+<%= render :partial => 'docs/platform/common/bigcouch_migration.md' %>
 
 ### Step 3: Upgrade from Debian Wheezy to Jessie
 
