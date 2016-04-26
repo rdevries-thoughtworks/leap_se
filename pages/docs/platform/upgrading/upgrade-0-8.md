@@ -106,7 +106,7 @@ For each one of your nodes, login to it and do the following process:
     export DEBIAN_FRONTEND=noninteractive
     apt-get autoremove --yes
     apt-get update
-    apt-get -y -o DPkg::Options::=--force-confnew dist-upgrade
+    apt-get -y -o DPkg::Options::=--force-confold dist-upgrade
 
     # if either of these return anything, you will need to resolve them before continuing:
     dpkg --audit
@@ -132,13 +132,13 @@ For each one of your nodes, login to it and do the following process:
     apt-get -o APT::Get::Trivial-Only=true dist-upgrade
 
     # do first stage upgrade
-    apt-get -y -o DPkg::Options::=--force-confnew upgrade
+    apt-get -y -o DPkg::Options::=--force-confold upgrade
 
     # repeat the following until it makes no more changes:
-    apt-get -y -o DPkg::Options::=--force-confnew dist-upgrade
+    apt-get -y -o DPkg::Options::=--force-confold dist-upgrade
 
     # resolve any apt issues if there are some
-    apt-get -f install
+    apt-get -y -o DPkg::Options::=--force-confold -f install
 
     # clean up extra packages
     apt-get autoremove --yes
