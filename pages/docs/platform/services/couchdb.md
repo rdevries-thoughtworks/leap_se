@@ -148,4 +148,6 @@ If you add a node, or remove one node from the cluster,
     time ./couchdb_restoreall.sh
     ```
 
+# Migrating from BigCouch to plain CouchDB
+
 <%= render :partial => 'docs/platform/common/bigcouch_migration.md' %>

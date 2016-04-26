@@ -1,7 +1,5 @@
 @title = "Migrating from BigCouch to plain CouchDB"
 
-### Migrating from BigCouch to plain CouchDB
-
 Here are the steps needed to replace BigCouch with CouchDB.
 
 At the end of this process, you will have just *one* node with `services` property equal to `couchdb`. If you had a BigCouch cluster before, you will be removing all but one of those machines to consolidate them into one CouchDB machine.
