@@ -56,7 +56,7 @@ At the end of this process, you will have just *one* node with `services` proper
     }
     ```
 
-  change it, so it looks like this instead:
+change it, so it looks like this instead:
 
     ```
     "couch": {
