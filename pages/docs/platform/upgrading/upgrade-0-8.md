@@ -109,7 +109,7 @@ If you get this warning:
 
 Just ignore it, it should be fixed on reboot/deploy.
 
-### Step 5: Deploy LEAP Platform 0.8 to the Couch node
+### Step 4: Deploy LEAP Platform 0.8 to the Couch node
 
 You will need to deploy the 0.8 version of LEAP Platform to the couch node before continuing. 
 
@@ -125,17 +125,17 @@ You will need to deploy the 0.8 version of LEAP Platform to the couch node befor
     server# iptables -A INPUT -p tcp --dport 5984 --jump REJECT
     ```
 
-### Step 6: Import Data into CouchDB
+### Step 5: Import Data into CouchDB
 
 <%= render :partial => 'docs/platform/common/bigcouch_migration_end.md' %>
 
-### Step 5: Deploy everything
+### Step 6: Deploy everything
 
 Now that you've upgraded all nodes to Jessie, and migrated to CouchDB, you are ready to deploy LEAP Platform 0.8 to the rest of the nodes:
 
     workstation$ cd <provider directory>
     workstation$ leap deploy
 
-### Step 6: Test and cleanup
+### Step 7: Test and cleanup
 
 <%= render :partial => 'docs/platform/common/bigcouch_migration_finish.md' %>
