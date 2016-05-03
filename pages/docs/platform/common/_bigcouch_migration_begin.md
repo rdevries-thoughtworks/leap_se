@@ -50,18 +50,18 @@ At the end of this process, you will have just *one* node with `services` proper
 
 1. configure your couch node to use plain couchdb instead of bigcouch, you can do this by editing nodes/<couch-node>.json, look for this section:
 
-  ```
-  "couch": {
-    "mode": "plain"
-  }
-  ```
+    ```
+    "couch": {
+      "mode": "plain"
+    }
+    ```
 
   change it, so it looks like this instead:
 
-  ```
-  "couch": {
-    "mode": "plain",
-    "pwhash_alg": "pbkdf2"
-  }
-  ```
+    ```
+    "couch": {
+      "mode": "plain",
+      "pwhash_alg": "pbkdf2"
+    }
+    ```
 
