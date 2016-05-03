@@ -55,7 +55,6 @@ At the end of this process, you will have just *one* node with `services` proper
       "mode": "plain"
     }
     ```
-
 change it, so it looks like this instead:
 
     ```
