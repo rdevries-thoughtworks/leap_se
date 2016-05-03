@@ -150,4 +150,10 @@ If you add a node, or remove one node from the cluster,
 
 ### Migrating from BigCouch to plain CouchDB
 
-<%= render :partial => 'docs/platform/common/bigcouch_migration.md' %>
+<%= render :partial => 'docs/platform/common/bigcouch_migration_begin.md' %>
+
+
+<%= render :partial => 'docs/platform/common/bigcouch_migration_end.md' %>
+
+
+<%= render :partial => 'docs/platform/common/bigcouch_migration_finish.md' %>

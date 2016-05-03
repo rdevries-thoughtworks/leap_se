@@ -16,9 +16,9 @@ Upgrading to Platform 0.8
     workstation$ git pull
     workstation$ git checkout 0.8.0
 
-### Step 2: Migrate BigCouch to CouchDB
+### Step 2: Prepare to migrate from BigCouch to CouchDB
 
-<%= render :partial => 'docs/platform/common/bigcouch_migration.md' %>
+<%= render :partial => 'docs/platform/common/bigcouch_migration_begin.md' %>
 
 ### Step 3: Upgrade from Debian Wheezy to Jessie
 
@@ -76,8 +76,8 @@ For each one of your nodes, login to it and do the following process:
     reboot
 
 
-Issues
-------
+Potential Jessie Upgrade Issues
+-------------------------------
 
 **W: Ignoring Provides line with DepCompareOp for package python-cffi-backend-api-max**
 
@@ -109,7 +109,9 @@ If you get this warning:
 
 Just ignore it, it should be fixed on reboot/deploy.
 
-### Step 4: Import Data into CouchDB
+### Step 5: Deploy LEAP Platform 0.8 to the Couch node
+
+You will need to deploy the 0.8 version of LEAP Platform to the couch node before continuing. 
 
 1. deploy to the couch node:
 
@@ -123,29 +125,17 @@ Just ignore it, it should be fixed on reboot/deploy.
     server# iptables -A INPUT -p tcp --dport 5984 --jump REJECT
     ```
 
-1. restore the backup, this will take approximately the same amount of time as the backup took above:
+### Step 6: Import Data into CouchDB
 
-    ```
-    workstation$ leap ssh <couchdb-node>
-    server# cd /srv/leap/couchdb/scripts
-    server# time ./couchdb_restoreall.sh
-    ```
+<%= render :partial => 'docs/platform/common/bigcouch_migration_end.md' %>
 
 ### Step 5: Deploy everything
 
-When you have upgraded all nodes to Jessie, you are ready to deploy:
+Now that you've upgraded all nodes to Jessie, and migrated to CouchDB, you are ready to deploy LEAP Platform 0.8 to the rest of the nodes:
 
     workstation$ cd <provider directory>
     workstation$ leap deploy
 
-### Step 6: Test things are working
+### Step 6: Test and cleanup
 
-    workstation$ leap test
-
-### Step 7: Cleanup
-
-1. Remove old bigcouch data dirrectory on the couchdb node in `/opt`, after you double checked everything is in place
-
-### Step 8: Relax
-
-1. Relax, enjoy a refreshing beverage.
+<%= render :partial => 'docs/platform/common/bigcouch_migration_finish.md' %>
