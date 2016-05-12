@@ -252,7 +252,7 @@ Copy the private key
 
 Copy the CA chain cert
 
-    workstation$ scp root@SERVER:/etc/letsencrypt/live/DOMAIN/fullchain.pem files/cert/DOMAIN.key
+    workstation$ scp root@SERVER:/etc/letsencrypt/live/DOMAIN/fullchain.pem files/cert/commercial_ca.crt
 
 Deploy the certs
 ----------------
