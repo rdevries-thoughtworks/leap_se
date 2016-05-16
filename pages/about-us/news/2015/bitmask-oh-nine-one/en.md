@@ -3,8 +3,6 @@
 @posted_at = '2015-11-05'
 @more = true
 @preview_image = '/img/pages/bitmask.png'
-@preview = %(At a time when online surveillance by corporate and government powers is mainstream we need the ability to communicate without fear. We are happy to announce Bitmask 0.9.1, the Beta release of Bitmask Encrypted Email.)
-
 
 At a time when online surveillance by <a
 href='http://boingboing.net/tag/hacking-team'>corporate</a> and <a

@@ -3,11 +3,8 @@
 @posted_at = '2015-12-10'
 @more = true
 @preview_image = '/img/pages/gnupg.png'
-@preview = "We participated in the 2nd OpenPGP email summit were we had the oportunity to exchange ideas with many other projects."
 
-The [2nd OpenPGP email summit](https://wiki.gnupg.org/OpenPGPEmailSummit201512) took place in Zurich between the 5th and 6th of December. LEAP was there among many other projects working on protecting email communications. It was an intense weekend where we had the oportunity to hear from other projects about how they are doing things and to discuss how to solve common problems.
-
-There were many working sessions on a variety of topics (from key server email validation to password recovery). I'm going to highlight some topics that I think were very interesting.
+The [2nd OpenPGP email summit](https://wiki.gnupg.org/OpenPGPEmailSummit201512) took place in Zurich between the 5th and 6th of December. LEAP was there among many other projects working on protecting email communications. It was an intense weekend where we had the oportunity to hear from other projects about how they are doing things and to discuss how to solve common problems. There were many working sessions on a variety of topics (from key server email validation to password recovery). I'm going to highlight some topics that I think were very interesting.
 
 # Encrypted Indexes
 

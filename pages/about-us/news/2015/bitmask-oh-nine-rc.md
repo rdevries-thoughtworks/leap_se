@@ -3,11 +3,10 @@
 @posted_at = '2015-07-13'
 @more = true
 @preview_image = '/img/pages/bitmask.png'
-@preview = %(The LEAP team is pleased to announce the immediate availability of Bitmask 0.9.0rc1, codename "we're not in kansas anymore.")
 
-The LEAP team is pleased to announce the immediate  availability of Bitmask 0.9.0rc1, codename "we're not in kansas anymore."
+The LEAP team is pleased to announce the immediate  availability of Bitmask 0.9.0rc1, codename "we're not in kansas anymore." This is our first public release candidate with a responsive and relatively bug free encrypted email experience. Our work has focused on speed and scale optimization by adapting the underlying components (leap.keymanager and leap.mail) to use the new async API of Soledad.
 
-This is our first public release candidate with a responsive and relatively bug free encrypted email experience. Our work has focused on speed and scale optimization by adapting the underlying components (leap.keymanager and leap.mail) to use the new async API of Soledad. This reduces code complexity by making use of the reactor pattern and by having blocking code (i.e. general i/o) be executed asynchronously. We have revamped how bitmask frontend and backend communicates (this improves performance and prevent bugs), improved log handling for better bug reports, and much more (see the changelog file for a more detailed list).
+This reduces code complexity by making use of the reactor pattern and by having blocking code (i.e. general i/o) be executed asynchronously. We have revamped how bitmask frontend and backend communicates (this improves performance and prevent bugs), improved log handling for better bug reports, and much more (see the changelog file for a more detailed list).
 
 This is a release candidate aimed at getting more user feedback to influence our next round of development. We have a list of [known](https://leap.se/code/versions/161) [issues](https://leap.se/en/docs/client/known-issues) that we are cranking through and will add more to the list as feedback comes in.
 
