@@ -44,8 +44,6 @@
 
 .row
   .col-sm-12
-    %h1.first
-      Recent News
-      =# news_feed_link
+    =# news_feed_link
     = recent_summaries(:limit => 10) do |page|
       = render :partial => 'layouts/blog_summary', :locals => {:page => page}

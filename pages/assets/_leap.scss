@@ -203,7 +203,7 @@ a:visited {
   padding: 19px;
   margin-bottom: 11px; // same as 'p', not sure what variable this is.
   background-color: $well-bg-color;
-  box-shadow: inset 0px 0px 5px 1px darken($well-bg-color,10%);
+  // box-shadow: inset 0px 0px 5px 1px darken($well-bg-color,10%);
   border: 1px solid lighten($well-border-color,50%);
   border-radius: 0px;
   .heading {
@@ -241,12 +241,15 @@ article.page-summary {
 
 .preview-img {
   float:left;
-  margin-right: 8px;
+  margin-right: 12px;
   margin-left: 0;
   img {
     width: 175px;
     height: auto;
   }
+}
+.preview-text {
+  margin-left: 175px + 12px;
 }
 
 img.left {

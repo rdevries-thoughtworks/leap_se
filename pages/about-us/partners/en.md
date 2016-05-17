@@ -1,4 +1,5 @@
 @title = 'Partners'
+@toc = true
 
 ## Development partners
 
@@ -19,6 +20,10 @@
 <img src="/img/partners/hivos.jpg">
 
 <b><a href="https://www.hivos.org/">Hivos International</a></b> international development organisation guided by humanist values. Together with local civil society organisations in developing countries, Hivos wants to contribute to a free, fair and sustainable world. A world in which all citizens – both women and men – have equal access to opportunities and resources for development and can participate actively and equally in decision-making processes that determine their lives, their society and their future.
+
+<img src="/img/partners/duckduckgo.png">
+
+<b><a href="https://duckduckgo.com">DuckDuckGo</a></b> is an Internet search engine that emphasizes protecting searchers' privacy and avoiding the filter bubble of personalized search results. DuckDuckGo distinguishes itself from other search engines by not profiling its users and by deliberately showing all users the same search results for a given search term.
 
 <img src="/img/partners/wallace.png">
 

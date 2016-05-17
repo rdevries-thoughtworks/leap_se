@@ -11,12 +11,12 @@
         = time_tag(page.props.posted_at.to_date, :format => :long, :pubdate => true)
   %div.content
     - if page.props.preview_image
-      - if page.props.preview_image
-        .preview-img
-          %img{:src => page.props.preview_image}
-    - if page.props.preview
-      = page.props.preview
-    - else
-      = render :text => page.props.excerpt, :type => page.props.content_type
-    - if page.props.more
-      = link(I18n.t(:read_more) => amber_path(page))
+      .preview-img
+        %img{:src => page.props.preview_image}
+    .preview-text
+      - if page.props.preview
+        = page.props.preview
+      - else
+        = render :text => page.props.excerpt, :type => page.props.content_type
+      - if page.props.more
+        = link(I18n.t(:read_more) => amber_path(page))
