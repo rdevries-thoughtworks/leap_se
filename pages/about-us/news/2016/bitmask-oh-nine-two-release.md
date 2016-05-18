@@ -1,12 +1,10 @@
-@title = 'New Release of Bitmask: Encrypted Mail for everyone'
+@title = 'New release of Bitmask: encrypted eail for everyone'
 @author = 'kali'
 @posted_at = '2016-05-17'
 @more = true
 @preview_image = '/img/pages/bitmask.png'
 
-We are pleased to announce the **Bitmask 0.9.2** release, codename _"Panis et Circenses"_.
-    
-Bitmask Encrypted Email is now available as a stable Beta, and bundled with a sleek mail client developed by the [Pixelated-Project](https://pixelated-project.org). Beta means that a deep refactor of our code base has brought us new stability, scalability and speed, but unforeseen issues are still expected to be found. We need you to test it hard, and report issues, but don't trust it yet in situations where data loss, delivery problems or any other errors can put you at risk or otherwise cause major trouble. 
+We are pleased to announce the **Bitmask 0.9.2** release, codename _"Panis et Circenses"_. Bitmask Encrypted Email is now available as a stable Beta, and bundled with a sleek mail client developed by the [Pixelated-Project](https://pixelated-project.org). Beta means that a deep refactor of our code base has brought us new stability, scalability and speed, but unforeseen issues are still expected to be found. We need you to test it hard, and report issues, but don't trust it yet in situations where data loss, delivery problems or any other errors can put you at risk or otherwise cause major trouble. 
 
 We maintain a demo provider for the mail service at [https://mail.bitmask.net](https://mail.bitmask.net). This provider is already pinned in Bitmask for easy access when creating a new account from within the wizard. Bitmask Email is in beta state for Linux, and we also have an alpha version for OSX ready for testing. Please help improve Bitmask:
 
