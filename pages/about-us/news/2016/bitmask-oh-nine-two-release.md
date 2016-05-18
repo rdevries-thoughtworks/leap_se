@@ -1,4 +1,4 @@
-@title = 'New release of Bitmask: encrypted eail for everyone'
+@title = 'New release of Bitmask: encrypted email for everyone'
 @author = 'kali'
 @posted_at = '2016-05-17'
 @more = true
