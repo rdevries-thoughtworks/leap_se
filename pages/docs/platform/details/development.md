@@ -8,13 +8,15 @@ Installing leap_cli
 
 Install the latest:
 
-    gem install leap_cli --install-dir ~/leap
-    export PATH=$PATH:~/leap/bin
+    gem install --user-install leap_cli
 
-Install a particular version:
+Or install a particular version:
 
-    gem install leap_cli --version 1.8 --install-dir ~/leap
-    export PATH=$PATH:~/leap/bin
+    gem install --version 1.8 --user-install leap_cli
+
+Add the --user-install directory to your path:
+
+    [ $(which ruby) ] && PATH="$PATH:$(ruby -e 'puts Gem.user_dir')/bin"
 
 ### From gem, system wide
 
@@ -45,7 +47,7 @@ Install a particular version:
 Then do one of the following to be able to run `leap` command:
 
     cd leap_cli
-    export PATH=$PATH:`pwd`/bin
+    PATH=$PATH:`pwd`/bin
     alias leap="`pwd`/bin/leap"
     ln -s `pwd`/bin/leap ~/bin/leap
 

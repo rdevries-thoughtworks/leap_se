@@ -50,16 +50,20 @@ Install core prerequisites on your workstation.
 
 ### Install the LEAP command-line utility
 
-Install the `leap` command from rubygems.org:
-
-    workstation$ gem install leap_cli --install-dir ~/leap
-    workstation$ export PATH=$PATH:~/leap/bin
-
-Alternately, you can install `leap` system wide:
+Install the `leap` command system-wide:
 
     workstation$ sudo gem install leap_cli
 
-To confirm that you installed `leap` correctly, try running `leap help`.
+Alternately, you can install `leap` locally without root privileges:
+
+    workstation$ gem install --user-install leap_cli
+    workstation$ PATH="$PATH:$(ruby -e 'puts Gem.user_dir')/bin"
+
+If you choose a local install, you probably want to permanently add the --user-install directory to your PATH by adding this to your `~/.profile` file (requires logout):
+
+    [ $(which ruby) ] && PATH="$PATH:$(ruby -e 'puts Gem.user_dir')/bin"
+
+To confirm that you installed `leap` correctly, try running `leap --version`.
 
 Create a provider instance
 =============================================
