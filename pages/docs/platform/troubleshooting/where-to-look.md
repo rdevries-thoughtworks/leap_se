@@ -98,29 +98,9 @@ Couchdb
 Places to look for errors
 -------------------------
 
-* `/opt/bigcouch/var/log/bigcouch.log`
+* `/var/log/couchdb/couch.log`
 * `/var/log/syslog` (watch out for stunnel issues)
 
-
-
-Bigcouch membership
--------------------
-
-* All nodes configured for the provider should appear here:
-
-<pre>
-    curl -s --netrc-file /etc/couchdb/couchdb.netrc -X GET 'http://127.0.0.1:5986/nodes/_all_docs'
-</pre>
-
-* All configured nodes should show up under "cluster_nodes", and the ones online and communicating with each other should appear under "all_nodes". This example output shows the configured cluster nodes `couch1.bitmask.net` and `couch2.bitmask.net`, but `couch2.bitmask.net` is currently not accessible from `couch1.bitmask.net`
-
-
-<pre>
-    curl -s --netrc-file /etc/couchdb/couchdb.netrc 'http://127.0.0.1:5984/_membership'
-    {"all_nodes":["bigcouch@couch1.bitmask.net"],"cluster_nodes":["bigcouch@couch1.bitmask.net","bigcouch@couch2.bitmask.net"]}
-</pre>
-
-* Sometimes a `/etc/init.d/bigcouch restart` on all nodes is needed, to register new nodes
 
 Databases
 ---------

@@ -66,15 +66,7 @@ if you see this error, simply restart the node.
 CouchDB
 ---------------------
 
-At the moment, we strongly advise only have one bigcouch server for stability purposes.
-
-With multiple couch nodes (not recommended at this time), in some scenarios, such as when certain components are unavailable, the couchdb syncing will be broken. When things are brought back to normal, shortly after restart, the nodes will attempt to resync all their data, and can fail to complete this process because they run out of file descriptors. A symptom of this is the webapp wont allow you to register or login, the /opt/bigcouch/var/log/bigcouch.log is huge with a lot of errors that include (over multiple lines): {error,  emfile}}. We have raised the limits for available file descriptors to bigcouch to try and accommodate for this situation, but if you still experience it, you may need to increase your /etc/sv/bigcouch/run ulimit values and restart bigcouch while monitoring the open file descriptors. We hope that in the next platform release, a newer couchdb will be better at handling these resources.
-
-You can also see the number of file descriptors in use by doing:
-
-    # watch -n1 -d lsof -p `pidof beam`|wc -l
-
-The command `leap db destroy` will not automatically recreate new databases. You must run `leap deploy` afterwards for this.
+At the moment, we only support one couchdb server for stability purposes.
 
 User setup and ssh
 ------------------
