@@ -11,7 +11,7 @@ Currently, you can have zero or one `monitor` nodes defined. It is required that
 Configuration
 -----------------------------------------------
 
-* `nagios.environments`: By default, the monitor node will monitor all servers in all environments. You can optionally restrict the environments to the ones you specify.
+* `nagios.environments`: By default, the monitor node will monitor all servers in all environments. You can **optionally** restrict the environments to the ones you specify.
 
 For example:
 
@@ -24,13 +24,28 @@ For example:
 Access nagios web
 -----------------------------------------------
 
-*Determine the nagios URL*
+To open the nagios control panel:
 
-    $ leap ls --print domain.name,webapp.domain,ip_address monitor
-    > chameleon  chameleon.bitmask.net, demo.bitmask.net, 199.119.112.10
+    workstation$ leap open monitor
 
-In this case, you would open `https://demo.bitmask.net/cgi-bin/nagios3` in your browser (or alternately you could use 199.119.112.10 or chameleon.bitmask.net).
+This will open a web browser window with the appropriate URL, including the nagios username and password.
 
-*Determine the nagios password*
+If the URL does not open because of HSTS or DNS problems, pass the `--ip` option to `leap`.
 
-The username for nagios is always `nagiosadmin`. The password is randomly generated and stored in `secrets.json` under the key `nagios_admin_password`. Note that the login is `nagiosadmin` without underscore, but the entry in secrets.json is with underscores.
+If you are using an older version of `leap` command that doesn't include `leap open`, you can determine the nagio parameters manually:
+
+Step 1. find the domain:
+
+    workstation$ export DOMAIN=$(leap ls --print webapp.domain monitor | grep . | cut -f3 -d' ')
+
+Step 2. find the username:
+
+    workstation$ export USERNAME="nagiosadmin"
+
+Step 3. find the password:
+
+    workstation$ export PASSWORD=$(grep nagios_admin_password secrets.json | cut -f4 -d\")
+
+Step 4. put it all together:
+
+    workstation$ sensible-browser "https://$USERNAME:$PASSWORD@$DOMAIN/nagios3"
