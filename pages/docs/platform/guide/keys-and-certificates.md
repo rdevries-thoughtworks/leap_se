@@ -221,9 +221,9 @@ Install the official acme client
 
 Log in to your webapp node
 
-    server$ git clone https://github.com/letsencrypt/letsencrypt
-    server$ cd letsencrypt
-    server$ ./letsencrypt-auto --help
+    server$ git clone https://github.com/certbot/certbot
+    server$ cd certbot
+    server$ ./certbot-auto --help
 
 Fetch cert
 ----------
@@ -234,7 +234,7 @@ Stop apache so the letsencrypt client can bind to port 80:
 
 Fetch the certs
 
-    server$ ./letsencrypt-auto certonly --standalone --email admin@$(hostname -d) -d $(hostname -d) -d api.$(hostname -d) -d $(hostname -f) -d nicknym.$(hostname -d)
+    server$ ./certbot-auto certonly --standalone --email admin@$(hostname -d) -d $(hostname -d) -d api.$(hostname -d) -d $(hostname -f) -d nicknym.$(hostname -d)
 
 This will put the certs and keys into `/etc/letsencrypt/live/DOMAIN/`.
 
