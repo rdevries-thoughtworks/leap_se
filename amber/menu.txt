@@ -70,3 +70,4 @@ docs
     bundle-testing
     dev-environment
     known-issues
+    bitmask-firewall
