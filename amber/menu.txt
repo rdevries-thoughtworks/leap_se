@@ -39,6 +39,7 @@ docs
       domains
       provider-configuration
       environments
+      virtual-machines
       miscellaneous
       commands
     tutorials
