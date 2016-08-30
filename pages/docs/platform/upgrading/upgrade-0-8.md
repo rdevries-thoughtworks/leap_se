@@ -18,7 +18,7 @@ Upgrading to Platform 0.8
 
 ### Step 2: Prepare to migrate from BigCouch to CouchDB
 
-<%= render :partial => 'docs/platform/common/bigcouch_migration_begin.md' %>
+<%= render :partial => '../common/bigcouch_migration_begin.md' %>
 
 ### Step 3: Upgrade from Debian Wheezy to Jessie
 
@@ -127,7 +127,7 @@ You will need to deploy the 0.8 version of LEAP Platform to the couch node befor
 
 ### Step 5: Import Data into CouchDB
 
-<%= render :partial => 'docs/platform/common/bigcouch_migration_end.md' %>
+<%= render :partial => '../common/bigcouch_migration_end.md' %>
 
 ### Step 6: Deploy everything
 
@@ -138,4 +138,4 @@ Now that you've upgraded all nodes to Jessie, and migrated to CouchDB, you are r
 
 ### Step 7: Test and cleanup
 
-<%= render :partial => 'docs/platform/common/bigcouch_migration_finish.md' %>
+<%= render :partial => '../common/bigcouch_migration_finish.md' %>

@@ -71,10 +71,10 @@ Beware that this returns the uncompacted disk size (see http://wiki.apache.org/c
 
 ### Migrating from BigCouch to plain CouchDB
 
-<%= render :partial => 'docs/platform/common/bigcouch_migration_begin.md' %>
+<%= render :partial => '../common/bigcouch_migration_begin.md' %>
 
 
-<%= render :partial => 'docs/platform/common/bigcouch_migration_end.md' %>
+<%= render :partial => '../common/bigcouch_migration_end.md' %>
 
 
-<%= render :partial => 'docs/platform/common/bigcouch_migration_finish.md' %>
+<%= render :partial => '../common/bigcouch_migration_finish.md' %>
