@@ -160,35 +160,42 @@ To make this work, the private key of the Client CA is made available to the web
 
 There are two types of client certificates: limited and unlimited. A client using a limited cert will have its bandwidth limited to the rate specified by `provider.service.bandwidth_limit` (in Bytes per second). An unlimited cert is given to the user if they authenticate and the user's service level matches one configured in `provider.service.levels` without bandwidth limits. Otherwise, the user is given a limited client cert.
 
-Commercial certificates
+Signed certificates
 -----------------------------------
 
-We strongly recommend that you use a commercial signed server certificate for your primary domain (in other words, a certificate with a common name matching whatever you have configured for `provider.domain`). This provides several benefits:
+We strongly recommend that the primary domain for your provider has a certificate signed by a "trusted CA" (e.g. A Certificate Authority that is trusted by the web browsers and in the Debian `ca-certificates` package). This provides several benefits:
 
 1. When users visit your website, they don't get a scary notice that something is wrong.
 2. When a user runs the LEAP client, selecting your service provider will not cause a warning message.
 3. When other providers first discover your provider, they are more likely to trust your provider key if it is fetched over a commercially verified link.
 
-The LEAP platform is designed so that it assumes you are using a commercial cert for the primary domain of your provider, but all other servers are assumed to use non-commercial certs signed by the Server CA you create.
+The LEAP platform is designed so that it assumes you are using a certificate signed by a "trusted CA" for the primary domain of your provider, but all other servers are assumed to use certs signed by the Server CA you create.
 
 To generate a CSR, run:
 
-    leap cert csr
+    leap cert csr [DOMAIN]
 
-This command will generate the CSR and private key matching `provider.domain` (you can change the domain with `--domain=DOMAIN` switch). It also generates a server certificate signed with the Server CA. You should delete this certificate and replace it with a real one once it is created by your commercial CA.
+This command will generate the CSR and private key matching `provider.domain` or use DOMAIN. It also generates a server certificate signed with the Server CA. You should delete this certificate and replace it with a real one you get back from a "trusted CA".
 
 The related commercial cert files are:
 
     files/
       cert/
-        domain.org.crt    # Server certificate for domain.org, obtained by commercial CA.
-        domain.org.csr    # Certificate signing request
-        domain.org.key    # Private key for you certificate
-        commercial_ca.crt # The CA cert obtained from the commercial CA.
+        domain.org.crt    # Server certificate for domain.org, obtained from
+                          # the trusted CA (this file is initially signed with
+                          # the Server CA, but you should replace it).
+        domain.org.csr    # Certificate signing request (PEM format)
+        domain.org.key    # Private key for you certificate (PEM format)
+        commercial_ca.crt # DEPRECATED: The certificate chain obtained from
+                          # the trusted CA (PEM format)
 
 The private key file is extremely sensitive and care should be taken with its provenance.
 
-If your commercial CA has a chained CA cert, you should be OK if you just put the **last** cert in the chain into the `commercial_ca.crt` file. This only works if the other CAs in the chain have certs in the debian package `ca-certificates`, which is the case for almost all CAs.
+A few notes on the certificate chain:
+
+* A certificate is basically just a key signed by another key. In x.509, the signing key might be signed by yet another key, and so on, all the way to a 'root' key. It is the root key that a browser trusts or is in the Debian `ca-certificates` package. The chain is the set of all the keys from the root to the end certificate.
+* For TLS, both the server and the client need the full chain from the certificate to the CA's root.
+* The full chain should be appended in the file `domain.org.crt` after the server certificate. The chain can also live in `commercial_ca.crt`, but this is deprecated.
 
 If you want to add additional fields to the CSR, like country, city, or locality, you can configure these values in provider.json like so:
 
@@ -210,63 +217,34 @@ To see details about the keys and certs you can use `leap inspect` like so:
     $ leap inspect files/ca/ca.crt
 
 
-Let's Encrypt certificate
+Let's Encrypt
 =========================
 
-LEAP plans to integrate [Let's Encrypt](https://letsencrypt.org/) support, so it will be even easier to receive X.509 certificates that are accepted by all browsers.
-Until we achieve this, here's a guide how to do this manually.
+Let's Encrypt is a free "trusted CA". You can obtain signed certificates from Let's Encrypt very easily using the LEAP command line, so long as you have first set up DNS correctly.
 
-Install the official acme client
---------------------------------
+Creating a certificate
+----------------------------------
 
-Log in to your webapp node
+For example:
 
-    server$ git clone https://github.com/certbot/certbot
-    server$ cd certbot
-    server$ ./certbot-auto --help
-
-Fetch cert
-----------
-
-Stop apache so the letsencrypt client can bind to port 80:
-
-    server$ systemctl stop apache2
-
-Fetch the certs
-
-    server$ ./certbot-auto certonly --standalone --email admin@$(hostname -d) -d $(hostname -d) -d api.$(hostname -d) -d $(hostname -f) -d nicknym.$(hostname -d)
-
-This will put the certs and keys into `/etc/letsencrypt/live/DOMAIN/`.
-
-Now, go to your workstation's provider configuration directory and copy the newly created files from the server to your local config. You will override existing files so please make a backup before proceeding, or use a version control system to track changes.
-
-    workstation$ cd PATH_TO_PROVIDER_CONFIG
-
-Copy the Certificate
-
-    workstation$ scp root@SERVER:/etc/letsencrypt/live/DOMAIN/cert.pem files/cert/dev.pixelated-project.org.crt
-
-Copy the private key
-
-    workstation$ scp root@SERVER:/etc/letsencrypt/live/DOMAIN/privkey.pem files/cert/DOMAIN.key
-
-Copy the CA chain cert
-
-    workstation$ scp root@SERVER:/etc/letsencrypt/live/DOMAIN/fullchain.pem files/cert/commercial_ca.crt
-
-Deploy the certs
-----------------
-
-Now you only need to deploy the certs
-
+    workstation$ leap cert register
+    workstation$ leap cert csr demo.bitmask.net
+    workstation$ leap cert renew demo.bitmask.net
     workstation$ leap deploy
 
-This will put them into the right locations which are:
+Some notes:
 
-- `/etc/x509/certs/leap_commercial.crt` for the certificate
-- `/etc/x509/./keys/leap_commercial.key` for the private key
-- `/usr/local/share/ca-certificates/leap_commercial_ca.crt` for the CA chain cert.
+1. You only need to run `leap cert register` once. Registering will save the Let's Encrypt account key to `files/ca/lets-encrypt-account.key`. If you delete this file, just run `leap cert register` again.
+2. Let's Encrypt support requires that you have already platform 0.9 or later.
+3. This requires that the DNS records are correct for the domain.
 
-Start apache2 again
+Renewing a certificate
+-------------------------------------
 
-    server$ systemctl start apache2
+Let's Encrypt validations are short lived. You will need to renew the certificate at least once every three months. There is no harm in doing it more regularly, however. You can renew your cert every day if you wanted.
+
+    workstation$ leap cert renew demo.bitmask.net
+    workstation$ leap deploy
+
+There is no need to create a new CSR: renewing will reuse the old private key and the old CSR. It is especially important to not create a new CSR if you have advertised public key pins using HPKP.
+
