@@ -23,6 +23,7 @@ services
   tor
   webapp
 upgrading
+  upgrade-0-9
   upgrade-0-8
 troubleshooting
   tests
