@@ -33,11 +33,11 @@ Display version number and exit.
 Skip prompts and assume "yes".
 
 
-# leap add-user  USERNAME
+# leap add-user
 
-Adds a new trusted sysadmin by adding public keys to the "users" directory.
+Manage trusted sysadmins (DEPRECATED)
 
-
+Use `leap user add` instead
 
 **Options**
 
@@ -65,7 +65,7 @@ Creates two Certificate Authorities (one for validating servers and one for vali
 
 See see what values are used in the generation of the certificates (like name and key size), run `leap inspect provider` and look for the "ca" property. To see the details of the created certs, run `leap inspect <file>`.
 
-## leap cert csr
+## leap cert csr  DOMAIN
 
 Creates a CSR for use in buying a commercial X.509 certificate.
 
@@ -114,6 +114,18 @@ Default Value: None
 ## leap cert dh
 
 Creates a Diffie-Hellman parameter file, needed for forward secret OpenVPN ciphers.
+
+
+
+## leap cert register
+
+Register an authorization key with the CA letsencrypt.org
+
+This only needs to be done once.
+
+## leap cert renew  DOMAIN
+
+Renews a certificate using the CA letsencrypt.org
 
 
 
@@ -194,12 +206,6 @@ Default Value: None
 Comma separated list of usernames. The storage databases for these user(s) will be destroyed.
 Default Value: None
 
-
-# leap debug  FILTER
-
-Output debug information.
-
-The FILTER can be the name of a node, service, or tag.
 
 # leap deploy  FILTER
 
@@ -306,6 +312,12 @@ Default Value: None
 Show last deploy only
 
 
+# leap info  FILTER
+
+Prints information regarding facts, history, and running processes for a node or nodes.
+
+The FILTER can be the name of a node, service, or tag.
+
 # leap inspect  FILE
 
 Prints details about a file. Alternately, the argument FILE can be the name of a node, service or tag.
@@ -342,17 +354,23 @@ Include disabled nodes in the list.
 
 Manage local virtual machines.
 
-This command provides a convient way to manage Vagrant-based virtual machines. If FILTER argument is missing, the command runs on all local virtual machines. The Vagrantfile is automatically generated in 'test/Vagrantfile'. If you want to run vagrant commands manually, cd to 'test'.
+This command provides a convenient way to manage Vagrant-based virtual machines. If FILTER argument is missing, the command runs on all local virtual machines. The Vagrantfile is automatically generated in 'test/Vagrantfile'. If you want to run vagrant commands manually, cd to 'test'.
 
-## leap local destroy  [FILTER]
+## leap local ls  [FILTER]
 
-Destroys the virtual machine(s), reclaiming the disk space
+Print the status of local virtual machine(s)
 
 
 
 ## leap local reset  [FILTER]
 
 Resets virtual machine(s) to the last saved snapshot
+
+
+
+## leap local rm  [FILTER]
+
+Destroys the virtual machine(s), reclaiming the disk space
 
 
 
@@ -373,12 +391,6 @@ Starts up the virtual machine(s)
 * `--basebox BASEBOX`
 The basebox to use. This value is passed to vagrant as the `config.vm.box` option. The value here should be the name of an installed box or a shorthand name of a box in HashiCorp's Atlas.
 Default Value: LEAP/jessie
-
-
-## leap local status  [FILTER]
-
-Print the status of local virtual machine(s)
-
 
 
 ## leap local stop  [FILTER]
@@ -447,12 +459,15 @@ For example: `leap node add web1 ip_address:1.2.3.4 services:webapp`.
 
 To set nested properties, property name can contain '.', like so: `leap node add web1 ssh.port:44`
 
-Separeate multiple values for a single property with a comma, like so: `leap node add mynode services:webapp,dns`
+Separate multiple values for a single property with a comma, like so: `leap node add mynode services:webapp,dns`
 
 **Options**
 
 * `--local`
-Make a local testing node (by automatically assigning the next available local IP address). Local nodes are run as virtual machines on your computer.
+Make a local testing node (by assigning the next available local IP address). Local nodes are run as virtual machines on your computer.
+
+* `--vm`
+Make a remote virtual machine for this node. Requires a valid cloud.json configuration.
 
 
 ## leap node init  FILTER
@@ -469,10 +484,8 @@ Default Value: None
 
 * `--port PORT`
 Override the default SSH port.
+This command prepares a server to be used with the LEAP Platform by saving the server's SSH host key, copying the authorized_keys file, installing packages that are required for deploying, and registering important facts. Node init must be run before deploying to a server, and the server must be running and available via the network. This command only needs to be run once, but there is no harm in running it multiple times.
 Default Value: None
-
-* `--echo`
-If set, passwords are visible as you type them (default is hidden)
 
 
 ## leap node mv  OLD_NAME NEW_NAME
@@ -485,6 +498,38 @@ Renames a node file, and all its related files.
 
 Removes all the files related to the node named NAME.
 
+
+
+# leap open  NAME
+
+Opens useful URLs in a web browser.
+
+NAME can be one or more of: monitor, web, docs, bug
+
+**Options**
+
+* `--env ENVIRONMENT`
+Which environment to use (optional).
+Default Value: None
+
+* `--[no-]ip`
+To get around HSTS or DNS, open the URL using the IP address instead of the domain (optional).
+
+
+# leap run  COMMAND FILTER
+
+Run a shell command remotely
+
+Runs the specified command COMMAND on each node in the FILTER set. For example, `leap run 'uname -a' webapp`
+
+**Options**
+
+* `--port SSH_PORT`
+Override default SSH port used when trying to connect to the server.
+Default Value: None
+
+* `--[no-]stream`
+If set, stream the output as it arrives. (default: --stream for a single node, --no-stream for multiple nodes)
 
 
 # leap scp  FILE1 FILE2
@@ -557,3 +602,108 @@ Default Value: None
 Pass through raw options to ssh (e.g. --ssh '-F ~/sshconfig').
 Default Value: None
 
+
+# leap user
+
+Manage trusted sysadmins
+
+Manage the trusted sysadmins that are configured in the 'users' directory.
+
+## leap user add  USERNAME
+
+Adds a new trusted sysadmin
+
+
+
+**Options**
+
+* `--pgp-pub-key arg`
+OpenPGP public key file for this new user
+Default Value: None
+
+* `--ssh-pub-key arg`
+SSH public key file for this new user
+Default Value: None
+
+* `--self`
+Add yourself as a trusted sysadmin by choosing among the public keys available for the current user.
+
+
+## leap user ls
+
+Lists the configured sysadmins
+
+
+
+## leap user rm  USERNAME
+
+Removes a trusted sysadmin
+
+
+
+# leap vm
+
+Manage remote virtual machines (VMs).
+
+This command provides a convenient way to manage virtual machines. FILTER may be a node filter or the ID of a virtual machine.
+
+**Options**
+
+* `--auth AUTH`
+Choose which authentication credentials to use from the file cloud.json. If omitted, will default to the node's `vm.auth` property, or the first credentials in cloud.json
+Default Value: None
+
+* `--[no-]mock`
+Run as simulation, without actually connecting to a cloud provider. If set, --auth is ignored.
+
+* `--[no-]wait`
+Wait for servers to start/stop before continuing.
+
+
+## leap vm add  NODE_NAME [SEED]
+
+Allocates a new VM and/or associates it with node NAME.
+
+If node configuration file does not yet exist, it is created with the optional SEED values. You can run this command when the virtual machine already exists in order to update the node's `vm.id` property.
+
+## leap vm bind  NODE_NAME INSTANCE_ID
+
+Binds a running VM instance to a node configuration.
+
+Afterwards, the VM will be assigned a label matching the node name, and the node config will be updated with the instance ID.
+
+## leap vm key-list
+
+Lists the registered SSH public keys for a particular VM provider.
+
+
+
+## leap vm key-register
+
+Registers a SSH public key for use when creating new VMs.
+
+Note that only people who are creating new VM instances need to have their key registered.
+
+## leap vm rm  [FILTER]
+
+Destroys one or more VMs
+
+
+
+## leap vm start  [FILTER]
+
+Starts one or more VMs
+
+
+
+## leap vm status  [FILTER]
+
+Print the status of all VMs
+
+
+
+## leap vm stop  [FILTER]
+
+Shuts down one or more VMs
+
+This keeps the storage allocated. To save resources, run `leap vm rm` instead.
