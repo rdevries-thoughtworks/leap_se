@@ -4,7 +4,7 @@
 Introduction
 ------------------
 
-You can use the `leap` command line to easily remote virtual machines.
+You can use the `leap` command line to easily manage remote virtual machines.
 
 Note: there are two types of virtual machines that `leap` can handle:
 
