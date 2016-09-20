@@ -56,7 +56,7 @@ A provider instance directory contains everything needed to manage all the serve
 The `leap` command line tool
 ----------------------------
 
-The `leap` [command line tool](commands) is used by sysadmins to manage everything about a service provider's infrastructure.
+The `leap` [command line tool](guide/commands) is used by sysadmins to manage everything about a service provider's infrastructure.
 
 Keep these rules in mind:
 
