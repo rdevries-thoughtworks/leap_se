@@ -16,13 +16,13 @@ The main cleanups were replacing the git submodule system with subrepos, cleanin
 
 Upgrading:
 
-You should be upgrading from a 0.8 release, if you are coming from 0.7, you will need to read and follow the upgrade instructions for 0.8 before continuing to upgrade to 0.9.
+You should be upgrading from a 0.8 release, if you are coming from 0.7, you will need to read and follow the upgrade instructions for 0.8 before continuing to upgrade to 0.9.0.
 
 You will need the new version of leap_cli:
 
     workstation$ sudo gem install leap_cli --version=1.9
 
-Because 0.9 does not use submodules anymore, you must remove them before pulling
+Because 0.9.0 does not use submodules anymore, you must remove them before pulling
 the latest leap_platform from git:
 
     workstation$ cd leap_platform
@@ -54,5 +54,5 @@ Known Issues:
   * leap-mx: 0.8.1
   * soledad-server: 0.8.0
 
-* Commits: https://leap.se/git/leap_platform.git/shortlog/refs/tags/0.9
+* Commits: https://leap.se/git/leap_platform.git/shortlog/refs/tags/0.9.0
 * Issues fixed: https://leap.se/code/versions/195
