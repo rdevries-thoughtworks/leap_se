@@ -4,8 +4,6 @@
 @more = true
 @preview_image = '/img/pages/nine.jpg'
 
-Hi all!
-
 It is time for another release of the LEAP Platform. This time we are breaking free of the 0.8 release cycle into a new major version: 0.9.0. The new number is because of new features, instead of bug fixes, and it also marks a new stable version that we will support with critical fixes until our next major version.
 
 The focus for this release was to clean things up, and add some new features.
