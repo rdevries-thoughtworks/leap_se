@@ -215,6 +215,38 @@ Destroy the current session and invalidate the token. Requires authentication.
 </tr>
 </table>
 
+h3. Password Recovery
+
+Finishes password recovery, after which the password is changed, the recovery code is removed, and the user is successfully authenticated (assuming no errors). This needs to be run after the Handshake.
+
+<table class="table table-bordered table-striped">
+<thead>
+  <tr>
+    <th colspan="2">PUT API_BASE/sessions/recover(.json)</th>
+  </tr>
+</thead>
+<tr>
+  <td>Query params:</td>
+  <td>@{"client_auth": "123…45", "A": "12…345", "password_salt": "5A...21", "password_verifier": "12...45"}@</td>
+</tr>
+<tr>
+  <td>Response:</td>
+  <td>200 @{"M2": "A123BC", "id": "234863", "token": "Aenfw893-zh"}@</td>
+</tr>
+<tr>
+  <td>Error Response:</td>
+  <td>500 @{"field":"recovery_code","error":"wrong recovery code"}@</td>
+</tr>
+</table>
+
+Variables:
+
+* *A*: same as A param from the first Handshake request (POST).
+* *client_auth*: SRP authentication value M, calculated by client.
+* *M2*: Server response for SRP.
+* *id*: User id for updating user record
+* *token*: Unique identifier used to authenticate the user (until the session expires).
+
 h2. User Certificates
 
 h3. Get a VPN client certificate
