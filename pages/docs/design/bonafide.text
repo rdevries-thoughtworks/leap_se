@@ -295,13 +295,15 @@ Create a new user.
 </thead>
 <tr>
   <td>Query params:</td>
-  <td>@{"user[password_salt]": "5A...21", "user[password_verifier]": "12...45", "user[login]": "that_s_me"}@</td>
+  <td>@{"user[password_salt]": "5A...21", "user[password_verifier]": "12...45", "user[recovery_code_salt]": "5A...21", "user[recovery_code_verifier]": "12...45", "user[login]": "that_s_me"}@</td>
 </tr>
 <tr>
   <td>Response:</td>
   <td>200 @{"password_salt":"5A...21","login":"that_s_me"}@</td>
 </tr>
 </table>
+
+The recovery code is optional.
 
 h3. Update user record
 
@@ -310,7 +312,7 @@ Update information about the user. Requires Authentication.
 <table class="table table-bordered table-striped">
 <thead>
   <tr>
-    <th colspan="2">PUT API_BASE/users/:uid(.json)</th>
+    <th colspan="2">PATCH API_BASE/users/:uid(.json)</th>
   </tr>
 </thead>
 <tr>
@@ -327,7 +329,10 @@ Possible parameters to update:
 
 * @login@ (requires @password_verifier@)
 * @password_verifier@ combined with @salt@
+* @recovery_code_verifier@ combined with @salt@
 * @public_key@
+
+`PATCH` only updates the supplied fields, and leaves the omitted fields untouched. `POST` can be used as an alias for `PATCH` on this endpoint. `PUT` will respond with an 4XX if a recovery code is set on the account, but not mentioned in the request.
 
 h1. Rules
 
