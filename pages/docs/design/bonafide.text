@@ -215,6 +215,8 @@ Destroy the current session and invalidate the token. Requires authentication.
 </tr>
 </table>
 
+h2. Password Recovery
+
 h3. Password Recovery
 
 Finishes password recovery, after which the password is changed, the recovery code is removed, and the user is successfully authenticated (assuming no errors). This needs to be run after the Handshake.
@@ -222,7 +224,7 @@ Finishes password recovery, after which the password is changed, the recovery co
 <table class="table table-bordered table-striped">
 <thead>
   <tr>
-    <th colspan="2">PUT API_BASE/sessions/recover(.json)</th>
+    <th colspan="2">PUT API_BASE/recovery/:login(.json)</th>
   </tr>
 </thead>
 <tr>
