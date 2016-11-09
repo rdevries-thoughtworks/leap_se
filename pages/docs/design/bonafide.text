@@ -227,7 +227,7 @@ Finishes password recovery, after which the password is changed, the recovery co
 </thead>
 <tr>
   <td>Query params:</td>
-  <td>@{"client_auth": "123…45", "A": "12…345", "password_salt": "5A...21", "password_verifier": "12...45"}@</td>
+  <td>@{"client_auth": "123…45", "A": "12…345", "recovery_code_salt": "5A...21", "recovery_code_verifier": "12...45"}@</td>
 </tr>
 <tr>
   <td>Response:</td>
@@ -239,13 +239,7 @@ Finishes password recovery, after which the password is changed, the recovery co
 </tr>
 </table>
 
-Variables:
-
-* *A*: same as A param from the first Handshake request (POST).
-* *client_auth*: SRP authentication value M, calculated by client.
-* *M2*: Server response for SRP.
-* *id*: User id for updating user record
-* *token*: Unique identifier used to authenticate the user (until the session expires).
+Variables: the same as in "Authenticate":#authenticate.
 
 h2. User Certificates
 
